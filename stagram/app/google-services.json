@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "540400884592",
+    "firebase_url": "https://stagramf16.firebaseio.com",
+    "project_id": "stagramf16",
+    "storage_bucket": "stagramf16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540400884592:android:c37c003649ad22a7a94db5",
+        "android_client_info": {
+          "package_name": "com.example.stagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540400884592-7a0uarjgkvi3ip7t7o3aq1bhc5kl5vin.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stagram",
+            "certificate_hash": "e62ec5177645dfdb97e4d733fbbcd24e9d8488a4"
+          }
+        },
+        {
+          "client_id": "540400884592-st3llup64me0g73g7f52n04ea68ulp20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkYGxnYVX_yxZ_DvH97S_WoK5xogHZOCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540400884592-st3llup64me0g73g7f52n04ea68ulp20.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>5주차 과제</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <button id="menu-button">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </button>
+        <h3>
+        Liverpool</br> Football Club
+        </h3>
+
+    </header>
+
+    <nav id="side-menu" class="hidden">
+        <ul>
+            <li><a href="https://www.liverpoolfc.com/team/first-team">1군 선수단</a></li>
+            <li><a href="https://www.liverpoolfc.com/match/2020-21/premier-league-calendar">경기 일정</a></li>
+            <li><a href="https://www.liverpoolfc.com/team/first-team/player/jordan-henderson">주장</a></li>
+            <li><a href="https://www.liverpoolfc.com/team/first-team/player/james-milner">부주장</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="flex-box">
+            <div class="flex-item item1 image-container">
+                <img src="./image/PS20072300037.jpg">
+            </div>
+            <div class="flex-item item2 text-center">
+                <h1>You will never walk alone</h1>
+                <br/>
+                <h3>17/18 시즌 챔피언스리그 준우승</h3>
+                <br/>
+                <h3>18/19 시즌 챔피언스리그 우승</h3>
+                <br/>
+                <h3>19/20 시즌 프리미어리그 우승</h3>
+            </div>
+        </div>
+        <div class="container">
+            <img src="./image/1.png">
+            <img src="./image/2.png">
+            <img src="./image/3.png" class="big">
+            <img src="./image/4.png" class="big">
+            <img src="./image/6.png">
+            <img src="./image/5.png">
+            <img src="./image/7.png">
+            <img src="./image/8.png">
+            <img src="./image/PS20072300037.jpg">
+        </div>
+        </div>
+        <br/>
+        <div class="container2">
+            <p>Do not forget the people of Hillsborough Disaster, Heysel Stadium Disaster
+            </p>
+            <h1>R.I.P</h1>
+        </div>
+
+        <br/><br/>
+        <div class="item left-float">
+            <img src="./image/6.png">
+        </div>
+
+        <div class="container1">
+            <header1>리버풀의 홈 유니폼 색깔은 원래 레드 앤 화이트였으나 1960년대에는 올 레드로 바뀌었다. 리버풀의 엠블럼은 창단후 변화가 거의 없었지만 1989년 힐즈브러 참사를 기리기 위해
+                엠블럼의
+                좌우에 불꽃을 집어넣어 현재에 이르고 있다. 리버풀은 현재 54,074명을 수용하는 안필드를 홈 경기장으로 사용하고 있으며, 59,000석까지 증축 예정이다. 리버풀은 광대하고 다양한
+                팬층을
+                보유하고 있으며 오랜 전통을 가지고 있다.
+            </header1>
+
+            <section>
+                <div class="rem">역사<br></div>
+                <p>리버풀 축구 클럽의 역사는 1891년으로 거슬러 올라간다. 안필드 경기장의 임대인이었던, 존 호울딩 (John Houlding)은 1891년 안필드구장의 전지분을 매입하고서는
+                    임대료를
+                    연간 100파운드에서 250파운드로 인상시키려는 움직임을 보였다. 다음 해인 1892년, 안필드 경기장에는 존 호울딩에 의해 1892년 3월 15일, 새로운 축구 클럽이 리버풀
+                    시에
+                    탄생하게 되며 8년간 안필드 경기장을 임대해 쓰던 에버턴은 바로 구디슨 파크로 구장을 옮겼다. 그 때 새롭게 생겨난 축구팀이 리버풀 축구 클럽이다.</p>
+            </section>
+            <aside>
+                <div class="rem">유니폼과 엠블럼<br></div>
+                <p>리버풀의 홈 유니폼은 전통적으로 레드 앤 화이트였다. 1894 - 95시즌부터 리버풀은 빨간색을 택했고 1901년에는 리버풀 시의 상징인 리버 버드
+                    모양을 엠블럼에 집어넣었다. 향후 60년간 리버풀의 홈 유니폼은 빨간색 상의에 흰색 하의였다.</p>
+            </aside>
+
+        </div>
+    </main>
+
+    <script>
+        let hidden = true;
+        const menuButton = document.getElementById('menu-button');
+        const sideMenu = document.getElementById('side-menu');
+
+        menuButton.addEventListener('click', () => {
+            if (hidden) {
+                sideMenu.classList.remove('hidden');
+                hidden = false;
+            } else {
+                sideMenu.classList.add('hidden');
+                hidden = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
