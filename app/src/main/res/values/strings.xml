@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LockPocket</string>
+    <string name="LockPocket">LockPocket</string>
+    <string name="community">커뮤니티</string>
+    <string name="edit">커스텀</string>
+    <string name="mainhome">메인</string>
+    <string name="settings">설정</string>
 </resources>

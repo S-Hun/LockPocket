@@ -7,28 +7,75 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/LockPocket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/LockPocket"
+        android:textSize="35sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="41dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="테스트"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="453dp" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="401dp"
+        android:layout_height="410dp"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="118dp"
+        tools:srcCompat="@tools:sample/avatars"
+        tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="김효희나는부산간다금요일에"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="179dp" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="68dp"
+        android:layout_height="90dp"
+        app:srcCompat="@drawable/logo"
+        tools:ignore="MissingConstraints,VectorDrawableCompat"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/community"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:text="@string/community"
+        android:textSize="18sp"
+        android:background="@drawable/buttonshape1"
+        app:backgroundTint="#1E8C96"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="645dp" />
+
+    <Button
+        android:id="@+id/mainhome"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:background="@drawable/buttonshape0"
+        android:text="@string/mainhome"
+        android:textColor="#FF1E8C96"
+        android:textSize="18sp"
+        app:backgroundTint="#FF1E8C96"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="645dp" />
+
+    <Button
+        android:id="@+id/edit"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:text="@string/edit"
+        android:textSize="18sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="645dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="39dp"
+        android:layout_height="41dp"
+        app:srcCompat="@android:drawable/ic_menu_help"
+        tools:layout_editor_absoluteX="367dp"
+        tools:layout_editor_absoluteY="528dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
