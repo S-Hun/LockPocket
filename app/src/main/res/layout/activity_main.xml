@@ -10,11 +10,12 @@
         android:id="@+id/LockPocket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/app_font"
         android:text="@string/LockPocket"
         android:textSize="35sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="41dp" />
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="48dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,7 +24,9 @@
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="118dp"
         tools:srcCompat="@tools:sample/avatars"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+
+        />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -32,7 +35,8 @@
         app:srcCompat="@drawable/logo"
         tools:ignore="MissingConstraints,VectorDrawableCompat"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        />
 
     <Button
         android:id="@+id/community"
@@ -44,7 +48,9 @@
         app:backgroundTint="#1E8C96"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="645dp" />
+        tools:layout_editor_absoluteY="645dp"
+        android:fontFamily="@font/app_font"
+        />
 
     <Button
         android:id="@+id/mainhome"
@@ -57,7 +63,9 @@
         app:backgroundTint="#FF1E8C96"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="645dp" />
+        tools:layout_editor_absoluteY="645dp"
+        android:fontFamily="@font/app_font"
+        />
 
     <Button
         android:id="@+id/edit"
@@ -67,7 +75,9 @@
         android:textSize="18sp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="645dp" />
+        tools:layout_editor_absoluteY="645dp"
+        android:fontFamily="@font/app_font"
+        />
 
     <ImageButton
         android:id="@+id/imageButton2"
