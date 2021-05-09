@@ -7,85 +7,89 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/LockPocket"
+        android:id="@+id/lockPocket3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/app_font"
-        android:text="@string/LockPocket"
-        android:textSize="35sp"
+        android:text="지금 핫한! 커뮤니티 인기글 "
+        android:textColor="@color/black"
+        android:textSize="20sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="48dp" />
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="565dp" />
+
+    <TextView
+        android:id="@+id/lockPocket4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/app_font"
+        android:text="지금 인기! 최대 다운로드 템플릿 "
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="424dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="401dp"
-        android:layout_height="410dp"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="118dp"
-        tools:srcCompat="@tools:sample/avatars"
+        android:layout_width="447dp"
+        android:layout_height="252dp"
+        android:scaleType="centerCrop"
         tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-18dp"
+        tools:layout_editor_absoluteY="90dp"
+        tools:srcCompat="@drawable/test1"
+
 
         />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="68dp"
-        android:layout_height="90dp"
-        app:srcCompat="@drawable/logo"
+        android:layout_width="187dp"
+        android:layout_height="59dp"
+        app:srcCompat="@drawable/txtlogo"
         tools:ignore="MissingConstraints,VectorDrawableCompat"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="428dp"
+        android:layout_height="91dp"
+        android:scaleType="centerCrop"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="447dp"
+        tools:srcCompat="@drawable/test2"
+
         />
 
-    <Button
-        android:id="@+id/community"
-        android:layout_width="115dp"
-        android:layout_height="55dp"
-        android:text="@string/community"
-        android:textSize="18sp"
-        android:background="@drawable/buttonshape1"
-        app:backgroundTint="#1E8C96"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="436dp"
+        android:layout_height="74dp"
+        android:scaleType="centerCrop"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="645dp"
-        android:fontFamily="@font/app_font"
-        />
+        tools:layout_editor_absoluteX="-14dp"
+        tools:layout_editor_absoluteY="588dp"
+        tools:srcCompat="@drawable/test3"
 
-    <Button
-        android:id="@+id/mainhome"
-        android:layout_width="115dp"
-        android:layout_height="55dp"
-        android:background="@drawable/buttonshape0"
-        android:text="@string/mainhome"
-        android:textColor="#FF1E8C96"
-        android:textSize="18sp"
-        app:backgroundTint="#FF1E8C96"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="645dp"
-        android:fontFamily="@font/app_font"
-        />
-
-    <Button
-        android:id="@+id/edit"
-        android:layout_width="115dp"
-        android:layout_height="55dp"
-        android:text="@string/edit"
-        android:textSize="18sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="645dp"
-        android:fontFamily="@font/app_font"
         />
 
     <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="39dp"
-        android:layout_height="41dp"
-        app:srcCompat="@android:drawable/ic_menu_help"
-        tools:layout_editor_absoluteX="367dp"
-        tools:layout_editor_absoluteY="528dp"
+        android:id="@+id/menu"
+        android:layout_width="35dp"
+        android:layout_height="29dp"
+        android:background="#00ffffff"
+        android:scaleType="fitXY"
+        android:tint="#ff1ba4b8"
+        app:srcCompat="@drawable/menu"
+        tools:layout_editor_absoluteX="360dp"
+        tools:layout_editor_absoluteY="29dp"
         tools:ignore="MissingConstraints" />
 
+    <!--        tools:srcCompat="@tools:sample/avatars"-->
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
