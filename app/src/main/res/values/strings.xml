@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">LockPocket</string>
-    <string name="LockPocket">LockPocket</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="loginjoin">로그인/회원가입</string>
+    <string name="q">1:1문의</string>
+    <string name="h">도움말</string>
     <string name="community">커뮤니티</string>
-    <string name="edit">커스텀</string>
-    <string name="mainhome">메인</string>
-    <string name="settings">설정</string>
+
 </resources>

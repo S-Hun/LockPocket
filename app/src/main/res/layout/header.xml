@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:gravity="bottom"
+    android:padding="20dp">
+
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="232dp">
+
+
+        <ImageView
+            android:layout_width="106dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/logo">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:text="Welcome to LockPocket!"
+            android:textColor="#FF1BA4B8"
+            android:textSize="30dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="453dp"
+
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape1"
+            android:text="@string/loginjoin"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/community"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape1"
+            android:text="@string/community"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape1"
+            android:text="@string/q"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/buttonshape1"
+            android:text="@string/h"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

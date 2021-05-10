@@ -84,9 +84,9 @@
         android:scaleType="fitXY"
         android:tint="#ff1ba4b8"
         app:srcCompat="@drawable/menu"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="360dp"
-        tools:layout_editor_absoluteY="37dp" />
+        tools:layout_editor_absoluteY="29dp"
+        tools:ignore="MissingConstraints" />
 
     <!--        tools:srcCompat="@tools:sample/avatars"-->
 
