@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+
+    <!--    <com.google.android.material.navigation.NavigationView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:id="@+id/nav_view"-->
+    <!--        app:headerLayout="@layout/header"-->
+    <!--        app:menu="@menu/main_menu"-->
+    <!--        android:fitsSystemWindows="true"-->
+    <!--        android:layout_gravity="start"/>-->
+
+
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
+    <!--    </LinearLayout>-->
+
+    <!--상단 고정-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <ImageButton
+                android:id="@+id/menu"
+                android:layout_width="35dp"
+                android:layout_height="29dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="16dp"
+                android:background="#00ffffff"
+                android:scaleType="fitXY"
+                android:tint="#ff1ba4b8"
+                app:srcCompat="@drawable/menu"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="360dp"
+                tools:layout_editor_absoluteY="29dp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="115dp"
+                android:layout_marginTop="15dp"
+                android:text="1:1 문의하기"
+                android:textSize="20dp"
+                tools:ignore="MissingConstraints,VectorDrawableCompat"
+                tools:layout_editor_absoluteX="112dp"
+                tools:layout_editor_absoluteY="16dp" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </LinearLayout>
+
+    <!--스크롤뷰-->
+
+
+    <!--하단고정-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="302dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="35dp"
+                android:text="이름*"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="282dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/help_box"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="35dp"
+                    android:text="이메일*"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="282dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/help_box"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="35dp"
+                    android:text="제목*"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="283dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/help_box"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="35dp"
+                    android:text="게시판"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="282dp"
+                    android:layout_height="39dp"
+                    android:layout_marginStart="43dp"
+                    android:layout_marginLeft="43dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/help_box"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="35dp"
+                    android:text="문의내용"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:layout_width="282dp"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/help_box"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="103dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="35dp"
+                    android:text="첨부파일"
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="69dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ffffff"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/camera2" />
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="69dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ffffff"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/camera2" />
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="69dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    app:srcCompat="@drawable/camera2"
+                    android:scaleType="fitXY"
+                    android:background="#00ffffff"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="393dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FF1E8C96"
+                    android:text="올리기"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape0"
+            android:text="Button1" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape0"
+            android:text="Button2" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape0"
+            android:text="Button3" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape0"
+            android:text="Button4" />
+
+    </LinearLayout>
+
+</LinearLayout>
