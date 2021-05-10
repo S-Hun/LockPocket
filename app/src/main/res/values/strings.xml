@@ -4,8 +4,13 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="loginjoin">로그인/회원가입 질문</string>
-    <string name="q">템플릿 질문</string>
-    <string name="h">기타 질문</string>
+    <string name="tem">템플릿 질문</string>
+    <string name="ex">기타 질문</string>
     <string name="community">커뮤니티 질문</string>
-    <string name="copy">저작권 질문</string>
+    <string name="copyright">저작권 질문</string>
+
+    <string name="lojo">로그인/회원가입</string>
+    <string name="comm">커뮤니티</string>
+    <string name="help">1:1 문의</string>
+    <string name="quest">자주 묻는 질문</string>
 </resources>

@@ -84,11 +84,12 @@ tools:openDrawer="start">
                 android:src="@drawable/txtlogo" />
 
             <Button
-                android:id="@+id/login"
+                android:id="@+id/loginjoin"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/buttonshape1"
                 android:text="@string/loginjoin"
+                android:textColor="#000000"
                 android:textSize="18dp"
                 />
 
@@ -98,15 +99,17 @@ tools:openDrawer="start">
                 android:layout_height="60dp"
                 android:background="@drawable/buttonshape1"
                 android:text="@string/community"
+                android:textColor="#000000"
                 android:textSize="18dp"
                  />
 
             <Button
-                android:id="@+id/question"
+                android:id="@+id/tem"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/buttonshape1"
-                android:text="@string/q"
+                android:text="@string/tem"
+                android:textColor="#000000"
                 android:textSize="18dp"
 
                 />
@@ -116,22 +119,20 @@ tools:openDrawer="start">
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/buttonshape1"
-                android:text="@string/copy"
+                android:text="@string/copyright"
+                android:textColor="#000000"
                 android:textSize="18dp"
                  />
 
             <Button
-                android:id="@+id/help"
+                android:id="@+id/ex"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@drawable/buttonshape1"
-                android:text="@string/h"
+                android:text="@string/ex"
+                android:textColor="#000000"
                 android:textSize="18dp"
-                 />
-
-
-
-
+                />
         </LinearLayout>
 
 
