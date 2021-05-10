@@ -7,10 +7,9 @@
     android:gravity="bottom"
     android:padding="20dp">
 
-
     <LinearLayout
         android:layout_width="391dp"
-        android:layout_height="232dp">
+        android:layout_height="169dp">
 
 
         <ImageView
@@ -35,7 +34,6 @@
         </TextView>
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="453dp"
@@ -73,8 +71,9 @@
             android:background="@drawable/buttonshape1"
             android:text="@string/h"
             android:textSize="20dp" />
-    </LinearLayout>
 
+
+    </LinearLayout>
 
 
 </LinearLayout>

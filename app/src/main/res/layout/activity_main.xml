@@ -1,95 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <TextView
-        android:id="@+id/lockPocket3"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <!--상단 고정-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+
+
+                <ImageButton
+                    android:id="@+id/menu"
+                    android:layout_width="35dp"
+                    android:layout_height="29dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#00ffffff"
+                    android:scaleType="fitXY"
+                    android:tint="#ff1ba4b8"
+                    app:srcCompat="@drawable/menu"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="360dp"
+                    tools:layout_editor_absoluteY="29dp" />
+
+                <ImageView
+                    android:id="@+id/txtlogo"
+                    android:layout_width="187dp"
+                    android:layout_height="59dp"
+                    android:layout_marginLeft="60dp"
+                    app:srcCompat="@drawable/txtlogo"
+                    tools:ignore="MissingConstraints,VectorDrawableCompat"
+                    tools:layout_editor_absoluteX="112dp"
+                    tools:layout_editor_absoluteY="16dp" />
+            </androidx.appcompat.widget.Toolbar>
+
+        </LinearLayout>
+    </LinearLayout>
+    <!--스크롤뷰-->
+
+
+    <!--    <com.google.android.material.navigation.NavigationView-->
+    <!--        android:id="@+id/nav_view"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_gravity="start"-->
+    <!--        android:fitsSystemWindows="true"-->
+    <!--        app:headerLayout="@layout/header"-->
+    <!--        app:menu="@menu/main_menu" />-->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginBottom="50dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/test1"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-18dp"
+                tools:layout_editor_absoluteY="90dp" />
+
+            <TextView
+                android:id="@+id/now1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/app_font"
+                android:text="지금 핫한! 커뮤니티 인기글 "
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="565dp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="158dp"
+                android:layout_marginBottom="50dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/test3"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-14dp"
+                tools:layout_editor_absoluteY="588dp"
+
+                />
+
+            <TextView
+                android:id="@+id/now2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/app_font"
+                android:text="지금 핫한! 커뮤니티 인기글 "
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="565dp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/test2"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-4dp"
+
+                tools:layout_editor_absoluteY="447dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <!--!!!!!!!바닥글 풋바 만드는 자리!!!!!!!!-->
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!--하단고정-->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/app_font"
-        android:text="지금 핫한! 커뮤니티 인기글 "
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="565dp" />
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/lockPocket4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/app_font"
-        android:text="지금 인기! 최대 다운로드 템플릿 "
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="424dp" />
+        <ImageButton
+            android:layout_width="15dp"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_foreground"
+            android:tint="#A59F9F" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="447dp"
-        android:layout_height="252dp"
-        android:scaleType="centerCrop"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-18dp"
-        tools:layout_editor_absoluteY="90dp"
-        tools:srcCompat="@drawable/test1"
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_share" />
 
 
-        />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_send" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="187dp"
-        android:layout_height="59dp"
-        app:srcCompat="@drawable/txtlogo"
-        tools:ignore="MissingConstraints,VectorDrawableCompat"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="428dp"
-        android:layout_height="91dp"
-        android:scaleType="centerCrop"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-4dp"
-        tools:layout_editor_absoluteY="447dp"
-        tools:srcCompat="@drawable/test2"
-
-        />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="436dp"
-        android:layout_height="74dp"
-        android:scaleType="centerCrop"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-14dp"
-        tools:layout_editor_absoluteY="588dp"
-        tools:srcCompat="@drawable/test3"
-
-        />
-
-    <ImageButton
-        android:id="@+id/menu"
-        android:layout_width="35dp"
-        android:layout_height="29dp"
-        android:background="#00ffffff"
-        android:scaleType="fitXY"
-        android:tint="#ff1ba4b8"
-        app:srcCompat="@drawable/menu"
-        tools:layout_editor_absoluteX="360dp"
-        tools:layout_editor_absoluteY="29dp"
-        tools:ignore="MissingConstraints" />
-
-    <!--        tools:srcCompat="@tools:sample/avatars"-->
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_help" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
+</LinearLayout>

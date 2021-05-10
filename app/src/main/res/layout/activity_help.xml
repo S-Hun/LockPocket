@@ -288,43 +288,50 @@
         </LinearLayout>
     </ScrollView>
 
+    <!--하단고정-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+        <ImageButton
+            android:layout_width="15dp"
+            android:layout_height="40dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape0"
-            android:text="Button1" />
+            android:background="@drawable/buttonshape1"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_foreground"
+            android:tint="#A59F9F" />
 
-        <Button
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape0"
-            android:text="Button2" />
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_share" />
 
-        <Button
+
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape0"
-            android:text="Button3" />
-        <Button
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_send" />
+
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape0"
-            android:text="Button4" />
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_help" />
+
 
     </LinearLayout>
+
 
 </LinearLayout>
