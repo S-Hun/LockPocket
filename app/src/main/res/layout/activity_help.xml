@@ -139,15 +139,6 @@ tools:openDrawer="start">
         android:orientation="horizontal">
 
         <!--버튼 클릭 시 메인 화면, activity_main.xml로 돌아오는/이동하는 버튼-->
-        <ImageButton
-            android:layout_width="15dp"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_foreground"
-            android:tint="#A59F9F" />
 
         <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
         공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
