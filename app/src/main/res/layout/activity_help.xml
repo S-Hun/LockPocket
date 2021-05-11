@@ -10,6 +10,11 @@ android:orientation="vertical"
 android:fitsSystemWindows="true"
 tools:openDrawer="start">
 
+    <!--현재 상단의 메뉴 버튼 & 하단의 버튼 세 개에 대한 화면 연결만 해주시면 됩니다!-->
+    <!--    은진이가 톡으로 보낸 자료에는 하단에 버튼이 네 개로 돼 있는데 가장 왼쪽의 홈 버튼 없애는게-->
+    <!--    더 깔끔해서 버튼 세 개가 최종입니다! -->
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -131,23 +136,12 @@ tools:openDrawer="start">
     </ScrollView>
 
     <!--하단고정-->
-    <!--화면 하단의 버튼 네 개가 고정돼 있는 자리-->
+    <!--화면 하단의 버튼 세 개가 고정돼 있는 자리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
-
-        <!--버튼 클릭 시 메인 화면, activity_main.xml로 돌아오는/이동하는 버튼-->
-        <ImageButton
-            android:layout_width="15dp"
-            android:layout_height="40dp"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_foreground"
-            android:tint="#A59F9F" />
 
         <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
         공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->

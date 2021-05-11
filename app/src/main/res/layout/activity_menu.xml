@@ -10,6 +10,7 @@
     <!--현재 로그인/회원가입 버튼을 제외한 나머지 커뮤니티, 1:1 문의, 자주 묻는 질문 버튼에 대한
     화면 연결만 해주시면 됩니다!-->
 
+
     <!--이미지 로고 & 환영 글 보여주는 자리,
     클릭 이벤트, 추가할 기능 없음-->
     <LinearLayout
@@ -57,7 +58,7 @@
             android:textColor="#000000"
             android:textSize="20sp" />
 
-        <!--버튼 클릭 시 activity_community.xml로 이동-->
+        <!--버튼 클릭 시 activity_edit.xml로 이동-->
         <Button
             android:id="@+id/edit"
             android:layout_width="match_parent"
