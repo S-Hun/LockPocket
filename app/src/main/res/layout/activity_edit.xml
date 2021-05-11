@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
 
         <!--상단 고정
-        왼쪽의 메뉴 버튼 & 템플릿 업로드 글씨 보여주는 자리-->
+        왼쪽의 메뉴 버튼 & 템플릿 편집 글씨 보여주는 자리-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,153 +62,22 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--스크롤뷰-->
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/ic_launcher_background">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="35dp"
-                    android:text="제목*"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="39dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/help_box"
-                    android:text="제목을 입력하세요"
-                    android:textColor="#A8A8A8"
-                    android:textSize="15sp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="35dp"
-                    android:text="이메일"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="39dp"
-                    android:layout_marginLeft="63dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/help_box"
-                    android:text="이메일을 입력하세요"
-                    android:textColor="#A8A8A8"
-                    android:textSize="15sp"/>
-            </LinearLayout>
+            android:layout_height="457dp"
+            android:orientation="horizontal">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="35dp"
-                    android:text="템플릿 설명"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="250dp"
-                    android:layout_height="150dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/help_box"
-                    android:text="템프릿 설명을 입력하세요"
-                    android:textColor="#A8A8A8"
-                    android:textSize="15sp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="103dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="50dp"
-                    android:text="내 템플릿 가져오기"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <ImageButton
-                    android:layout_width="71dp"
-                    android:layout_height="47dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="35dp"
-                    android:background="#00ffffff"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-                <ImageButton
-                    android:layout_width="58dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="35dp"
-                    android:background="#00ffffff"
-                    android:scaleType="fitXY"
-                    android:tint="#A8A3A3"
-                    app:srcCompat="@drawable/folder" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="50dp"
-                android:orientation="horizontal">
-
-                <!--버튼 클릭 시 이동하는 화면은 없지만
-                공유 기능이 구현되면 팝업 메세지 등으로 간단하게 공유 완료됐다는 알림을 뜨게 할 것임
-                현재는 클릭 이벤트 없음-->
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#FF1BA4B8"
-                    android:fontFamily="@font/nanumbarungothic"
-                    android:text="템플릿 편집 완료"
-                    android:textColor="#FFFFFF"
-                    android:textSize="15sp" />
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
 
     <!--화면 하단의 템플릿 편집 관련 버튼 세 개가 고정돼 있는 자리-->
     <LinearLayout
@@ -218,30 +87,54 @@
         android:orientation="horizontal">
 
 
-        <ImageButton
+        <!--잠금화면의 배경 이미지를 선택하는 화면으로 이동
+        편집 기능이 구현될 때 같이 완성할 것임-->
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_recent_history" />
+            android:background="#FFFFFF"
+            android:textColor="@color/black"
+            android:text="WALLPAPERS"/>
 
 
-        <ImageButton
+        <!--잠금화면의 시계와 날짜 디자인을 선택하는 화면으로 이동
+        편집 기능이 구현될 때 같이 완성할 것임-->
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_edit" />
+            android:background="#FFFFFF"
+            android:textColor="@color/black"
+            android:text="CLOCK &amp; DATE" />
 
 
-        <ImageButton
+        <!--잠금화면의 작은 요소들을 선택하는 화면으로 이동
+        편집 기능이 구현될 때 같이 완성할 것임-->
+        <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_help" />
+            android:background="#FFFFFF"
+            android:textColor="@color/black"
+            android:text="COMPONENTS" />
+
+
     </LinearLayout>
+
+    <!--템플릿 편집이 모두 끝나고 이 버튼을 클릭-->
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:background="#FF1BA4B8"
+        android:fontFamily="@font/nanumbarungothic"
+        android:text="템플릿 편집 완료"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
 </LinearLayout>

@@ -205,7 +205,7 @@
                 <Button
                     android:id="@+id/button"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="70dp"
                     android:layout_weight="1"
                     android:background="#FF1BA4B8"
                     android:fontFamily="@font/nanumbarungothic"
