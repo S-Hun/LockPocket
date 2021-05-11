@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:orientation="vertical">
 
 
     <!--현재 상단의 메뉴 버튼 & 하단의 버튼 세 개에 대한 화면 연결만 해주시면 됩니다!-->
@@ -52,7 +52,7 @@
                     android:layout_marginLeft="115dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/nanumbarungothic"
-                    android:text="템플릿 업로드"
+                    android:text="템플릿 편집"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     tools:ignore="MissingConstraints,VectorDrawableCompat"
@@ -62,13 +62,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--스크롤뷰
-    템플릿을 업로드 할 때 템플릿 제목 & 사용자의 이메일 & 템플릿에 대한 설명 & 템플릿 가져오기
-    를 보여주는 뷰-->
-    <!--현재 추가해야하는 클릭 이벤트나 다른 화면으로의 이동은 없음, 설명을 추가하자면
-    하단의 내 템플릿 가져오기 옆의
-    갤러리 아이콘 클릭 시 activity_community.xml에서 user로 대체된 이미지가 가져온 이미지로 업로드
-    폴더 아이콘은 사용자가 본인의 템플릿을 가져오는 버튼-->
+    <!--스크롤뷰-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -209,32 +203,30 @@
                     android:layout_weight="1"
                     android:background="#FF1BA4B8"
                     android:fontFamily="@font/nanumbarungothic"
-                    android:text="내 템플릿 공유하기"
+                    android:text="템플릿 편집 완료"
                     android:textColor="#FFFFFF"
                     android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <!--하단고정-->
-    <!--화면 하단의 버튼 세 개가 고정돼 있는 자리-->
+    <!--화면 하단의 템플릿 편집 관련 버튼 세 개가 고정돼 있는 자리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
-        <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
-        공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_share" />
+            android:src="@android:drawable/ic_menu_recent_history" />
 
-        <!--버튼 클릭 시 템플릿 편집기, activity_edit.xml로 이동하는 버튼-->
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -243,7 +235,7 @@
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_edit" />
 
-        <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
+
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -252,6 +244,4 @@
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_help" />
     </LinearLayout>
-
-
 </LinearLayout>
