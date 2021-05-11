@@ -18,7 +18,7 @@ tools:openDrawer="start">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
@@ -45,7 +45,7 @@ tools:openDrawer="start">
                 android:layout_marginLeft="100dp"
                 android:layout_marginTop="15dp"
                 android:text="자주 묻는 질문"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 tools:ignore="MissingConstraints,VectorDrawableCompat"
                 tools:layout_editor_absoluteX="112dp"
                 tools:layout_editor_absoluteY="16dp" />
@@ -56,7 +56,7 @@ tools:openDrawer="start">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="302dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:background="#FFFFFF">
 
@@ -75,7 +75,7 @@ tools:openDrawer="start">
                 android:text="손안에 작은 즐거움,"
                 android:textColor="#FF1E8C96"
                 android:gravity="center_horizontal"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
             <ImageView
@@ -90,8 +90,7 @@ tools:openDrawer="start">
                 android:background="@drawable/buttonshape1"
                 android:text="@string/loginjoin"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                />
+                android:textSize="18sp"/>
 
             <Button
                 android:id="@+id/community"
@@ -100,8 +99,7 @@ tools:openDrawer="start">
                 android:background="@drawable/buttonshape1"
                 android:text="@string/community"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                 />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/tem"
@@ -110,9 +108,7 @@ tools:openDrawer="start">
                 android:background="@drawable/buttonshape1"
                 android:text="@string/tem"
                 android:textColor="#000000"
-                android:textSize="18dp"
-
-                />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/copyright"
@@ -121,8 +117,7 @@ tools:openDrawer="start">
                 android:background="@drawable/buttonshape1"
                 android:text="@string/copyright"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                 />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/ex"
@@ -131,23 +126,22 @@ tools:openDrawer="start">
                 android:background="@drawable/buttonshape1"
                 android:text="@string/ex"
                 android:textColor="#000000"
-                android:textSize="18dp"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
-
-
     </ScrollView>
 
     <!--하단고정-->
+    <!--화면 하단의 버튼 네 개가 고정돼 있는 자리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
+        <!--버튼 클릭 시 메인 화면, activity_main.xml로 돌아오는/이동하는 버튼-->
         <ImageButton
-            android:layout_width="7dp"
-            android:layout_height="33dp"
+            android:layout_width="15dp"
+            android:layout_height="40dp"
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape1"
@@ -155,6 +149,8 @@ tools:openDrawer="start">
             android:src="@drawable/ic_launcher_foreground"
             android:tint="#A59F9F" />
 
+        <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
+        공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -163,7 +159,7 @@ tools:openDrawer="start">
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_share" />
 
-
+        <!--버튼 클릭 시 1:1 문의하기, activity_question.xml로 이동하는 버튼-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -172,6 +168,7 @@ tools:openDrawer="start">
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_send" />
 
+        <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -179,8 +176,6 @@ tools:openDrawer="start">
             android:layout_weight="1"
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_help" />
-
-
     </LinearLayout>
 
 </LinearLayout>

@@ -10,24 +10,10 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <!--현재 상단 왼쪽의 메뉴 버튼과 하단의 버튼 네 개에 대한 화면 연결만 해주시면 됩니다!-->
 
-    <!--    <com.google.android.material.navigation.NavigationView-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:id="@+id/nav_view"-->
-    <!--        app:headerLayout="@layout/header"-->
-    <!--        app:menu="@menu/main_menu"-->
-    <!--        android:fitsSystemWindows="true"-->
-    <!--        android:layout_gravity="start"/>-->
-
-
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent">-->
-    <!--    </LinearLayout>-->
-
-    <!--상단 고정-->
+    <!--상단 고정
+    왼쪽 메뉴 버튼과 가운데 1:1 문의하기 글씨를 보여주는 자리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,11 +22,11 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-
+            <!--버튼 클릭 시 activity_menu.xml로 이동-->
             <ImageButton
                 android:id="@+id/menu"
                 android:layout_width="35dp"
@@ -63,25 +49,21 @@
                 android:layout_marginLeft="115dp"
                 android:layout_marginTop="15dp"
                 android:text="1:1 문의하기"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 tools:ignore="MissingConstraints,VectorDrawableCompat"
                 tools:layout_editor_absoluteX="112dp"
                 tools:layout_editor_absoluteY="16dp" />
         </androidx.appcompat.widget.Toolbar>
-
     </LinearLayout>
 
     <!--스크롤뷰-->
-
-
-    <!--하단고정-->
-
+    <!--이름 이메일 제목 문의내용에 대한 글을 입력하고
+    문의하기 버튼을 클릭하면 문의 내용이 개발자에게 전송되는 버튼-->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="302dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFFFFF"
-        >
+        android:background="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,17 +82,18 @@
                 android:layout_marginTop="35dp"
                 android:text="이름*"
                 android:textColor="@color/black"
-                android:textSize="16dp" />
+                android:textSize="15sp" />
 
-            <TextView
+            <EditText
                 android:layout_width="282dp"
                 android:layout_height="39dp"
                 android:layout_marginStart="50dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/help_box"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
+                android:text="이름을 입력하세요"
+                android:textColor="#A8A8A8"
+                android:textSize="15sp"/>
         </LinearLayout>
 
             <LinearLayout
@@ -126,19 +109,18 @@
                     android:layout_marginTop="35dp"
                     android:text="이메일*"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="282dp"
                     android:layout_height="39dp"
                     android:layout_marginStart="35dp"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-
-
+                    android:text="이메일을 입력하세요"
+                    android:textColor="#A8A8A8"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -154,44 +136,18 @@
                     android:layout_marginTop="35dp"
                     android:text="제목*"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="283dp"
+                <EditText
+                    android:layout_width="282dp"
                     android:layout_height="39dp"
                     android:layout_marginStart="50dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="35dp"
-                    android:text="게시판"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="282dp"
-                    android:layout_height="39dp"
-                    android:layout_marginStart="43dp"
-                    android:layout_marginLeft="43dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:text="제목을 입력하세요"
+                    android:textColor="#A8A8A8"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -207,17 +163,18 @@
                     android:layout_marginTop="35dp"
                     android:text="문의내용"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="15sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="282dp"
                     android:layout_height="250dp"
                     android:layout_marginStart="28dp"
                     android:layout_marginLeft="28dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:text="문의내용을 입력하세요"
+                    android:textColor="#A8A8A8"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -233,7 +190,7 @@
                     android:layout_marginTop="35dp"
                     android:text="첨부파일"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="15sp" />
 
                 <ImageButton
                     android:layout_width="80dp"
@@ -264,9 +221,6 @@
                     android:scaleType="fitXY"
                     android:background="#00ffffff"
                     />
-
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -280,21 +234,21 @@
                     android:layout_height="70dp"
                     android:layout_weight="1"
                     android:backgroundTint="#FF1E8C96"
-                    android:text="올리기"
+                    android:text="문의하기"
                     android:textSize="15dp" />
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 
     <!--하단고정-->
+    <!--화면 하단의 버튼 네 개가 고정돼 있는 자리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
+        <!--버튼 클릭 시 메인 화면, activity_main.xml로 돌아오는/이동하는 버튼-->
         <ImageButton
             android:layout_width="15dp"
             android:layout_height="40dp"
@@ -305,6 +259,8 @@
             android:src="@drawable/ic_launcher_foreground"
             android:tint="#A59F9F" />
 
+        <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
+        공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -313,7 +269,7 @@
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_share" />
 
-
+        <!--버튼 클릭 시 1:1 문의하기, activity_question.xml로 이동하는 버튼-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -322,6 +278,7 @@
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_send" />
 
+        <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -329,9 +286,6 @@
             android:layout_weight="1"
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_help" />
-
-
     </LinearLayout>
-
 
 </LinearLayout>

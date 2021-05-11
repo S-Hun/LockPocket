@@ -4,15 +4,20 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+
+    <!--현재 상단의 메뉴 버튼 & 하단의 버튼 네 개에 대한 화면 연결만 해주시면 됩니다!-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!--상단 고정
+        왼쪽의 메뉴 버튼 & 템플릿 업로드 글씨 보여주는 자리-->
 
-
-        <!--상단 고정-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,10 +26,11 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" >
 
+                <!--메뉴 버튼 클릭 시 activity_menu.xml로 이동-->
                 <ImageButton
                     android:id="@+id/menu"
                     android:layout_width="35dp"
@@ -48,26 +54,30 @@
                     android:fontFamily="@font/nanumbarungothic"
                     android:text="템플릿 업로드"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="20sp"
                     tools:ignore="MissingConstraints,VectorDrawableCompat"
                     tools:layout_editor_absoluteX="112dp"
                     tools:layout_editor_absoluteY="16dp" />
             </androidx.appcompat.widget.Toolbar>
-
         </LinearLayout>
     </LinearLayout>
 
-    <!--스크롤뷰-->
+    <!--스크롤뷰
+    템플릿을 업로드 할 때 템플릿 제목 & 사용자의 이메일 & 템플릿에 대한 설명 & 템플릿 가져오기
+    를 보여주는 뷰-->
+    <!--현재 추가해야하는 클릭 이벤트나 다른 화면으로의 이동은 없음, 설명을 추가하자면
+    하단의 내 템플릿 가져오기 옆의
+    갤러리 아이콘 클릭 시 activity_community.xml에서 user로 대체된 이미지가 가져온 이미지로 업로드
+    폴더 아이콘은 사용자가 본인의 템플릿을 가져오는 버튼-->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="564dp"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -82,17 +92,17 @@
                     android:layout_marginTop="35dp"
                     android:text="제목*"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="250dp"
                     android:layout_height="39dp"
                     android:layout_marginLeft="70dp"
-
                     android:layout_marginTop="30dp"
                     android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:text="제목을 입력하세요"
+                    android:textColor="#A8A8A8"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -108,17 +118,17 @@
                     android:layout_marginTop="35dp"
                     android:text="이메일"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="250dp"
                     android:layout_height="39dp"
                     android:layout_marginLeft="63dp"
-
                     android:layout_marginTop="30dp"
                     android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:text="이메일을 입력하세요"
+                    android:textColor="#A8A8A8"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 
@@ -135,16 +145,17 @@
                     android:layout_marginTop="35dp"
                     android:text="템플릿 설명"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
-                <TextView
+                <EditText
                     android:layout_width="250dp"
                     android:layout_height="150dp"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/help_box"
-                    android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:text="템프릿 설명을 입력하세요"
+                    android:textColor="#A8A8A8"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -160,7 +171,7 @@
                     android:layout_marginTop="50dp"
                     android:text="내 템플릿 가져오기"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:layout_width="71dp"
@@ -180,10 +191,7 @@
                     android:scaleType="fitXY"
                     android:tint="#A8A3A3"
                     app:srcCompat="@drawable/folder" />
-
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -191,6 +199,9 @@
                 android:layout_marginTop="50dp"
                 android:orientation="horizontal">
 
+                <!--버튼 클릭 시 이동하는 화면은 없지만
+                공유 기능이 구현되면 팝업 메세지 등으로 간단하게 공유 완료됐다는 알림을 뜨게 할 것임
+                현재는 클릭 이벤트 없음-->
                 <Button
                     android:id="@+id/button"
                     android:layout_width="match_parent"
@@ -198,23 +209,22 @@
                     android:layout_weight="1"
                     android:background="#FF1BA4B8"
                     android:fontFamily="@font/nanumbarungothic"
-
                     android:text="내 템플릿 공유하기"
                     android:textColor="#FFFFFF"
-                    android:textSize="15dp" />
+                    android:textSize="15sp" />
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
 
     <!--하단고정-->
+    <!--화면 하단의 버튼 네 개가 고정돼 있는 자리-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
+        <!--버튼 클릭 시 메인 화면, activity_main.xml로 돌아오는/이동하는 버튼-->
         <ImageButton
             android:layout_width="15dp"
             android:layout_height="40dp"
@@ -225,6 +235,8 @@
             android:src="@drawable/ic_launcher_foreground"
             android:tint="#A59F9F" />
 
+        <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
+        공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -233,7 +245,7 @@
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_share" />
 
-
+        <!--버튼 클릭 시 1:1 문의하기, activity_question.xml로 이동하는 버튼-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -242,6 +254,7 @@
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_send" />
 
+        <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -249,7 +262,6 @@
             android:layout_weight="1"
             android:background="@drawable/buttonshape1"
             android:src="@android:drawable/ic_menu_help" />
-
     </LinearLayout>
 
 
