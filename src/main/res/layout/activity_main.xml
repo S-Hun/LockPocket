@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <!--현재 상단의 메뉴 버튼 & 하단의 버튼 세 개에 대한 화면 연결만 해주시면 됩니다!-->
+
+
+    <!--상단 고정,
+    왼쪽 메뉴 버튼 & 가운데의 텍스트 로고 보여주는 자리.
+    클릭 이벤트, 추가할 기능 없음-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <!--왼쪽 메뉴 버튼, 클릭 시 activity_menu.xml 화면으로 전환-->
+                <ImageButton
+                    android:id="@+id/MainToMenubtn"
+                    android:layout_width="35dp"
+                    android:layout_height="29dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="16dp"
+                    android:background="#00ffffff"
+                    android:scaleType="fitXY"
+                    android:tint="#ff1ba4b8"
+                    app:srcCompat="@drawable/menu"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteX="360dp"
+                    tools:layout_editor_absoluteY="29dp" />
+
+                <!-- 클릭 이벤트 없음-->
+                <ImageView
+                    android:id="@+id/txtlogo"
+                    android:layout_width="187dp"
+                    android:layout_height="59dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginLeft="60dp"
+                    app:srcCompat="@drawable/txtlogo"
+                    tools:ignore="MissingConstraints,VectorDrawableCompat"
+                    tools:layout_editor_absoluteX="112dp"
+                    tools:layout_editor_absoluteY="16dp" />
+            </androidx.appcompat.widget.Toolbar>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--스크롤뷰-->
+    <!--화면 가운데에 오는 요소들, 상하 스크롤로 볼 수 있음-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--저번 회의 때 추가한다고 하셨던 슬라이드 이미지 자리-->
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginBottom="50dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/test1"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="-18dp"
+                tools:layout_editor_absoluteY="90dp" />
+
+            <!--추후에 앱의 기능이 어느 정도 완성됐을 때
+            커뮤니티의 최근 업로드 된 템플릿 디자인을 보여주는 자리,
+            현재 추가할 이벤트 없음,현재는 대체 이미지로 돼 있음-->
+            <TextView
+                android:id="@+id/now1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/app_font"
+                android:text="최신 템플릿 디자인"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="565dp" />
+
+            <!--추후에 앱의 기능이 어느 정도 완성됐을 때
+            커뮤니티의 최근 업로드 된 템플릿 디자인을 보여주는 자리,
+            현재 추가할 이벤트 없음,현재는 대체 이미지로 돼 있음-->
+            <ImageButton
+                android:id="@+id/DesignToCommnitybtn1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/test1" />
+
+            <TextView
+                android:id="@+id/now2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/app_font"
+                android:text="최신 템플릿 디자인"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="565dp" />
+
+            <ImageButton
+                android:id="@+id/DesignToCommunitybtn2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/test2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <!--!!!!!!!바닥글 풋바 만드는 자리!!!!!!!!-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--하단고정-->
+    <!--화면 하단의 버튼 세 개가 고정돼 있는 자리-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+
+        <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
+        공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
+        <ImageButton
+            android:id="@+id/MainToCommunitybtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_share" />
+
+        <!--버튼 클릭 시 템플릿 편집기, activity_edit.xml로 이동하는 버튼-->
+        <ImageButton
+            android:id="@+id/MainToEditbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_edit" />
+
+        <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
+        <ImageButton
+            android:id="@+id/MainToHelpbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape1"
+            android:src="@android:drawable/ic_menu_help" />
+    </LinearLayout>
+
+</LinearLayout>
