@@ -24,41 +24,7 @@
             android:background="#FFFFFF"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
-
-                <!--메뉴 버튼 클릭 시 activity_menu.xml로 이동-->
-                <ImageButton
-                    android:id="@+id/menu"
-                    android:layout_width="35dp"
-                    android:layout_height="29dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="16dp"
-                    android:background="#00ffffff"
-                    android:scaleType="fitXY"
-                    android:tint="#ff1ba4b8"
-                    app:srcCompat="@drawable/menu"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="360dp"
-                    tools:layout_editor_absoluteY="29dp" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/nanumbarungothic"
-                    android:text="템플릿 업로드"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    tools:ignore="MissingConstraints,VectorDrawableCompat"
-                    tools:layout_editor_absoluteX="112dp"
-                    tools:layout_editor_absoluteY="16dp" />
-            </androidx.appcompat.widget.Toolbar>
+            <include  layout="@layout/actionbar"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -203,7 +169,7 @@
                 공유 기능이 구현되면 팝업 메세지 등으로 간단하게 공유 완료됐다는 알림을 뜨게 할 것임
                 현재는 클릭 이벤트 없음-->
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/CommunityToUploadbtn"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_weight="1"
@@ -224,33 +190,7 @@
         android:background="#FFFFFF"
         android:orientation="horizontal">
 
-        <!--버튼 클릭 시 공유 커뮤니티, activity_community.xml로 이동하는 버튼,
-        공유돼 있는 템플릿을 보고 싶거나 나의 템플릿을 공유하고 싶을 때-->
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_share" />
-
-        <!--버튼 클릭 시 템플릿 편집기, activity_edit.xml로 이동하는 버튼-->
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_edit" />
-
-        <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/buttonshape1"
-            android:src="@android:drawable/ic_menu_help" />
+        <include layout="@layout/underbar"/>
     </LinearLayout>
 
 

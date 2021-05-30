@@ -15,4 +15,13 @@
     <string name="quest">1:1 문의</string>
     <string name="help">자주 묻는 질문</string>
     <string name="edit">템플릿 편집</string>
+
+    <string name="unlock_instructions">Slide to unlock</string>
+    <string name="unlock_locked">Locked</string>
+    <string name="unlock_unlocked">Unlocked</string>
+    <string name="unlock_thumb">Move this thumb</string>
+    <string name="permission_accessibility_setting_description">"Turn on and it locks all soft key including HOME, RECENTS, BACK, MENU buttons.
+
+You may be warned about potential privacy risk, that's just a regular informative warning for any accessibility service. We promise NEVER EVER collecting your personal information in this accessibility service."</string>
+
 </resources>

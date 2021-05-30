@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <!--왼쪽 메뉴 버튼, 클릭 시 activity_menu.xml 화면으로 전환-->
+        <ImageButton
+            android:id="@+id/MainToMenubtn"
+            android:layout_width="35dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp"
+            android:background="#00ffffff"
+            android:onClick="ClickBtn"
+            android:scaleType="fitXY"
+            android:tint="#ff1ba4b8"
+            app:srcCompat="@drawable/menu"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="360dp"
+            tools:layout_editor_absoluteY="29dp" />
+
+        <!-- 클릭 이벤트 없음-->
+        <ImageView
+            android:id="@+id/txtlogo"
+            android:layout_width="187dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            app:srcCompat="@drawable/txtlogo"
+            tools:ignore="MissingConstraints,VectorDrawableCompat"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="16dp" />
+    </androidx.appcompat.widget.Toolbar>
+</android.widget.LinearLayout>

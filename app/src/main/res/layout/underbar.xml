@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/ToCommunitybtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/buttonshape1"
+        android:src="@android:drawable/ic_menu_share" />
+
+    <!--버튼 클릭 시 템플릿 편집기, activity_edit.xml로 이동하는 버튼-->
+    <ImageButton
+        android:id="@+id/ToHomebtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/buttonshape1"
+        android:src="@drawable/home1" />
+
+    <!--버튼 클릭 시 자주 묻는 질문(도움말), activity_help.xml로 이동하는 버튼-->
+    <ImageButton
+        android:id="@+id/ToEditbtn"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/buttonshape1"
+        android:src="@android:drawable/ic_menu_edit" />
+
+</LinearLayout>

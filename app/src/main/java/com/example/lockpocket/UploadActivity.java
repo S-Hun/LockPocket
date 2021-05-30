@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class UploadActivity extends AppCompatActivity {
 
     @Override
@@ -18,29 +19,28 @@ public class UploadActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.UploadToCommunitybtn:
+                    case R.id.ToCommunitybtn:
                         Intent UploadintentCommunity= new Intent(getApplicationContext(), CommunityActivity.class);
                         startActivity(UploadintentCommunity);
                         break ;
-                    case R.id.UploadToEditbtn:
-                        Intent UploadintentEdit = new Intent(getApplicationContext(), EditActivity.class);
+                    case R.id.ToHomebtn:
+                        Intent UploadintentEdit = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(UploadintentEdit);
                         break ;
-                    case R.id.UploadToHelpbtn:
-                        Intent UploadintentHelp = new Intent(getApplicationContext(), HelpActivity.class);
+                    case R.id.ToEditbtn:
+                        Intent UploadintentHelp = new Intent(getApplicationContext(), EditActivity.class);
                         startActivity(UploadintentHelp);
                         break ;
-                    case R.id.UploadToMenubtn:
-                        Intent UploadintentMenu = new Intent(getApplicationContext(), MenuActivity.class);
-                        startActivity(UploadintentMenu);
+                    case R.id.MainToMenubtn:
+
                         break ;
                 }
             }
         } ;
-        ImageButton UploadToCommunity= (ImageButton) findViewById(R.id.UploadToCommunitybtn);
-        ImageButton UploadToEdit = (ImageButton) findViewById(R.id.UploadToEditbtn);
-        ImageButton UploadToHelp = (ImageButton) findViewById(R.id.UploadToHelpbtn);
-        ImageButton UploadToMenu = (ImageButton) findViewById(R.id.UploadToMenubtn);
+        ImageButton UploadToCommunity= (ImageButton) findViewById(R.id.ToCommunitybtn);
+        ImageButton UploadToEdit = (ImageButton) findViewById(R.id.ToHomebtn);
+        ImageButton UploadToHelp = (ImageButton) findViewById(R.id.ToEditbtn);
+        ImageButton UploadToMenu = (ImageButton) findViewById(R.id.MainToMenubtn);
         UploadToCommunity.setOnClickListener(onClickListener);
         UploadToEdit.setOnClickListener(onClickListener);
         UploadToHelp.setOnClickListener(onClickListener);

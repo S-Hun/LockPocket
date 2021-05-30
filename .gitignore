@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *.iml
 .gradle
 /local.properties
@@ -14,6 +13,3 @@
 .externalNativeBuild
 .cxx
 local.properties
-=======
-/build
->>>>>>> 4dbc088... Fix dependency erro files

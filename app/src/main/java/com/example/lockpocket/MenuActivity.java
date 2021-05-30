@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.app.AppCompatActivity; // 삭제 예
+// 삭제 예정
 public class MenuActivity extends AppCompatActivity {
 
     @Override
@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
         MenuToEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent MenuintentEdit = new Intent(getApplicationContext(), EditActivity.class);
+                Intent MenuintentEdit = new Intent(getApplicationContext(), EditActivityTemp.class);
                 startActivity(MenuintentEdit);
             }
         });

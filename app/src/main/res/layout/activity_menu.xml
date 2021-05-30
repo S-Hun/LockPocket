@@ -50,7 +50,7 @@
         이 액티비티는 추후에 로그인/회원가입 기능이 구현 될 때 같이 만들 것임,
         현재는 클릭 이벤트 추가 필요 없음-->
         <Button
-            android:id="@+id/lojo"
+            android:id="@+id/MenoToLoginbtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape1"
@@ -60,7 +60,7 @@
 
         <!--버튼 클릭 시 activity_edit.xml로 이동-->
         <Button
-            android:id="@+id/edit"
+            android:id="@+id/MenuToEditbtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape1"
@@ -70,7 +70,7 @@
 
         <!--버튼 클릭 시 activity_community.xml로 이동-->
         <Button
-            android:id="@+id/community"
+            android:id="@+id/MenuToCommunitybtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape1"
@@ -80,7 +80,7 @@
 
         <!--버튼 클릭 시 activity_question.xml로 이동-->
         <Button
-            android:id="@+id/question"
+            android:id="@+id/MenuToQuestionbtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape1"
@@ -90,7 +90,7 @@
 
         <!--버튼 클릭 시 activity_help.xml로 이동-->
         <Button
-            android:id="@+id/help"
+            android:id="@+id/MenuToHelpbtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@drawable/buttonshape1"
