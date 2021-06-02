@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lockpocket.utils.LockScreen;
@@ -34,6 +36,7 @@ public class EditActivity extends AppCompatActivity {
     // Main
     ToggleButton toggleButton;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +101,6 @@ public class EditActivity extends AppCompatActivity {
                 findViewById(R.id.pos11),
                 findViewById(R.id.pos12)
         };
-
         posTag = new int[]{
                 0,1,2,3,4,5,6,7,8,9,10,11
         };
@@ -159,6 +161,7 @@ public class EditActivity extends AppCompatActivity {
 
     class DragListener implements View.OnDragListener {
 
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public boolean onDrag(View v, DragEvent event) {
             switch(event.getAction()){
@@ -181,15 +184,15 @@ public class EditActivity extends AppCompatActivity {
 
                     View view = (View)event.getLocalState();
                     if(((String) view.getTag()).equals("RED")){
-                        v.setBackgroundColor(getResources().getColor(R.color.red));
+                        v.setBackground(getDrawable(R.drawable.background_red));
                         posComp[(int)v.getTag()] = 'A';
                     }
                     else if(((String) view.getTag()).equals("BLUE")){
-                        v.setBackgroundColor(getResources().getColor(R.color.blue));
+                       v.setBackground(getDrawable(R.drawable.background_blue));
                         posComp[(int)v.getTag()] = 'B';
                     }
                     else if(((String) view.getTag()).equals("GREEN")){
-                        v.setBackgroundColor(getResources().getColor(R.color.green));
+                        v.setBackground(getDrawable(R.drawable.background_green));
                         posComp[(int)v.getTag()] = 'C';
                     }
                     /*
@@ -221,14 +224,15 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private boolean setColor(){
         if(UI == null) return false;
         for(int i=0; i<UI.length(); i++){
-            if(UI.charAt(i)=='A') pos[i].setBackgroundColor(getResources().getColor(R.color.red));
-            else if(UI.charAt(i)=='B') pos[i].setBackgroundColor(getResources().getColor(R.color.blue));
-            else if(UI.charAt(i)=='C') pos[i].setBackgroundColor(getResources().getColor(R.color.green));
+            if(UI.charAt(i)=='A') pos[i].setBackground(getDrawable(R.drawable.background_red));
+            else if(UI.charAt(i)=='B') pos[i].setBackground(getDrawable(R.drawable.background_blue));
+            else if(UI.charAt(i)=='C') pos[i].setBackground(getDrawable(R.drawable.background_green));
             else {
-                pos[i].setBackgroundColor(getResources().getColor(R.color.white));
+                pos[i].setBackground(getDrawable(R.drawable.background_white));
             }
         }
         return true;

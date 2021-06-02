@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.test.EditActivity">
+    tools:context="com.example.lockpocket.EditActivity">
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -28,31 +28,19 @@
 
             <TextView
                 android:id="@+id/pos1"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos2"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos3"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos4"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
         </TableRow>
 
         <TableRow
@@ -61,31 +49,19 @@
 
             <TextView
                 android:id="@+id/pos5"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos6"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos7"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos8"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
         </TableRow>
 
         <TableRow
@@ -94,31 +70,19 @@
 
             <TextView
                 android:id="@+id/pos9"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos10"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos11"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos12"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textAlignment="center" />
+                style="@style/CustomTextView" />
         </TableRow>
     </TableLayout>
 
@@ -132,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:background="@drawable/radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -150,6 +115,7 @@
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/radius"
             android:id="@+id/toggleButton" />
 
     </LinearLayout>

@@ -120,15 +120,6 @@
         </TableRow>
     </TableLayout>
 
-    <ImageView
-        android:layout_width="144dp"
-        android:layout_height="155dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:adjustViewBounds="true"
-        android:id="@+id/image1"
-        android:src="@drawable/iklan" />
-
     <com.example.lockpocket.UnlockBar
         android:id="@+id/unlock"
         android:layout_width="match_parent"
