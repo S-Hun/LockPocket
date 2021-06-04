@@ -15,15 +15,12 @@ import com.example.lockpocket.R;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_account);
 
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
 
-
         tv_id.setText(PreferenceManager.getString(mContext, "Id"));
         tv_pass.setText(PreferenceManager.getString(mContext, "Pass"));
-
-
     }
 }

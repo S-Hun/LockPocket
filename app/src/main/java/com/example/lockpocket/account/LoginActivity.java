@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.lockpocket.MainActivity;
 import com.example.lockpocket.account.AccountActivity;
 import com.example.lockpocket.R;
 
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         mContext = this;
         if(!PreferenceManager.getString(mContext, "Id").equals(""))
         {
-            Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             return;
         }
