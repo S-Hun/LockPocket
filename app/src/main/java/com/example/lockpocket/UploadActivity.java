@@ -36,7 +36,7 @@ public class UploadActivity extends AppCompatActivity {
                         break ;
                 }
             }
-        } ;
+        };
         ImageButton UploadToCommunity= (ImageButton) findViewById(R.id.ToCommunitybtn);
         ImageButton UploadToEdit = (ImageButton) findViewById(R.id.ToHomebtn);
         ImageButton UploadToHelp = (ImageButton) findViewById(R.id.ToEditbtn);
