@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -55,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userID = et_id.getText().toString();
                 String userPass = et_pass.getText().toString();
+                Log.d("ACCOUNT", userID);
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -68,13 +70,11 @@ public class LoginActivity extends AppCompatActivity {
                                 String userID = jsonObject.getString("userID");
                                 String userPass = jsonObject.getString("userPassword");
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
-                                intent.putExtra("userID", userID);
-                                intent.putExtra("userPass", userPass);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 PreferenceManager.setString(mContext, "Id", userID);
-                                PreferenceManager.setString(mContext, "Pass", userPass);
-
+                                PreferenceManager.setString(mContext, "Name", userPass);
                                 startActivity(intent);
+                                finish();
                             }
                             //실패
                             else
@@ -88,7 +88,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 };
 
-                LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener);
+                Log.d("INTERNET", "404 ");
+                LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener, getApplicationContext());
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
                 queue.add(loginRequest);
             }

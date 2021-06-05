@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.lockpocket.R;
 
   public class AccountActivity extends AppCompatActivity {
-    private TextView tv_id, tv_pass;
+    private TextView tv_id, tv_name;
     private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +18,9 @@ import com.example.lockpocket.R;
         setContentView(R.layout.activity_account);
 
         tv_id = findViewById(R.id.tv_id);
-        tv_pass = findViewById(R.id.tv_pass);
+        tv_name = findViewById(R.id.tv_name);
 
         tv_id.setText(PreferenceManager.getString(mContext, "Id"));
-        tv_pass.setText(PreferenceManager.getString(mContext, "Pass"));
+        tv_name.setText(PreferenceManager.getString(mContext, "userName"));
     }
 }

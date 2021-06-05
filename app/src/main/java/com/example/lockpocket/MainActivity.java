@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.lockpocket.account.LoginActivity;
+import com.example.lockpocket.account.PreferenceManager;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,16 +49,19 @@ public class MainActivity extends AppCompatActivity {
         ImageButton MainToEditButton = (ImageButton) findViewById(R.id.ToEditbtn);
         ImageButton DesignToCommunityButton1 = (ImageButton) findViewById(R.id.DesignToCommnitybtn1);
         ImageButton DesignToCommunityButton2 = (ImageButton) findViewById(R.id.DesignToCommunitybtn2);
-        Button LoginBtn = (Button) findViewById(R.id.loginBtn);
+        Button LoginBtn = (Button) findViewById(R.id.logoutBtn);
         Button QuestionBtn = (Button) findViewById(R.id.QuestionBtn);
         Button HelpBtn = (Button) findViewById(R.id.HelpBtn);
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.loginBtn:
-                        Intent DrawerintentLogin = new Intent(getApplicationContext(), UploadActivity.class);
-                        startActivity(DrawerintentLogin);
+                    case R.id.logoutBtn:
+                        PreferenceManager.clear(context_main);
+                        Intent ToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                        ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(ToLogin);
+                        finish();
                         break ;
                     case R.id.HelpBtn:
                         Intent DrawerintentHelp = new Intent(getApplicationContext(), HelpActivity.class);

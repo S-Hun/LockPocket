@@ -1,5 +1,6 @@
 package com.example.lockpocket;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,19 +10,22 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.lockpocket.account.LoginActivity;
+import com.example.lockpocket.account.PreferenceManager;
+
 
 public class CommunityActivity extends AppCompatActivity {
 
 
     private DrawerLayout drawerLayout;
     private View drawerView;
-
+    private Context mcontext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_community);
-        Button LoginBtn = (Button) findViewById(R.id.loginBtn);
+        Button LoginBtn = (Button) findViewById(R.id.logoutBtn);
         Button QuestionBtn = (Button) findViewById(R.id.QuestionBtn);
         Button HelpBtn = (Button) findViewById(R.id.HelpBtn);
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
@@ -32,9 +36,12 @@ public class CommunityActivity extends AppCompatActivity {
                         Intent CommunityintentUpload = new Intent(getApplicationContext(), UploadActivity.class);
                         startActivity(CommunityintentUpload);
                         break ;
-                    case R.id.loginBtn:
-                        Intent DrawerintentLogin = new Intent(getApplicationContext(), UploadActivity.class);
-                        startActivity(DrawerintentLogin);
+                    case R.id.logoutBtn:
+                        PreferenceManager.clear(mcontext);
+                        Intent ToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                        ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(ToLogin);
+                        finish();
                         break ;
                     case R.id.HelpBtn:
                         Intent DrawerintentHelp = new Intent(getApplicationContext(), HelpActivity.class);

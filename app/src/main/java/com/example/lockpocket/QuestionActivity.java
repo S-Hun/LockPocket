@@ -1,5 +1,6 @@
 package com.example.lockpocket;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,14 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.lockpocket.account.LoginActivity;
+import com.example.lockpocket.account.PreferenceManager;
+
 public class QuestionActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private View drawerView;
+    private Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +52,11 @@ public class QuestionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.loginBtn:
-                        Intent DrawerintentLogin = new Intent(getApplicationContext(), MainActivity.class);
-                        startActivity(DrawerintentLogin);
+                    case R.id.logoutBtn:
+                        PreferenceManager.clear(mContext);
+                        Intent ToLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                        ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(ToLogin);
                         finish();
                         break ;
                     case R.id.HelpBtn:
@@ -67,7 +74,7 @@ public class QuestionActivity extends AppCompatActivity {
         };
 
 
-        Button LoginBtn = (Button) findViewById(R.id.loginBtn);
+        Button LoginBtn = (Button) findViewById(R.id.logoutBtn);
         Button QuestionBtn = (Button) findViewById(R.id.QuestionBtn);
         Button HelpBtn = (Button) findViewById(R.id.HelpBtn);
         ImageButton QuestionToCommunityButton = (ImageButton) findViewById(R.id.ToCommunitybtn);
