@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 PreferenceManager.setString(mContext, "Id", userID);
                                 PreferenceManager.setString(mContext, "Name", userPass);
+                                LockScreen.getInstance().active();
                                 startActivity(intent);
                                 finish();
                             }
