@@ -11,9 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.example.lockpocket.account.AccountActivity;
 import com.example.lockpocket.account.LoginActivity;
 import com.example.lockpocket.account.PreferenceManager;
+import com.example.lockpocket.utils.LockScreen;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View drawerView;
     public static  Context context_main;
+    public TextView DrawerName, DrawerId;
     DrawerLayout.DrawerListener listener = new DrawerLayout.DrawerListener() {
         @Override
         public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
@@ -43,13 +47,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context_main = this;
+        DrawerName = findViewById(R.id.DrawerName);
+        DrawerId = findViewById(R.id.DrawerId);
+        DrawerName.setText(PreferenceManager.getString(context_main, "userName"));
+        DrawerId.setText(PreferenceManager.getString(context_main, "Id"));
+        View.OnClickListener onClickListener1 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent DrawerToAccount = new Intent(getApplicationContext(), AccountActivity.class);
+                startActivity(DrawerToAccount);
+            }
+        };
+        DrawerName.setOnClickListener(onClickListener1);
         ImageButton MainToMenuButton = (ImageButton) findViewById(R.id.MainToMenubtn);
         ImageButton MainToCommunityButton = (ImageButton) findViewById(R.id.ToCommunitybtn);
         ImageButton MainToHomeButton = (ImageButton) findViewById(R.id.ToHomebtn);
         ImageButton MainToEditButton = (ImageButton) findViewById(R.id.ToEditbtn);
         ImageButton DesignToCommunityButton1 = (ImageButton) findViewById(R.id.DesignToCommnitybtn1);
         ImageButton DesignToCommunityButton2 = (ImageButton) findViewById(R.id.DesignToCommunitybtn2);
-        Button LoginBtn = (Button) findViewById(R.id.logoutBtn);
+        Button LogoutBtn = (Button) findViewById(R.id.logoutBtn);
         Button QuestionBtn = (Button) findViewById(R.id.QuestionBtn);
         Button HelpBtn = (Button) findViewById(R.id.HelpBtn);
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
@@ -60,8 +76,8 @@ public class MainActivity extends AppCompatActivity {
                         PreferenceManager.clear(context_main);
                         Intent ToLogin = new Intent(getApplicationContext(), LoginActivity.class);
                         ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        LockScreen.getInstance().deactivate();
                         startActivity(ToLogin);
-                        finish();
                         break ;
                     case R.id.HelpBtn:
                         Intent DrawerintentHelp = new Intent(getApplicationContext(), HelpActivity.class);
@@ -75,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        LoginBtn.setOnClickListener(onClickListener);
+        LogoutBtn.setOnClickListener(onClickListener);
         QuestionBtn.setOnClickListener(onClickListener);
         HelpBtn.setOnClickListener(onClickListener);
         MainToMenuButton.setOnClickListener(new View.OnClickListener() {

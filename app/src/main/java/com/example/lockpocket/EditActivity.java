@@ -122,6 +122,7 @@ public class EditActivity extends AppCompatActivity {
 
     private final class ClickListener implements View.OnClickListener {
 
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View v) {
             switch(v.getId()){
@@ -131,7 +132,7 @@ public class EditActivity extends AppCompatActivity {
                 default:
                     if(posComp[(int)v.getTag()] != 'Z'){
                         posComp[(int)v.getTag()] = 'Z';
-                        v.setBackgroundColor(getResources().getColor(R.color.white));
+                        v.setBackground(getDrawable(R.drawable.background_white));
                     }
                     break;
             }

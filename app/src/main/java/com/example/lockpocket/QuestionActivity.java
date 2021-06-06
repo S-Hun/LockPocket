@@ -6,22 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.lockpocket.account.LoginActivity;
 import com.example.lockpocket.account.PreferenceManager;
+import com.example.lockpocket.utils.LockScreen;
 
 public class QuestionActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private View drawerView;
     private Context mContext;
+    public TextView DrawerName, DrawerId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        DrawerName = findViewById(R.id.DrawerName);
+        DrawerId = findViewById(R.id.DrawerId);
+        DrawerName.setText(PreferenceManager.getString(mContext, "userName"));
+        DrawerId.setText(PreferenceManager.getString(mContext, "Id"));
         ImageButton.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,8 +63,8 @@ public class QuestionActivity extends AppCompatActivity {
                         PreferenceManager.clear(mContext);
                         Intent ToLogin = new Intent(getApplicationContext(), LoginActivity.class);
                         ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        LockScreen.getInstance().deactivate();
                         startActivity(ToLogin);
-                        finish();
                         break ;
                     case R.id.HelpBtn:
                         Intent DrawerintentHelp = new Intent(getApplicationContext(), HelpActivity.class);

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="#5559b4">
+        android:background="#008C9E">
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,6 +32,7 @@
         </ImageView>
 
         <TextView
+            android:id="@+id/DrawerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -41,14 +42,14 @@
             android:textSize="26dp"></TextView>
 
         <TextView
+            android:id="@+id/DrawerId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="테스트"
-            android:textSize="14dp"
-            android:textColor="#ffffff"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="130dp"
-            android:layout_centerHorizontal="true">
-        </TextView>
+            android:text="테스트"
+            android:textColor="#ffffff"
+            android:textSize="14dp"></TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
