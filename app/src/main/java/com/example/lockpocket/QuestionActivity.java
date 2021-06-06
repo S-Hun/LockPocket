@@ -24,6 +24,7 @@ public class QuestionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         setContentView(R.layout.activity_question);
         DrawerName = findViewById(R.id.DrawerName);
         DrawerId = findViewById(R.id.DrawerId);
@@ -90,9 +91,9 @@ public class QuestionActivity extends AppCompatActivity {
         QuestionToHelpButton.setOnClickListener(onClickListener1);
         QuestionToCommunityButton.setOnClickListener(onClickListener);
         QuestionToEditButton.setOnClickListener(onClickListener);
-//        LoginBtn.setOnClickListener(onClickListener1);
-//        QuestionBtn.setOnClickListener(onClickListener1);
-//        HelpBtn.setOnClickListener(onClickListener1);
+        LoginBtn.setOnClickListener(onClickListener1);
+        QuestionBtn.setOnClickListener(onClickListener1);
+        HelpBtn.setOnClickListener(onClickListener1);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View) findViewById(R.id.drawerView);

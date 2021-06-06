@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.lockpocket.MainActivity;
 import com.example.lockpocket.account.AccountActivity;
 import com.example.lockpocket.R;
+import com.example.lockpocket.utils.LockScreen;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                                 PreferenceManager.setString(mContext, "Id", userID);
                                 PreferenceManager.setString(mContext, "Name", userPass);
                                 PreferenceManager.setString(mContext, "userName", userName);
+                                LockScreen.getInstance().active();
                                 startActivity(intent);
                                 finish();
                             }

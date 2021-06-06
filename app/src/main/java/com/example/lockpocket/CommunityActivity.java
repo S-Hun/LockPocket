@@ -26,7 +26,7 @@ public class CommunityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mcontext = this;
         setContentView(R.layout.activity_community);
         Button LoginBtn = (Button) findViewById(R.id.logoutBtn);
         Button QuestionBtn = (Button) findViewById(R.id.QuestionBtn);
