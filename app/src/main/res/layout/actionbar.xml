@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1">
-        <!--왼쪽 메뉴 버튼, 클릭 시 activity_menu.xml 화면으로 전환-->
+        <!--왼쪽 메뉴 버튼, 클릭 시 화면으로 전환-->
         <ImageButton
             android:id="@+id/MainToMenubtn"
             android:layout_width="35dp"

@@ -10,6 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.example.lockpocket.EditActivity">
 
     <TableLayout
@@ -28,60 +29,74 @@
 
             <TextView
                 android:id="@+id/pos1"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos2"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos3"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos4"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/pos5"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos6"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos7"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos8"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/pos9"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos10"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos11"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
 
             <TextView
                 android:id="@+id/pos12"
+                android:textColor="@color/black"
                 style="@style/CustomTextView" />
         </TableRow>
     </TableLayout>
@@ -90,12 +105,13 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test Text" />
+        android:text="" />
     <Button
         android:id="@+id/savebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:textColor="@color/black"
         android:background="@drawable/radius"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,12 +126,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Lock Screen"/>
         <ToggleButton
             android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/radius"
+            android:textColor="@color/black"
             android:id="@+id/toggleButton" />
 
     </LinearLayout>
