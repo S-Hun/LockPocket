@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.lockpocket.MainActivity;
 import com.example.lockpocket.account.AccountActivity;
 import com.example.lockpocket.R;
+import com.example.lockpocket.utils.LockScreen;
 
 import org.json.JSONException;
 import org.json.JSONObject;
