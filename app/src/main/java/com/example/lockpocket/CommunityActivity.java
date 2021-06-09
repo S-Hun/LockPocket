@@ -39,10 +39,6 @@ public class CommunityActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.CommunityToUploadbtn:
-                        Intent CommunityintentUpload = new Intent(getApplicationContext(), UploadActivity.class);
-                        startActivity(CommunityintentUpload);
-                        break ;
                     case R.id.logoutBtn:
                         PreferenceManager.clear(mcontext);
                         Intent ToLogin = new Intent(getApplicationContext(), LoginActivity.class);
@@ -85,8 +81,7 @@ public class CommunityActivity extends AppCompatActivity {
                         break ;
                 }
             }
-        } ;
-        Button CommunityToUploadButton = (Button) findViewById(R.id.CommunityToUploadbtn);
+        };
         ImageButton CommunityToMenuButton = (ImageButton) findViewById(R.id.MainToMenubtn);
         ImageButton CommunityToCommunityButton = (ImageButton) findViewById(R.id.ToCommunitybtn);
         ImageButton CommunityToEditButton = (ImageButton) findViewById(R.id.ToHomebtn);
@@ -95,7 +90,6 @@ public class CommunityActivity extends AppCompatActivity {
         CommunityToEditButton.setOnClickListener(onClickListener2);
         CommunityToHelpButton.setOnClickListener(onClickListener2);
         CommunityToMenuButton.setOnClickListener(onClickListener2);
-        CommunityToUploadButton.setOnClickListener(onClickListener);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_Commu);
         drawerView = (View) findViewById(R.id.drawerView);

@@ -9,7 +9,8 @@
 
     <ImageView
         android:id="@+id/shared_ui"
-        android:layout_width="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:padding="5dp"
         tools:srcCompat="@tools:sample/avatars" />
@@ -33,16 +34,6 @@
         android:gravity="center"
         android:layout_marginVertical="2dp"
         android:text="nickname" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="5pt"
-        android:textColor="@color/gray_100"
-        android:gravity="center"
-        android:layout_marginVertical="2dp"
-        android:text="description" />
 
     <Button
         android:id="@+id/download"
