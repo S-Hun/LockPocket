@@ -19,6 +19,7 @@
         <activity android:name=".SigninActivity"/>
         <activity android:name=".SignupActivity"
             android:parentActivityName=".SigninActivity"/>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
