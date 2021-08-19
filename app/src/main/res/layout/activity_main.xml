@@ -12,20 +12,34 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/abc_vector_test"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintRight_toLeftOf="@id/title"
+            android:layout_marginTop="16dp"/>
+
+        <ImageView
+            android:id="@+id/title"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:src="@drawable/lockpocket_text"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="LockPocket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_marginTop="6dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintLeft_toLeftOf="parent">
 
         <FrameLayout
             android:id="@+id/taskFrame"

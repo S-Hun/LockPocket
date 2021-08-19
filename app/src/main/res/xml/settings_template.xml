@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceScreen android:title="편집">
+
+    </PreferenceScreen>
+
+    <PreferenceCategory android:title="잠금 설정">
+        <SwitchPreference
+            android:title="잠금 기능"
+            android:summary="OFF시 슬라이드로 고정"/>
+        <ListPreference
+            android:title="잠금 방식"
+            android:summary="슬라이드"/>
+        <SwitchPreference
+            android:title="잠금해제 소리"/>
+        <ListPreference
+            android:title="해제 소리"
+            android:summary="물방울"/>
+        <ListPreference
+            android:title="해제 애니메이션"
+            android:summary="없음"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="상세 설정">
+        <CheckBoxPreference
+            android:title="배경 GIF 재생"/>
+        <PreferenceScreen android:title="배경화면 설정">
+
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>
