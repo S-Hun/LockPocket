@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/abc_vector_test"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:layout_constraintRight_toLeftOf="@id/title"
+            android:layout_marginTop="16dp"/>
+
+        <ImageView
+            android:id="@+id/title"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:src="@drawable/lockpocket_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="6dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="394dp"
+                android:layout_height="477dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="12dp"
+                android:src="@drawable/test_image1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/image1_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Simple Template"
+                app:layout_constraintTop_toBottomOf="@id/image1"
+                app:layout_constraintLeft_toLeftOf="@id/image1"
+                app:layout_constraintRight_toRightOf="@id/image1"
+                android:layout_marginVertical="8dp"/>
+            <TextView
+                android:id="@+id/image1_creator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seockhun"
+                app:layout_constraintTop_toBottomOf="@id/image1_title"
+                app:layout_constraintLeft_toLeftOf="@id/image1"
+                app:layout_constraintRight_toRightOf="@id/image1"
+                android:layout_marginVertical="8dp"/>
+            <TextView
+                android:id="@+id/image1_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="image1 description"
+                app:layout_constraintTop_toBottomOf="@id/image1_creator"
+                app:layout_constraintLeft_toLeftOf="@id/image1"
+                app:layout_constraintRight_toRightOf="@id/image1"
+                android:layout_marginVertical="8dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:background="#FFFFFF"
+
+                android:text="download"
+                android:textColor="@color/purple_600"
+                app:layout_constraintTop_toBottomOf="@id/image1_detail"
+                app:layout_constraintLeft_toLeftOf="@id/image1"
+                app:layout_constraintRight_toRightOf="@id/image1"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
