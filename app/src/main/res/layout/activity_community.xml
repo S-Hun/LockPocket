@@ -39,6 +39,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/image1"
                 android:layout_width="190dp"
@@ -66,6 +67,17 @@
                 app:layout_constraintLeft_toLeftOf="@id/image1"
                 app:layout_constraintRight_toRightOf="@id/image1"
                 android:layout_marginVertical="8dp"/>
+            <Button
+                android:id="@+id/btn1_down"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/download_btn"
+                android:text="DOWNLOAD"
+                android:textColor="@color/purple_500"
+                app:layout_constraintLeft_toLeftOf="@id/image1"
+                app:layout_constraintRight_toRightOf="@id/image1"
+                app:layout_constraintTop_toBottomOf="@id/image1_creator" />
             <ImageView
                 android:id="@+id/image2"
                 android:layout_width="190dp"
@@ -93,6 +105,17 @@
                 app:layout_constraintLeft_toLeftOf="@id/image2"
                 app:layout_constraintRight_toRightOf="@id/image2"
                 android:layout_marginVertical="8dp"/>
+            <Button
+                android:id="@+id/btn2_down"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/download_btn"
+                android:text="DOWNLOAD"
+                android:textColor="@color/purple_500"
+                app:layout_constraintLeft_toLeftOf="@id/image2"
+                app:layout_constraintRight_toRightOf="@id/image2"
+                app:layout_constraintTop_toBottomOf="@id/image2_creator" />
             <ImageView
                 android:id="@+id/image3"
                 android:layout_width="190dp"
@@ -121,6 +144,17 @@
                 app:layout_constraintLeft_toLeftOf="@id/image3"
                 app:layout_constraintRight_toRightOf="@id/image3"
                 android:layout_marginVertical="8dp"/>
+            <Button
+                android:id="@+id/btn3_down"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/download_btn"
+                android:text="DOWNLOAD"
+                android:textColor="@color/purple_500"
+                app:layout_constraintLeft_toLeftOf="@id/image3"
+                app:layout_constraintRight_toRightOf="@id/image3"
+                app:layout_constraintTop_toBottomOf="@id/image3_creator" />
             <ImageView
                 android:id="@+id/image4"
                 android:layout_width="190dp"
@@ -140,7 +174,6 @@
                 app:layout_constraintLeft_toLeftOf="@id/image4"
                 app:layout_constraintRight_toRightOf="@id/image4"
                 android:layout_marginVertical="8dp"/>
-
             <TextView
                 android:id="@+id/image4_creator"
                 android:layout_width="wrap_content"
@@ -150,6 +183,17 @@
                 app:layout_constraintLeft_toLeftOf="@id/image4"
                 app:layout_constraintRight_toRightOf="@id/image4"
                 app:layout_constraintTop_toBottomOf="@id/image4_title" />
+            <Button
+                android:id="@+id/btn4_down"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/download_btn"
+                android:text="DOWNLOAD"
+                android:textColor="@color/purple_500"
+                app:layout_constraintLeft_toLeftOf="@id/image4"
+                app:layout_constraintRight_toRightOf="@id/image4"
+                app:layout_constraintTop_toBottomOf="@id/image4_creator" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
