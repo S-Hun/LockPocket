@@ -4,14 +4,15 @@ import android.util.Log;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import com.example.lockpocket.utils.AttrList;
 
 public class LockTable {
 
-    int _idStack = 1;
-    // Move to attributes in Type class.
-
+    int _widgetID = 1;
     int[][] disable = new int[5][6];
+    short attribute = 0;
+    String title = "";
+    String author = "";
+    String desc = "";
 
     static private class Widget {
         static class Pos {
@@ -39,7 +40,7 @@ public class LockTable {
                 y = _y;
                 value = (byte) ((0xf0 & value) | _y);
             }
-            public int getValue(){ return value & 0xff; }
+            public byte getValue(){ return (byte) (value & 0xff); }
             public int getX(){ return x; }
             public int getY() { return y; }
         }
@@ -56,7 +57,8 @@ public class LockTable {
             type = _type;
         }
 
-        private void setPoint(int _x, int _y){ pos.setX(_x); pos.setY(_y); }
+        public void setPoint(int _x, int _y){ pos.setX(_x); pos.setY(_y); }
+        public void setAttr(int _attr) { attr = _attr; }
         public int getID(){ return id; }
         public int getX() { return pos.getX(); }
         public int getY() { return pos.getY(); }
@@ -69,11 +71,11 @@ public class LockTable {
 
     private int generateID(){
         // Here is id generate algorithm.
-        return _idStack++;
+        return _widgetID++;
     }
 
     public int insert(int _x, int _y, byte _type) {
-        int w = AttrList.getWidgetID(_type).w, h = AttrList.getWidgetID(_type).h;
+        int w = WidgetList.getWidgetType(_type).w, h = WidgetList.getWidgetType(_type).h;
         int _id = generateID();
 
         for(int i=_y; i < _y + h; i++) {
@@ -105,7 +107,7 @@ public class LockTable {
             }
         }
 
-        int w = AttrList.getWidgetID(type).w, h = AttrList.getWidgetID(type).h;
+        int w = WidgetList.getWidgetType(type).w, h = WidgetList.getWidgetType(type).h;
         // fill blank space.
         for(int i=y; i < y + h; i++){
             for(int j=x; j < x + w; j++)
