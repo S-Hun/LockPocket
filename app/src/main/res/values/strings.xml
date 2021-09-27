@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">LockPocket</string>
+    <string name="nav_header_title">NICKNAME</string>
+    <string name="nav_header_subtitle">EMAIL ADDRESS</string>
+
+    <string name="menu_ask">ASK</string>
+    <string name="menu_help">HELP</string>
+    <string name="menu_logout">LOGOUT</string>
+    <string name="menu_setting">SETTING</string>
 </resources>

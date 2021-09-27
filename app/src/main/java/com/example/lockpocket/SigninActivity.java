@@ -3,12 +3,28 @@ package com.example.lockpocket;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.example.lockpocket.account.LoginRequest;
+import com.example.lockpocket.utils.AppNetwork;
+import com.example.lockpocket.utils.PreferenceManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class SigninActivity extends AppCompatActivity {
     private Context mContext;
@@ -18,25 +34,84 @@ public class SigninActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        mContext = getApplicationContext();
         et_email = findViewById(R.id.emailAddress);
         et_pass = findViewById(R.id.password);
         Button button1 = (Button)findViewById(R.id.login_btn);
         Button button2 = (Button)findViewById(R.id.signin_btn);
-        button2.setOnClickListener(new View.OnClickListener() {
+        View password_toggle = findViewById(R.id.password_toggle);
+        password_toggle.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {signin();}
+            public boolean onTouch(View v, MotionEvent event) {
+                boolean ret = false;
+                switch(event.getActionMasked())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        et_pass.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                        ret = true;
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        et_pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                        ret = true;
+                        break;
+                }
+                return ret;
+            }
         });
         button1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                login();
+                String userID = et_email.getText().toString();
+                String userPass = et_pass.getText().toString();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Response: ", response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            //성공
+                            if(success)
+                            {
+                                String userID = jsonObject.getString("userID");
+                                String userPass = jsonObject.getString("userPassword");
+                                String userName = jsonObject.getString("userName");
+                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(SigninActivity.this, MainActivity.class);
+                                PreferenceManager.setString(mContext, "Id", userID);
+                                PreferenceManager.setString(mContext, "Name", userPass);
+                                PreferenceManager.setString(mContext, "userName", userName);
+                                // LockScreen.getInstance().active(); -> 잠금화면 포함시에만 사용 가능
+                                startActivity(intent);
+                                finish();
+                            }
+                            //실패
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                try {
+                    Log.d("INTERNET: ", "http://" + AppNetwork.getServerIp(getApplicationContext()) + "/data.jsp");
+                    LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener, getApplicationContext());
+                    RequestQueue queue = Volley.newRequestQueue(SigninActivity.this);
+                    queue.add(loginRequest);
+                } catch (IOException e) {
+                    Log.d("LoginReq: ", e.getMessage());
+                }
             }
         });
     }
-    private void signin() {
+    public void ChangeToSignUp(View view) {
         Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
         startActivity(intent);
-        finish();
     }
     private void login() {
 //        String userEmail = et_email.getText().toString();
