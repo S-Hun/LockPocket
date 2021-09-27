@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceScreen android:title="편집">
+    <PreferenceScreen
+        android:key="key_edit"
+        android:title="편집">
 
     </PreferenceScreen>
 
     <PreferenceCategory android:title="잠금 설정">
         <SwitchPreference
+            android:key="key_lock_toggle"
             android:title="잠금 기능"
             android:summary="OFF시 슬라이드로 고정"/>
         <ListPreference
+            android:key="key_lock_method"
+            android:entries="@array/lock_method"
+            android:entryValues="@array/lock_method_values"
             android:title="잠금 방식"
             android:summary="슬라이드"/>
         <SwitchPreference
+            android:key="key_lock_sound_toggle"
             android:title="잠금해제 소리"/>
         <ListPreference
+            android:key="key_lock_sound"
+            android:entries="@array/lock_sound"
+            android:entryValues="@array/lock_sound_values"
             android:title="해제 소리"
             android:summary="물방울"/>
         <ListPreference
+            android:key="key_lock_anim"
+            android:entries="@array/lock_anim"
+            android:entryValues="@array/lock_anim_values"
             android:title="해제 애니메이션"
             android:summary="없음"/>
 
@@ -25,8 +38,11 @@
 
     <PreferenceCategory android:title="상세 설정">
         <CheckBoxPreference
+            android:key="key_background_gif"
             android:title="배경 GIF 재생"/>
-        <PreferenceScreen android:title="배경화면 설정">
+        <PreferenceScreen
+            android:key="key_background_get"
+            android:title="배경화면 설정">
 
         </PreferenceScreen>
     </PreferenceCategory>
