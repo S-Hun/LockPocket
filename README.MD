@@ -5,7 +5,8 @@
 
 
 문의 이메일: dinky_apple@naver.com
-작성일: 2021-09-26
+
+작성일: 2021-09-27
 
 
 
@@ -30,6 +31,7 @@
     </h3>
     <ol>
         <li>ViewPager: <a href="https://lakue.tistory.com/18">LINK</a></li>
+        <li>PreferenceFragmentCompat: <a href="https://kumgo1d.tistory.com/31">LINK</a></li>
     </ol>
 
 </details>

@@ -23,5 +23,7 @@
         <activity android:name=".SignupActivity"
             android:parentActivityName=".SigninActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".TemplateActivity"/>
+        <activity android:name=".CommunityActivity"/>
     </application>
 </manifest>

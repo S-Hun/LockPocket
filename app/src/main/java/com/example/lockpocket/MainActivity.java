@@ -9,9 +9,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.example.lockpocket.fragment.HomeFragment;
 
@@ -40,13 +42,6 @@ public class MainActivity extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.task_frame, homeFragment).commitAllowingStateLoss();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
-        // ActionBar actionBar = getSupportActionBar();
-        // actionBar.setDisplayShowTitleEnabled(false); // 기존 title 지우기
-        // actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
-        // actionBar.setHomeAsUpIndicator(R.drawable.button_back); //뒤로가기 버튼 이미지 지정
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         drawerButton = findViewById(R.id.drawer_btn);
         drawerButton.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +50,46 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(Gravity.RIGHT);
             }
         });
+
+        ImageButton homeButton = (ImageButton) findViewById(R.id.home_btn);
+        ImageButton templateButton = (ImageButton) findViewById(R.id.template_btn);
+        ImageButton communityButton = (ImageButton) findViewById(R.id.community_btn);
+        ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.home_btn:
+                        HomeButton();
+                        break ;
+                    case R.id.template_btn:
+                        TemplateButton();;
+                        break ;
+                    case R.id.community_btn:
+                        CommunityButton();
+                        break ;
+                }
+            }
+        };
+        homeButton.setOnClickListener(onClickListener);
+        templateButton.setOnClickListener(onClickListener);
+        communityButton.setOnClickListener(onClickListener);
     }
 
+    public void HomeButton(){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void TemplateButton(){
+        Intent intent = new Intent(getApplicationContext(), TemplateActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void CommunityButton(){
+        Intent intent = new Intent(getApplicationContext(), CommunityActivity.class);
+        startActivity(intent);
+        finish();
+    }
 //    /*
 //    hardkgosai by stackoverflow(2021-06-27)
 //    https://stackoverflow.com/questions/21724420/how-to-hide-navigation-bar-permanently-in-android-activity
