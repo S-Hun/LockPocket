@@ -12,10 +12,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.lockpocket.fragment.HomeFragment;
+import com.example.lockpocket.utils.PreferenceManager;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +47,38 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.task_frame, homeFragment).commitAllowingStateLoss();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                drawerLayout.closeDrawers();
+
+                int id = menuItem.getItemId();
+                String title = menuItem.getTitle().toString();
+
+                if(id == R.id.nav_ask){
+                    Toast.makeText(context, title + ": 문의를 확인합니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if(id == R.id.nav_help){
+                    Toast.makeText(context, title + ": 도움말을 확인합니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if(id == R.id.nav_setting){
+                    Toast.makeText(context, title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                }
+                else if(id == R.id.nav_logout){
+                    Toast.makeText(context, "로그아웃하였습니다.", Toast.LENGTH_SHORT).show();
+                    PreferenceManager.clear(getApplicationContext());
+                    Intent ToLogin = new Intent(getApplicationContext(), SigninActivity.class);
+                    ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    // LockScreen.getInstance().deactivate();
+                    startActivity(ToLogin);
+                }
+
+                return true;
+            }
+        });
+        
         drawerButton = findViewById(R.id.drawer_btn);
         drawerButton.setOnClickListener(new View.OnClickListener() {
             @Override
