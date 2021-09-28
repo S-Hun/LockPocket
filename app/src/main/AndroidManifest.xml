@@ -25,5 +25,6 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".TemplateActivity"/>
         <activity android:name=".CommunityActivity"/>
+        <activity android:name=".EditActivity"/>
     </application>
 </manifest>
