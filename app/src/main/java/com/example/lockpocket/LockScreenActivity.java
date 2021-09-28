@@ -12,13 +12,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.lockpocket.lockmethod.UnlockBar;
+
 public class LockScreenActivity extends AppCompatActivity {
     private static View[] pos;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
     String UI;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +48,11 @@ public class LockScreenActivity extends AppCompatActivity {
         if(UI.length() < 12) UI = "ZZZZZZZZZZZZ";
 
         for(int i=0; i<UI.length(); i++){
-            if(UI.charAt(i)=='A') pos[i].setBackground(getDrawable(R.drawable.background_red));
-            else if(UI.charAt(i)=='B') pos[i].setBackground(getDrawable(R.drawable.background_blue));
-            else if(UI.charAt(i)=='C') pos[i].setBackground(getDrawable(R.drawable.background_green));
+            if(UI.charAt(i)=='A') pos[i].setBackgroundColor(getResources().getColor(R.color.black));
+            else if(UI.charAt(i)=='B') pos[i].setBackgroundColor(getResources().getColor(R.color.black));
+            else if(UI.charAt(i)=='C') pos[i].setBackgroundColor(getResources().getColor(R.color.black));
             else {
-                pos[i].setBackground(getDrawable(R.drawable.background_white));
+                pos[i].setBackgroundColor(getResources().getColor(R.color.white));
             }
         }
 
@@ -105,7 +106,7 @@ public class LockScreenActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        // super.onBackPressed();
     }
 
     @Override
