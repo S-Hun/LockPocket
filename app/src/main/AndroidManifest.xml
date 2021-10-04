@@ -37,8 +37,7 @@
         <activity android:name=".TemplateActivity"/>
         <activity android:name=".CommunityActivity"/>
         <activity android:name=".EditActivity"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"/>
+            android:excludeFromRecents="true"/>
 
         <activity
             android:name=".LockScreenActivity"

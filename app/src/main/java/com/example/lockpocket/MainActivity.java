@@ -1,9 +1,7 @@
 package com.example.lockpocket;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,13 +9,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lockpocket.fragment.AskFragment;
+import com.example.lockpocket.fragment.HelpFragment;
 import com.example.lockpocket.fragment.HomeFragment;
+import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     private HomeFragment homeFragment;
+    private AskFragment askFragment;
+    private HelpFragment helpFragment;
     private FragmentTransaction transaction;
 
     private DrawerLayout drawerLayout;
@@ -42,12 +47,21 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
 
         homeFragment = new HomeFragment();
+        askFragment = new AskFragment();
+        helpFragment = new HelpFragment();
 
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.task_frame, homeFragment).commitAllowingStateLoss();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_main);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View nav_header = navigationView.getHeaderView(0);
+
+        TextView email = nav_header.findViewById(R.id.email_id);
+        TextView nickname = nav_header.findViewById(R.id.nickname);
+        email.setText(PreferenceManager.getString(getApplicationContext(), "Id"));
+        nickname.setText(PreferenceManager.getString(getApplicationContext(), "userName"));
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -58,10 +72,12 @@ public class MainActivity extends AppCompatActivity {
                 String title = menuItem.getTitle().toString();
 
                 if(id == R.id.nav_ask){
-                    Toast.makeText(context, title + ": 문의를 확인합니다.", Toast.LENGTH_SHORT).show();
+                    transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.task_frame, askFragment).commitAllowingStateLoss();
                 }
                 else if(id == R.id.nav_help){
-                    Toast.makeText(context, title + ": 도움말을 확인합니다.", Toast.LENGTH_SHORT).show();
+                    transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.task_frame, helpFragment).commitAllowingStateLoss();
                 }
                 else if(id == R.id.nav_setting){
                     Toast.makeText(context, title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
@@ -71,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     PreferenceManager.clear(getApplicationContext());
                     Intent ToLogin = new Intent(getApplicationContext(), SigninActivity.class);
                     ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    // LockScreen.getInstance().deactivate();
+                    LockScreen.getInstance().deactivate();
                     startActivity(ToLogin);
                 }
 
@@ -112,20 +128,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void HomeButton(){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-        finish();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.task_frame, homeFragment).commitAllowingStateLoss();
+
     }
     public void TemplateButton(){
         Intent intent = new Intent(getApplicationContext(), TemplateActivity.class);
         startActivity(intent);
-        finish();
     }
     public void CommunityButton(){
         Intent intent = new Intent(getApplicationContext(), CommunityActivity.class);
         startActivity(intent);
-        finish();
     }
+
 //    /*
 //    hardkgosai by stackoverflow(2021-06-27)
 //    https://stackoverflow.com/questions/21724420/how-to-hide-navigation-bar-permanently-in-android-activity

@@ -41,16 +41,19 @@ public class TemplateActivity extends AppCompatActivity {
     public void HomeButton(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-        finish();
     }
     public void TemplateButton(){
         Intent intent = new Intent(getApplicationContext(), TemplateActivity.class);
         startActivity(intent);
-        finish();
     }
     public void CommunityButton(){
         Intent intent = new Intent(getApplicationContext(), CommunityActivity.class);
         startActivity(intent);
-        finish();
+    }
+
+    public void IntentPreventer(Intent intent){
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
     }
 }

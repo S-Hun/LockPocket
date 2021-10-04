@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="28dp"
+    android:paddingTop="40dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/ask_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="@dimen/ask_text"
+        android:hint="TITLE"
+        android:background="@drawable/bg_text_box"/>
+
+    <TextView
+        android:id="@+id/ask_nickname"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="@dimen/ask_text"
+        android:hint="NICKNAME"
+        android:background="@drawable/bg_text_box"/>
+
+    <EditText
+        android:id="@+id/ask_contents"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="@dimen/ask_text"
+        android:minHeight="200dp"
+        android:gravity="top"
+        android:hint="CONTENTS"
+        android:background="@drawable/bg_text_box"/>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="10dp"
+        android:layout_gravity="end"
+        android:textColor="@color/white"
+        android:background="@drawable/sign_button_form"
+        android:text="등록"/>
+
+</LinearLayout>

@@ -35,6 +35,7 @@ public class LockscreenService extends Service {
                 if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
                     startLockscreenActivity();
                 }
+
             }
         }
     };

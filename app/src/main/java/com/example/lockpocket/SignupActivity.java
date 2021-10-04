@@ -60,6 +60,13 @@ public class SignupActivity extends AppCompatActivity {
         String userPass = et_pass.getText().toString();
         String userName = et_name.getText().toString();
 
+        // Check if email id is valid or not
+        if (!isEmailValid(userID)){
+            Toast.makeText(getApplicationContext(),
+                    "아이디가 이메일 형식이 아닙니다", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -69,7 +76,7 @@ public class SignupActivity extends AppCompatActivity {
                     //성공
                     if(success)
                     {
-                        Toast.makeText(getApplicationContext(), "회원등록에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "회원등록에 성공하였습니다", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignupActivity.this, SigninActivity.class);
                         startActivity(intent);
                         finish();
@@ -94,5 +101,9 @@ public class SignupActivity extends AppCompatActivity {
 
     public void BackToSignIn(View view) {
         finish();
+    }
+
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

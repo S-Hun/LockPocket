@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp"
+    android:paddingTop="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/introduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/help_image"
+            android:layout_height="@dimen/help_image"
+            android:layout_margin="@dimen/help_image_margin"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="애플리케이션 사용법"
+            android:gravity="start|center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/help_image"
+            android:layout_height="@dimen/help_image"
+            android:layout_margin="@dimen/help_image_margin"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="잠금화면 제작 방법"
+            android:gravity="start|center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/community_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/help_image"
+            android:layout_height="@dimen/help_image"
+            android:layout_margin="@dimen/help_image_margin"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="잠금화면 공유 방법"
+            android:gravity="start|center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/community_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/help_image"
+            android:layout_height="@dimen/help_image"
+            android:layout_margin="@dimen/help_image_margin"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="잠금화면 다운로드 방법"
+            android:gravity="start|center"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/help_image"
+            android:layout_height="@dimen/help_image"
+            android:layout_margin="@dimen/help_image_margin"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:paddingHorizontal="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="회원정보 수정 및 탈퇴"
+            android:gravity="start|center"/>
+    </LinearLayout>
+
+
+</LinearLayout>

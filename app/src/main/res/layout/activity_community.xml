@@ -4,32 +4,28 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/header"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:minHeight="60dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/abc_vector_test"
-            app:layout_constraintTop_toTopOf="@id/title"
-            app:layout_constraintRight_toLeftOf="@id/title"
-            android:layout_marginTop="16dp"/>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/title"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:src="@drawable/lockpocket_text"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="6dp"/>
+            <ImageView
+                android:id="@+id/title"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/lockpocket_text"
+                android:adjustViewBounds="true"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -39,7 +35,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/footer_height">
             <ImageView
                 android:id="@+id/image1"
                 android:layout_width="190dp"
@@ -158,7 +155,8 @@
         android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white">
 
@@ -169,7 +167,7 @@
             android:layout_marginRight="90dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/home"/>
+            android:background="@drawable/bg_home" />
 
         <ImageButton
             android:id="@+id/template_btn"
@@ -178,7 +176,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/layers"/>
+            android:background="@drawable/bg_edit"/>
 
         <ImageButton
             android:id="@+id/community_btn"
@@ -187,8 +185,14 @@
             android:layout_marginLeft="90dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/worldwide"/>
+            android:background="@drawable/bg_share"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        android:background="@drawable/bg_shadow_top"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
