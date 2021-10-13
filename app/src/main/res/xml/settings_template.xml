@@ -1,34 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceScreen android:title="편집">
+    <Preference
+        android:key="key_edit"
+        android:title="@string/pref_edit">
+    </Preference>
 
-    </PreferenceScreen>
-
-    <PreferenceCategory android:title="잠금 설정">
+    <PreferenceCategory android:title="@string/pref_lock">
         <SwitchPreference
-            android:title="잠금 기능"
-            android:summary="OFF시 슬라이드로 고정"/>
+            android:key="key_lock_toggle"
+            android:title="@string/pref_lock_toggle"
+            android:summary="@string/pref_lock_toggle_summary" />
         <ListPreference
-            android:title="잠금 방식"
-            android:summary="슬라이드"/>
-        <SwitchPreference
-            android:title="잠금해제 소리"/>
+            android:key="key_lock_method"
+            android:entries="@array/lock_method"
+            android:entryValues="@array/lock_method_values"
+            android:title="@string/pref_lock_method"
+            android:summary="%s"
+            android:defaultValue="0"/>
         <ListPreference
-            android:title="해제 소리"
-            android:summary="물방울"/>
+            android:key="key_lock_sound"
+            android:entries="@array/lock_sound"
+            android:entryValues="@array/lock_sound_values"
+            android:title="@string/pref_lock_sound"
+            android:summary="%s"
+            android:defaultValue="0"/>
         <ListPreference
-            android:title="해제 애니메이션"
-            android:summary="없음"/>
+            android:key="key_lock_anim"
+            android:entries="@array/lock_anim"
+            android:entryValues="@array/lock_anim_values"
+            android:title="@string/pref_lock_anim"
+            android:summary="%s"
+            android:defaultValue="0"/>
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="상세 설정">
+    <PreferenceCategory android:title="@string/pref_bg">
         <CheckBoxPreference
-            android:title="배경 GIF 재생"/>
-        <PreferenceScreen android:title="배경화면 설정">
-
-        </PreferenceScreen>
+            android:key="key_background_gif"
+            android:title="@string/pref_bg_gif"/>
+        <Preference
+            android:key="key_background_get"
+            android:title="@string/pref_bg_get">
+        </Preference>
     </PreferenceCategory>
 
 </PreferenceScreen>

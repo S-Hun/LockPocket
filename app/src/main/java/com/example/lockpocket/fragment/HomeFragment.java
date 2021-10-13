@@ -31,8 +31,8 @@ public class HomeFragment extends Fragment {
         viewPager2 = view.findViewById(R.id.viewPager);
 
         ArrayList<DataPage> list = new ArrayList<>();
-        list.add(new DataPage(R.drawable.test_image1,"test1"));
-        list.add(new DataPage(R.drawable.test_image2, "test2"));
+        list.add(new DataPage(R.drawable.test_image1,""));
+        list.add(new DataPage(R.drawable.test_image2, ""));
 
         viewPager2.setAdapter(new ViewPagerAdapter(list));
 

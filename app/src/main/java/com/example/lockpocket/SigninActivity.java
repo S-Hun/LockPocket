@@ -64,6 +64,13 @@ public class SigninActivity extends AppCompatActivity {
                 String userID = et_email.getText().toString();
                 String userPass = et_pass.getText().toString();
 
+                // Check if email id is valid or not
+                if (!isEmailValid(userID)){
+                    Toast.makeText(getApplicationContext(),
+                            "아이디가 이메일 형식이 아닙니다", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -77,7 +84,7 @@ public class SigninActivity extends AppCompatActivity {
                                 String userID = jsonObject.getString("userID");
                                 String userPass = jsonObject.getString("userPassword");
                                 String userName = jsonObject.getString("userName");
-                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                                 PreferenceManager.setString(mContext, "Id", userID);
                                 PreferenceManager.setString(mContext, "Name", userPass);
@@ -109,25 +116,13 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
     }
+
     public void ChangeToSignUp(View view) {
         Intent intent = new Intent(SigninActivity.this, SignupActivity.class);
         startActivity(intent);
     }
-    private void login() {
-//        String userEmail = et_email.getText().toString();
-//        String userPass = et_pass.getText().toString();
 
-        // 로그인 성공시
-//        if(success){
-//          String userEmail = jsonObject.getString() -> 이메일  사용자 정보 가져오기
-//          PreferenceManager.setString(mContext, "Email", userEmail); -> 유저 정보 sharedPreference
-//          Intent intent = new Intent(SigninActivity.this, MainActivity.class); -> 메인으로 화면 전환
-//          startActivity(intent);
-//          finish();
-//        }
-        // 로그인 실패
-//        else{
-//            return;
-//        }
+    boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

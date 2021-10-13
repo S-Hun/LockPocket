@@ -13,7 +13,6 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.Theme_Splash);
         setContentView(R.layout.activity_splash);
         mContext = this;
         if(!PreferenceManager.getString(mContext, "Id").equals(("")))

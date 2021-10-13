@@ -22,9 +22,12 @@
     <color name="purple_600">#FF3C096C</color>
     <color name="purple_700">#FF240046</color>
     <color name="purple_800">#FF10002B</color>
+    <color name="purple_default">#FF6200EE</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="gray">#FFAAAAAA</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="password_view_btn">#FF333333</color>
+    <color name="ask_gray">#EEEEEE</color>
 </resources>

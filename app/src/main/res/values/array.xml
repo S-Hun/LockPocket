@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lock_method">
+        <item>Slide</item>
+        <item>Fingerprint</item>
+        <item>Pattern</item>
+        <item>Pin</item>
+    </string-array>
+    <string-array name="lock_sound">
+        <item>Bubble</item>
+        <item>Beep</item>
+        <item>Cowbell</item>
+    </string-array>
+    <string-array name="lock_anim">
+        <item>Wave</item>
+        <item>Slide</item>
+        <item>Blend</item>
+    </string-array>
+
+    <string-array name="lock_method_values">
+        <item>slide</item>
+        <item>fingerprint</item>
+        <item>pattern</item>
+        <item>pin</item>
+    </string-array>
+    <string-array name="lock_sound_values">
+        <item>bubble</item>
+        <item>beep</item>
+        <item>cowbell</item>
+    </string-array>
+    <string-array name="lock_anim_values">
+        <item>wave</item>
+        <item>slide</item>
+        <item>blend</item>
+    </string-array>
+</resources>

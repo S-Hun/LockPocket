@@ -7,4 +7,24 @@
     <string name="menu_help">HELP</string>
     <string name="menu_logout">LOGOUT</string>
     <string name="menu_setting">SETTING</string>
+
+    <string name="pref_edit">편집</string>
+    <string name="pref_lock">잠금 설정</string>
+    <string name="pref_lock_toggle">잠금 기능</string>
+    <string name="pref_lock_toggle_summary">잠금화면은 하나만 적용됩니다.</string>
+    <string name="pref_lock_method">잠금 방식</string>
+    <string name="pref_lock_sound">해제 소리</string>
+    <string name="pref_lock_anim">해제 애니메이션</string>
+    <string name="pref_bg">배경화면</string>
+    <string name="pref_bg_gif">배경 GIF 재생</string>
+    <string name="pref_bg_get">배경화면 설정</string>
+
+    <string name="unlock_instructions">Slide to unlock</string>
+    <string name="unlock_locked">Locked</string>
+    <string name="unlock_unlocked">Unlocked</string>
+    <string name="unlock_thumb">Move this thumb</string>
+    <string name="permission_accessibility_setting_description">"Turn on and it locks all soft key including HOME, RECENTS, BACK, MENU buttons.
+
+You may be warned about potential privacy risk, that's just a regular informative warning for any accessibility service. We promise NEVER EVER collecting your personal information in this accessibility service."</string>
+
 </resources>

@@ -31,8 +31,6 @@ public class PreferenceManager {
 
     }
 
-
-
     /**
      * String 값 저장
      * @param context
