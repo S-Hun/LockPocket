@@ -17,6 +17,7 @@ public class TemplateActivity extends AppCompatActivity {
         ImageButton homeButton = (ImageButton) findViewById(R.id.home_btn);
         ImageButton templateButton = (ImageButton) findViewById(R.id.template_btn);
         ImageButton communityButton = (ImageButton) findViewById(R.id.community_btn);
+
         ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
             @Override
             public void onClick(View v) {

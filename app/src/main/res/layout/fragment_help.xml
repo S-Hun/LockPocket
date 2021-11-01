@@ -3,89 +3,148 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="10dp"
     android:paddingTop="10dp">
 
     <LinearLayout
         android:id="@+id/introduction"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
         <ImageView
             android:layout_width="@dimen/help_image"
             android:layout_height="@dimen/help_image"
             android:layout_margin="@dimen/help_image_margin"
             android:adjustViewBounds="true"
-            android:background="@drawable/ic_launcher_foreground"/>
+            android:background="@drawable/ic_launcher_lockpocket"/>
         <TextView
             android:paddingHorizontal="10dp"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="애플리케이션 사용법"
             android:gravity="start|center"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/edit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
         <ImageView
             android:layout_width="@dimen/help_image"
             android:layout_height="@dimen/help_image"
             android:layout_margin="@dimen/help_image_margin"
-            android:adjustViewBounds="true"
-            android:background="@drawable/ic_launcher_foreground"/>
+            android:src="@drawable/bg_edit"
+            android:cropToPadding="true"
+            android:padding="16dp"
+            android:scaleType="centerInside"/>
         <TextView
             android:paddingHorizontal="10dp"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="잠금화면 제작 방법"
             android:gravity="start|center"/>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/community_share"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+    <LinearLayout
+        android:id="@+id/template"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
         <ImageView
             android:layout_width="@dimen/help_image"
             android:layout_height="@dimen/help_image"
             android:layout_margin="@dimen/help_image_margin"
-            android:adjustViewBounds="true"
-            android:background="@drawable/ic_launcher_foreground"/>
+            android:src="@drawable/bg_edit"
+            android:cropToPadding="true"
+            android:padding="16dp"
+            android:scaleType="centerInside"/>
         <TextView
             android:paddingHorizontal="10dp"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="잠금화면 설정"
+            android:gravity="start|center"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+    <LinearLayout
+        android:id="@+id/community_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
+        <ImageView
+            android:layout_width="@dimen/help_image"
+            android:layout_height="@dimen/help_image"
+            android:layout_margin="@dimen/help_image_margin"
+            android:src="@drawable/bg_share"
+            android:cropToPadding="true"
+            android:padding="16dp"
+            android:scaleType="centerInside"/>
+        <TextView
+            android:paddingHorizontal="10dp"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="잠금화면 공유 방법"
             android:gravity="start|center"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/community_download"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
         <ImageView
             android:layout_width="@dimen/help_image"
             android:layout_height="@dimen/help_image"
             android:layout_margin="@dimen/help_image_margin"
             android:adjustViewBounds="true"
-            android:background="@drawable/ic_launcher_foreground"/>
+            android:src="@drawable/bg_share"
+            android:cropToPadding="true"
+            android:padding="16dp"
+            android:scaleType="centerInside"/>
         <TextView
             android:paddingHorizontal="10dp"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="잠금화면 다운로드 방법"
             android:gravity="start|center"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
     <LinearLayout
         android:id="@+id/account"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp">
         <ImageView
             android:layout_width="@dimen/help_image"
             android:layout_height="@dimen/help_image"
             android:layout_margin="@dimen/help_image_margin"
-            android:adjustViewBounds="true"
-            android:background="@drawable/ic_launcher_foreground"/>
+            android:src="@drawable/ic_user"
+            android:cropToPadding="true"
+            android:padding="16dp"
+            android:scaleType="centerInside"/>
         <TextView
             android:paddingHorizontal="10dp"
+            android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="회원정보 수정 및 탈퇴"

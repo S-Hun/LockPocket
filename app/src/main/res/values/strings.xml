@@ -17,7 +17,7 @@
     <string name="pref_lock_anim">해제 애니메이션</string>
     <string name="pref_bg">배경화면</string>
     <string name="pref_bg_gif">배경 GIF 재생</string>
-    <string name="pref_bg_get">배경화면 설정</string>
+    <string name="pref_bg_get">배경화면 가져오기</string>
 
     <string name="unlock_instructions">Slide to unlock</string>
     <string name="unlock_locked">Locked</string>
@@ -27,4 +27,6 @@
 
 You may be warned about potential privacy risk, that's just a regular informative warning for any accessibility service. We promise NEVER EVER collecting your personal information in this accessibility service."</string>
 
+    <string name="role">RoleOfWidget</string>
+    <string name="role_describe">DescribeOfRole</string>
 </resources>
