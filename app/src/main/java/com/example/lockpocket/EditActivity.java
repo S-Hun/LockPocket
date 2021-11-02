@@ -1,7 +1,10 @@
 package com.example.lockpocket;
 
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -71,23 +74,32 @@ public class EditActivity extends AppCompatActivity {
         // printViewHierarchy(navigationView, "");
         ViewGroup navigationMenuView = (ViewGroup)navigationView.getChildAt(0);
         ViewGroup navigationMenuItemView;
-        navigationMenuItemView = (ViewGroup)navigationMenuView.getChildAt(2);
-        View testView = navigationMenuItemView.getChildAt(0);
 
-        testView.setTag(R.string.role, "widget");
-        testView.setTag(R.string.role_describe, 1);
-        testView.setTag(WidgetList.getName((Integer) testView.getTag(R.string.role_describe)));
-        testView.setOnLongClickListener(new MenuLongClickListener());
-        testView.setOnDragListener(new MenuDragListener());
+        navigationMenuItemView = (ViewGroup)navigationMenuView.getChildAt(1);
+        View back = navigationMenuItemView.getChildAt(0);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.closeDrawer(Gravity.RIGHT);
+            }
+        });
+        back.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                drawerLayout.closeDrawer(Gravity.RIGHT);
+                return false;
+            }
+        });
+        for(int i=0; i<lockTableObject.tableWidget.length; i++) {
+            navigationMenuItemView = (ViewGroup)navigationMenuView.getChildAt(i + 2);
+            View v = navigationMenuItemView.getChildAt(0);
 
-        navigationMenuItemView = (ViewGroup)navigationMenuView.getChildAt(3);
-        View notiView = navigationMenuItemView.getChildAt(0);
-
-        notiView.setTag(R.string.role, "widget");
-        notiView.setTag(R.string.role_describe, 5);
-        notiView.setTag(WidgetList.getName((Integer) notiView.getTag(R.string.role_describe)));
-        notiView.setOnLongClickListener(new MenuLongClickListener());
-        notiView.setOnDragListener(new MenuDragListener());
+            v.setTag(R.string.role, "widget");
+            v.setTag(R.string.role_describe, lockTableObject.tableWidget[i]);
+            v.setTag(WidgetList.getName(lockTableObject.tableWidget[i]));
+            v.setOnLongClickListener(new MenuLongClickListener());
+            v.setOnDragListener(new MenuDragListener());
+        }
 
         return super.onPrepareOptionsMenu(menu);
     }
@@ -248,17 +260,31 @@ public class EditActivity extends AppCompatActivity {
             }
             mainLayout.addView(tableLayout, 0);
             lockTableLayout = tableLayout;
+            lockTableObject = new GridLock46(getApplicationContext(), lockTableLayout);
         }
-
-        lockTableObject = new GridLock46(getApplicationContext(), lockTableLayout);
+        String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
+        if(!template.equals("")) {
+            Log.d("Loaded template", template);
+            ViewGroup v1 = (ViewGroup) lockTableLayout.getChildAt(0);
+            View v2 = v1.getChildAt(0);
+            v2.post(new Runnable() {
+                @Override
+                public void run() {
+                    Point p = new Point(v2.getWidth(), v2.getHeight());
+                    lockTableObject.stringToTable(template, new Size(p.x, p.y));
+                }
+            });
+        }
     }
 
     public void MenuSetup() {
         Menu menu = navigationView.getMenu();
-        menu.add(Menu.NONE, Menu.NONE, Menu.NONE, "뒤로가기");
-        menu.add(Menu.NONE, Menu.NONE, Menu.NONE, "버튼1");
-        menu.add(Menu.NONE, Menu.NONE, Menu.NONE, "긴이름이 나오면 어떻게 되나요?");
-        menu.getItem(0).setIcon(R.drawable.ic_call);
+        menu.add(Menu.NONE, Menu.NONE, Menu.NONE, "cancel");
+        menu.getItem(0).setIcon(R.drawable.decline);
+        for(int i=0; i<lockTableObject.tableWidget.length; i++) {
+            menu.add(Menu.NONE, Menu.NONE, Menu.NONE, WidgetList.getName(lockTableObject.tableWidget[i]));
+            menu.getItem(i+1).setIcon(WidgetList.getId(lockTableObject.tableWidget[i]).icon);
+        }
 
         navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -275,7 +301,7 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Point p = new Point(v2.getWidth(), v2.getHeight());
-                for(int i=0; i<=5; i++) {
+                for(int i=0; i<=8; i++) {
                     ViewGroup vg = lockTableObject.getViewGroup(i, p);
                     widgetFrame.add(vg);
                     vg.setVisibility(View.INVISIBLE);
@@ -299,6 +325,30 @@ public class EditActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        new AlertDialog.Builder(this)
+                .setTitle("종료")
+                .setMessage("편집화면을 나가고 저장하겠습니까?")
+                .setPositiveButton("저장 후 종료", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String saveData = lockTableObject.tableToString();
+                        if(saveData != null) PreferenceManager.setString(getApplicationContext(), "edit_lockscreen", saveData);
+                        dialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), TemplateActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        dialog.dismiss();
+                    }
+                }).setNeutralButton("저장하지 않고 종료", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), TemplateActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).show();
     }
 }

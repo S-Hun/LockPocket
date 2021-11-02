@@ -5,6 +5,10 @@
         android:key="key_edit"
         android:title="@string/pref_edit">
     </Preference>
+    <Preference
+        android:key="key_edit_upload"
+        android:title="@string/pref_edit_upload">
+    </Preference>
     <ListPreference
         android:key="key_edit_template"
         android:entries="@array/edit_template"

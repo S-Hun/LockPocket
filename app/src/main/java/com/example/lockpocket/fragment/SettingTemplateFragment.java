@@ -26,6 +26,7 @@ import androidx.preference.SwitchPreference;
 
 import com.example.lockpocket.EditActivity;
 import com.example.lockpocket.R;
+import com.example.lockpocket.TemplateActivity;
 import com.example.lockpocket.utils.BitmapConverter;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
@@ -37,6 +38,7 @@ import java.io.InputStream;
 public class SettingTemplateFragment extends PreferenceFragmentCompat {
 
     Preference editButton;
+    Preference editUpload;
     SwitchPreference lockToggle;
     ListPreference editTemplate;
     Preference backgroundGallery;
@@ -49,6 +51,7 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
         setPreferencesFromResource(R.xml.settings_template, null);
 
         editButton = findPreference("key_edit");
+        editUpload = findPreference("key_edit_upload");
         editTemplate = findPreference("key_edit_template");
         lockToggle = findPreference("key_lock_toggle");
         backgroundGallery = findPreference("key_background_get");
@@ -66,6 +69,18 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(Preference preference) {
                 Intent intent = new Intent(getContext(), EditActivity.class);
                 startActivity(intent);
+                getActivity().finish();
+                return true;
+            }
+        });
+
+        editUpload.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                String upload = PreferenceManager.getString(getContext(), "edit_lockscreen");
+                if(!upload.equals("")) {
+                    // Network Work.
+                }
                 return true;
             }
         });
@@ -82,6 +97,10 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     editTemplate.setValue((String) newValue);
+                                    PreferenceManager.setString(getContext(), "edit_lockscreen", "");
+                                    Intent intent = new Intent(getContext(), TemplateActivity.class);
+                                    startActivity(intent);
+                                    getActivity().finish();
                                 }
                             })
                             .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -133,6 +152,9 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                 String imageUriPath = BitmapConverter.BitmapToString(selectedImage);
                 PreferenceManager.setString(getContext(), "edit_background", imageUriPath);
                 Toast.makeText(getContext(), "배경화면을 성공적으로 설정했습니다", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getContext(), TemplateActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();

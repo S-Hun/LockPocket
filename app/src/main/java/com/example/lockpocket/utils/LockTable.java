@@ -19,6 +19,7 @@ public class LockTable {
     public List<Integer> state = new ArrayList<>();
     public List<Widget> widgets = null;
     static final String TAG = "LockTable Parent";
+    public int[] tableWidget = {};
 
     LockTable(Context context, ViewGroup layout) {
         this.context = context;
@@ -189,7 +190,7 @@ public class LockTable {
     public String widgetToString(Widget w) { return ""; }
     public String tableToString() { return ""; }
     public View stringToWidget(String s) { return null; }
-    public void stringToTable(ViewGroup v, String s, Size vs) { return; };
+    public void stringToTable(String s, Size vs) { return; };
 
     public RelativeLayout getViewGroup(int type, Point vs) {
         RelativeLayout result;

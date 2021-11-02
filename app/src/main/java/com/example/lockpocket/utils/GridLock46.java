@@ -31,6 +31,9 @@ public class GridLock46 extends LockTable {
         for(int i=0; i<24; i++)
             state.add(0);
         widgets = new LinkedList<>();
+        tableWidget = new int[]{
+                5, 7
+        };
     }
 
     @Override
@@ -123,13 +126,13 @@ public class GridLock46 extends LockTable {
         for(Widget w : widgets){
             res += widgetToString(w) + "/";
         }
-        return null;
+        return res;
     }
 
     @Override
-    public void stringToTable(ViewGroup v, String s, Size vs) {
+    public void stringToTable(String s, Size vs) {
         String[] list = s.split("/");
-        for(int i=1; i < list.length - 1; i++){
+        for(int i=1; i < list.length; i++){
             String li = list[i];
             if(li.equals("")) break;
             String[] info = li.split(":");
@@ -144,7 +147,7 @@ public class GridLock46 extends LockTable {
     public RelativeLayout getViewGroup(int type, Point vs) {
         RelativeLayout result = new RelativeLayout(context);
         int vpad = 0;
-        if(type == 1) {
+        if(type == 7) {
             vpad = 32;
             result.setBackgroundResource(R.drawable.bg_widget);
             Drawable background = result.getBackground().mutate();
