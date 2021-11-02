@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.PHONE_STATE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
 
     <application
@@ -24,11 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LockPocket">
         <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SigninActivity"/>
         <activity android:name=".SignupActivity"
@@ -36,16 +34,31 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".TemplateActivity"/>
         <activity android:name=".CommunityActivity"/>
+        <activity android:name=".HelpDetail"></activity>
+        <activity android:name=".ListTest">
+
+        </activity>
+        <activity android:name=".dddddd">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".EditActivity"
             android:excludeFromRecents="true"/>
+        <activity android:name=".testActivity">
 
+        </activity>
+        <activity android:name=".ButtonTest">
+
+        </activity>
         <activity
             android:name=".LockScreenActivity"
             android:showOnLockScreen="true"
             android:launchMode="singleInstance"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         </activity>
-
+        <activity android:name=".CommunityDetail"/>
         <service android:name="com.example.lockpocket.utils.LockscreenService" >
         </service>
 

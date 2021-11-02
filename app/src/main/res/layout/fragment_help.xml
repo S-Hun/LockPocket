@@ -16,12 +16,14 @@
             android:layout_margin="@dimen/help_image_margin"
             android:adjustViewBounds="true"
             android:background="@drawable/ic_launcher_foreground"/>
+
         <TextView
-            android:paddingHorizontal="10dp"
+            android:id="@+id/tv_appUse"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="애플리케이션 사용법"
-            android:gravity="start|center"/>
+            android:gravity="start|center"
+            android:paddingHorizontal="10dp"
+            android:text="애플리케이션 사용법" />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/edit"
@@ -34,6 +36,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/ic_launcher_foreground"/>
         <TextView
+            android:id="@+id/tv_makeLock"
             android:paddingHorizontal="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -51,6 +54,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/ic_launcher_foreground"/>
         <TextView
+            android:id="@+id/tv_shareLock"
             android:paddingHorizontal="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -68,6 +72,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/ic_launcher_foreground"/>
         <TextView
+            android:id="@+id/tv_downLock"
             android:paddingHorizontal="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -85,6 +90,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/ic_launcher_foreground"/>
         <TextView
+            android:id="@+id/tv_editProfile"
             android:paddingHorizontal="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

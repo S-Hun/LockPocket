@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="320dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:text="My Profile"
+        android:textColor="@color/purple_default"
+        android:textAlignment="center"
+        android:autoSizeTextType="uniform"
+        android:textStyle="bold"
+        >
+
+    </TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/sign_input_form"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="30dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"
+            android:text="EMAIL"
+            android:layout_gravity="center_vertical"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="18sp"
+            android:background="#6200EE"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/emailAddress"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="email"
+            android:textSize="12sp"
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/sign_input_form"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="30dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"
+            android:text="NICK"
+            android:layout_gravity="center_vertical" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="18sp"
+            android:background="#6200EE"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/nickname"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:hint="nickname"
+            android:textSize="12sp"
+            android:inputType="text"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/sign_input_form"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="30dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"
+            android:text="PASSWD"
+            android:layout_gravity="center_vertical" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="18sp"
+            android:background="#6200EE"
+            android:layout_gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/password"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:hint="password"
+                android:textSize="12sp"
+                android:inputType="textPassword"
+                android:layout_alignTop="@id/password_toggle"
+                android:layout_alignBottom="@id/password_toggle"/>
+
+            <View
+                android:id="@+id/password_toggle"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/sign_password_btn"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/signup_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/sign_button_form"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:onClick="CreateAccount"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="18dp"
+            android:text="O  k"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
