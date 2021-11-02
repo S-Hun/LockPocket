@@ -40,7 +40,7 @@ public class GridLock46 extends LockTable {
         {
             for(int j=p.x; j<p.x+s.getWidth(); j++)
             {
-                if(i*4+j >= 24) return false;
+                if(i >= 6 || j >= 4) return false;
                 int comp = state.get(i*4+j);
                 if(comp > 0 && comp != value) return false;
             }
@@ -94,19 +94,14 @@ public class GridLock46 extends LockTable {
     }
 
     @Override
-    public void removeWidget(Point p) {
-        // get id from state
-        int id = state.get(p.x+p.y); // specify position role
+    public void removeWidget(int id) {
+        // id from param of view.getId()
         int idx = searchWidgetIndexWithId(id);
-        Widget widget = widgets.get(idx);
-        widgets.remove(widget);
+        widgets.remove(idx);
         int count = layout.getChildCount();
         layout.removeViewAt(count + idx);
 
-        int type = widget.getType();
-        int w = WidgetList.getId(type).w;
-        int h = WidgetList.getId(type).h;
-        setUpPosition(widget.getPoint(), new Size(w, h), 0);
+        clearPosition(id, 0);
 
         return;
     }
@@ -124,7 +119,7 @@ public class GridLock46 extends LockTable {
 
     @Override
     public String tableToString() {
-        String res = "gridlock46/";
+        String res = "grid46/";
         for(Widget w : widgets){
             res += widgetToString(w) + "/";
         }
@@ -146,12 +141,11 @@ public class GridLock46 extends LockTable {
     }
 
     @Override
-    public RelativeLayout getViewGroup(int type, Size vs) {
-        RelativeLayout result = null;
+    public RelativeLayout getViewGroup(int type, Point vs) {
+        RelativeLayout result = new RelativeLayout(context);
         int vpad = 0;
         if(type == 1) {
             vpad = 32;
-            result = new RelativeLayout(context);
             result.setBackgroundResource(R.drawable.bg_widget);
             Drawable background = result.getBackground().mutate();
             setColor(background, "#33CC33");
@@ -164,7 +158,6 @@ public class GridLock46 extends LockTable {
             result.addView(v1);
         } else if(type == 5) {
             vpad = 32;
-            result = new RelativeLayout(context);
             result.setBackgroundResource(R.drawable.bg_widget);
             Drawable background = result.getBackground().mutate();
             setColor(background, "#000000", 0x33);
@@ -194,7 +187,7 @@ public class GridLock46 extends LockTable {
         }
         int w = WidgetList.getId(type).w;
         int h = WidgetList.getId(type).h;
-        ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(w * vs.getWidth() - vpad, h * vs.getHeight() - vpad);
+        ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(w * vs.x - vpad, h * vs.y - vpad);
         result.setLayoutParams(marginParams);
         return result;
     }
@@ -207,7 +200,7 @@ public class GridLock46 extends LockTable {
             );
             String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
             ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
+            CustomDragShadowBuilder shadowBuilder = new CustomDragShadowBuilder(v);
 
             v.startDrag(data,
                     shadowBuilder,

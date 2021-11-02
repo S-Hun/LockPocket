@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.Preference;
 
 import android.content.Context;
 import android.content.Intent;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        androidx.preference.PreferenceManager.setDefaultValues(this, R.xml.settings_template, false);
+
         context = this;
 
         fragmentManager = getSupportFragmentManager();

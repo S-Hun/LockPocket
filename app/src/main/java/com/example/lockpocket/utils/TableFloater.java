@@ -1,0 +1,109 @@
+package com.example.lockpocket.utils;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Point;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
+
+public class TableFloater {
+    private String[] colorSet;
+    private Context context;
+    private String data;
+    private ArrayList<LockTable.Widget> widgets;
+
+    TableFloater(Context context, String data) {
+        this.context = context;
+        this.data = data;
+        colorSet = new String[] {
+          "49416D", "A882DD", "E08D79", "E0EFDE", "B3F2DD", "FBBA72",
+                "ADA0A6", "7D938A", "391463", "2D936C", "5FAD41"
+        };
+    }
+
+    /*
+    (base)
+    ------
+
+    table
+
+    ------
+    lock
+    ------
+
+    (grid46 table)
+    --------
+    v
+        v
+    --------
+    ...
+
+     */
+    public ViewGroup template(Point size) {
+        String[] list = data.split("/");
+        LinearLayout base = new LinearLayout(context);
+        base.setOrientation(LinearLayout.VERTICAL);
+
+        FrameLayout lock = new FrameLayout(context);
+        lock.setBackgroundColor(Color.parseColor("#000000"));
+        lock.setAlpha((float) 0.2);
+
+        ImageView ic_lock = new ImageView(context);
+        FrameLayout.LayoutParams ic_lockParam = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ic_lockParam.gravity = Gravity.CENTER;
+        ic_lock.setLayoutParams(ic_lockParam);
+        lock.addView(ic_lock);
+
+        LinearLayout.LayoutParams lockParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lockParam.weight = 1;
+        lock.setLayoutParams(lockParam);
+        base.addView(lock);
+
+        if(list[0] == "grid46") {
+            RelativeLayout table = new RelativeLayout(context);
+            LinearLayout.LayoutParams tableParam = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tableParam.weight = 3;
+            table.setLayoutParams(tableParam);
+            base.addView(table, 0);
+
+            for(int i=1; i < list.length - 1; i++){
+                String li = list[i];
+                if(li.equals("")) break;
+                String[] info = li.split(":");
+                int type = Integer.parseInt(info[0]);
+                int x = Integer.parseInt(info[1]);
+                int y = Integer.parseInt(info[2]);
+                int w = WidgetList.getId(type).w;
+                int h = WidgetList.getId(type).h;
+                int randNum = (int) (Math.random() * colorSet.length);
+                int color = colorRandomized(colorSet[randNum]);
+
+                int vw = size.x / 6;
+                int vy = (int) (size.y * (1/8.0));
+                View v = new View(context);
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(vw, vy);
+                params.setMargins(x*vw, y+vy, 0, 0);
+                v.setLayoutParams(params);
+                v.setBackgroundColor(color);
+                table.addView(v);
+            }
+        }
+        return base;
+    }
+
+    private int colorRandomized(String src) {
+        int value = Integer.parseInt(src, 16);
+        double rand = Math.random();
+        int R = (int) ((value & 0xff0000) * rand);
+        int G = (int) ((value & 0x00ff00) * rand);
+        int B = (int) ((value & 0x0000ff) * rand);
+        return 0xff000000 + (R << 16) + (G << 8) + B;
+    }
+}

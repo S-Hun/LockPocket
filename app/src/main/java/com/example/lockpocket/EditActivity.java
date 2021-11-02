@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.lockpocket.utils.BitmapConverter;
+import com.example.lockpocket.utils.CustomDragShadowBuilder;
 import com.example.lockpocket.utils.GridLock46;
 import com.example.lockpocket.utils.LockTable;
 import com.example.lockpocket.utils.PreferenceManager;
@@ -44,11 +45,13 @@ public class EditActivity extends AppCompatActivity {
     ViewGroup lockTableLayout;
     LockTable lockTableObject;
     ImageView IV_background;
+    ArrayList<ViewGroup> widgetFrame;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+
         IV_background = findViewById(R.id.background);
         ScreenSetup();
 
@@ -57,13 +60,15 @@ public class EditActivity extends AppCompatActivity {
         LockTableSetup();
 
         navigationView = findViewById(R.id.nav_view);
+        widgetFrame = new ArrayList<>();
         MenuSetup();
+        WidgetSetup();
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        printViewHierarchy(navigationView, "");
+        // printViewHierarchy(navigationView, "");
         ViewGroup navigationMenuView = (ViewGroup)navigationView.getChildAt(0);
         ViewGroup navigationMenuItemView;
         navigationMenuItemView = (ViewGroup)navigationMenuView.getChildAt(2);
@@ -90,26 +95,27 @@ public class EditActivity extends AppCompatActivity {
     private final class MenuLongClickListener implements View.OnLongClickListener {
         @Override
         public boolean onLongClick(View v) {
-            Toast.makeText(getApplicationContext(), "메인 실행", Toast.LENGTH_SHORT).show();
             drawerLayout.closeDrawer(Gravity.RIGHT);
             ClipData.Item item = new ClipData.Item(
                     (CharSequence) v.getTag()
             );
             String[] mimeTypes = {ClipDescription.MIMETYPE_TEXT_PLAIN};
             ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
-            Log.d("WORK", "work in test act");
-
-            v.startDrag(data,
-                    shadowBuilder,
-                    v,
-                    0);
 
             if(v.getTag(R.string.role) == "widget") {
-
+                ViewGroup vg = widgetFrame.get((Integer) v.getTag(R.string.role_describe));
+                CustomDragShadowBuilder shadowBuilder = new CustomDragShadowBuilder(vg);
+                v.startDragAndDrop(data,
+                        shadowBuilder,
+                        v,
+                        0);
             } else if (v.getTag(R.string.role) == "placed_widget") {
-                Log.d("CHECK VIEW ID 2", String.valueOf(v.getId()));
                 v.setVisibility(View.INVISIBLE);
+                CustomDragShadowBuilder shadowBuilder = new CustomDragShadowBuilder(v);
+                v.startDragAndDrop(data,
+                        shadowBuilder,
+                        v,
+                        0);
             }
 
             return true;
@@ -142,11 +148,7 @@ public class EditActivity extends AppCompatActivity {
                             int W = placedView.getWidth();
                             int H = placedView.getHeight();
                             lockTableObject.insertWidget(place_num%4, place_num/4, type, new Size(W, H));
-                            Log.d("Width: ", Integer.toString(W));
-                            Log.d("Height: ", Integer.toString(H));
                         } else if (draggedView.getTag(R.string.role) == "placed_widget") {
-                            Log.d("TEST", "DRAG LISTENER IN TEST ACT");
-                            Log.d("CHECK VIEW ID 3", String.valueOf(id));
                             lockTableObject.clearPosition(id, 0);
                             lockTableObject.setUpPosition(new Point(place_num%4, place_num/4), new Size(WidgetList.getId(type).w, WidgetList.getId(type).h), id);
                             View v_parent = (View) placedView.getParent();
@@ -266,6 +268,23 @@ public class EditActivity extends AppCompatActivity {
         });
     }
 
+    public void WidgetSetup() {
+        ViewGroup v1 = (ViewGroup) lockTableLayout.getChildAt(0);
+        View v2 = v1.getChildAt(0);
+        v2.post(new Runnable() {
+            @Override
+            public void run() {
+                Point p = new Point(v2.getWidth(), v2.getHeight());
+                for(int i=0; i<=5; i++) {
+                    ViewGroup vg = lockTableObject.getViewGroup(i, p);
+                    widgetFrame.add(vg);
+                    vg.setVisibility(View.INVISIBLE);
+                    lockTableLayout.addView(vg);
+                }
+            }
+        });
+    }
+
     public static void printViewHierarchy(ViewGroup vg, String prefix) {
         for (int i = 0; i < vg.getChildCount(); i++) {
             View v = vg.getChildAt(i);
@@ -276,5 +295,10 @@ public class EditActivity extends AppCompatActivity {
                 printViewHierarchy((ViewGroup)v, desc);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

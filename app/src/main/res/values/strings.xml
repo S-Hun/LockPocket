@@ -9,6 +9,7 @@
     <string name="menu_setting">SETTING</string>
 
     <string name="pref_edit">편집</string>
+    <string name="pref_edit_template">편집 양식</string>
     <string name="pref_lock">잠금 설정</string>
     <string name="pref_lock_toggle">잠금 기능</string>
     <string name="pref_lock_toggle_summary">잠금화면은 하나만 적용됩니다.</string>

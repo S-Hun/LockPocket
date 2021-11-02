@@ -44,7 +44,7 @@ public class LockTable {
 
         private RelativeLayout generateViewGroup(Size _vs) {
             // _s is "View frame size"
-            RelativeLayout res = getViewGroup(type, _vs);
+            RelativeLayout res = getViewGroup(type, new Point(_vs.getWidth(), _vs.getHeight()));
 
             final int PAD = 36;
             // w, h are "Widget size"
@@ -59,7 +59,6 @@ public class LockTable {
             res.setTag(R.string.role, "placed_widget");
             res.setTag(R.string.role_describe, type);
             res.setTag(WidgetList.getName(type));
-            res.setBackgroundResource(R.drawable.bg_widget);
 
             return res;
         }
@@ -173,9 +172,8 @@ public class LockTable {
         insertWidget(p.x, p.y, type, vs);
     }
 
-    public void removeWidget(Point p) {
-        // get id from state
-        int id = state.get(p.x+p.y); // specify position role
+    public void removeWidget(int id) {
+        // id from param of view.getId()
         int idx = searchWidgetIndexWithId(id);
         Widget widget = widgets.get(idx);
         widgets.remove(widget);
@@ -193,7 +191,7 @@ public class LockTable {
     public View stringToWidget(String s) { return null; }
     public void stringToTable(ViewGroup v, String s, Size vs) { return; };
 
-    public RelativeLayout getViewGroup(int type, Size vs) {
+    public RelativeLayout getViewGroup(int type, Point vs) {
         RelativeLayout result;
         Log.d("IN LOCK", "getViewGroup");
         return null;

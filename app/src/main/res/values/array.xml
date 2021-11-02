@@ -7,14 +7,21 @@
         <item>Pin</item>
     </string-array>
     <string-array name="lock_sound">
+        <item>None</item>
         <item>Bubble</item>
         <item>Beep</item>
         <item>Cowbell</item>
     </string-array>
     <string-array name="lock_anim">
+        <item>None</item>
         <item>Wave</item>
         <item>Slide</item>
         <item>Blend</item>
+    </string-array>
+    <string-array name="edit_template">
+        <item>Grid 4 * 6</item>
+        <item>Floating Bars</item>
+        <item>Free Order</item>
     </string-array>
 
     <string-array name="lock_method_values">
@@ -24,13 +31,20 @@
         <item>pin</item>
     </string-array>
     <string-array name="lock_sound_values">
+        <item>none</item>
         <item>bubble</item>
         <item>beep</item>
         <item>cowbell</item>
     </string-array>
     <string-array name="lock_anim_values">
+        <item>none</item>
         <item>wave</item>
         <item>slide</item>
         <item>blend</item>
+    </string-array>
+    <string-array name="edit_template_values">
+        <item>grid46</item>
+        <item>linear</item>
+        <item>free</item>
     </string-array>
 </resources>
