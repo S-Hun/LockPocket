@@ -30,4 +30,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="password_view_btn">#FF333333</color>
     <color name="ask_gray">#EEEEEE</color>
+    <color name="bg_frame_gray">#B0D3D3D3</color>
 </resources>

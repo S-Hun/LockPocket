@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start|center"
-            android:paddingHorizontal="10dp"
+            android:paddingHorizontal="16dp"
+            android:textSize="16sp"
             android:text="애플리케이션 사용법" />
     </LinearLayout>
     <LinearLayout

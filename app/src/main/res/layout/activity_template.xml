@@ -38,12 +38,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
+    <FrameLayout
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/test_image2"
-        app:layout_constraintTop_toBottomOf="@id/header"/>
+        app:layout_constraintTop_toBottomOf="@id/header">
+    </FrameLayout>
+
+    <View
+        app:layout_constraintBottom_toTopOf="@id/template_setting"
+        android:background="@drawable/bg_shadow_top"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"/>
 
     <fragment
         android:id="@+id/template_setting"

@@ -16,7 +16,7 @@
         android:paddingBottom="0dp"
         android:adjustViewBounds="true"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/test_image1"/>
+        android:src="@drawable/test_bg3"/>
 
     <TextView
         android:id="@+id/tv_title"

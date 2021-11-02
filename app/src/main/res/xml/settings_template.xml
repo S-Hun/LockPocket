@@ -5,40 +5,53 @@
         android:key="key_edit"
         android:title="@string/pref_edit">
     </Preference>
+    <Preference
+        android:key="key_edit_upload"
+        android:title="@string/pref_edit_upload">
+    </Preference>
+    <ListPreference
+        android:key="key_edit_template"
+        android:entries="@array/edit_template"
+        android:entryValues="@array/edit_template_values"
+        android:title="@string/pref_edit_template"
+        android:summary="%s"
+        android:defaultValue="grid46"/>
 
     <PreferenceCategory android:title="@string/pref_lock">
         <SwitchPreference
             android:key="key_lock_toggle"
             android:title="@string/pref_lock_toggle"
-            android:summary="@string/pref_lock_toggle_summary" />
+            android:summary="@string/pref_lock_toggle_summary"
+            android:defaultValue="false"/>
         <ListPreference
             android:key="key_lock_method"
             android:entries="@array/lock_method"
             android:entryValues="@array/lock_method_values"
             android:title="@string/pref_lock_method"
             android:summary="%s"
-            android:defaultValue="0"/>
+            android:defaultValue="slide"/>
         <ListPreference
             android:key="key_lock_sound"
             android:entries="@array/lock_sound"
             android:entryValues="@array/lock_sound_values"
             android:title="@string/pref_lock_sound"
             android:summary="%s"
-            android:defaultValue="0"/>
+            android:defaultValue="none"/>
         <ListPreference
             android:key="key_lock_anim"
             android:entries="@array/lock_anim"
             android:entryValues="@array/lock_anim_values"
             android:title="@string/pref_lock_anim"
             android:summary="%s"
-            android:defaultValue="0"/>
+            android:defaultValue="none"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_bg">
         <CheckBoxPreference
             android:key="key_background_gif"
-            android:title="@string/pref_bg_gif"/>
+            android:title="@string/pref_bg_gif"
+            android:defaultValue="false"/>
         <Preference
             android:key="key_background_get"
             android:title="@string/pref_bg_get">
