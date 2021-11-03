@@ -3,6 +3,7 @@ package com.example.lockpocket;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.lockpocket.account.RegisterRequest;
+import com.example.lockpocket.utils.Encryption;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         et_pass = findViewById(R.id.password);
         et_name = findViewById(R.id.nickname);
         View password_toggle = findViewById(R.id.password_toggle);
+        Log.d("Encryption test", Encryption.SHA1("1234"));
         password_toggle.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -71,6 +74,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+                    Log.d("Register", response);
                     JSONObject jsonObject = new JSONObject(response);
                     boolean success = jsonObject.getBoolean("success");
                     //성공
@@ -94,7 +98,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         };
         // 서버로 볼리를 이용해서 요청한다.
-        RegisterRequest registerRequest = new RegisterRequest(userID, userPass, userName, responseListener, getApplicationContext());
+        RegisterRequest registerRequest = new RegisterRequest(userID, Encryption.SHA1(userPass), userName, responseListener, getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(SignupActivity.this);
         queue.add(registerRequest);
     }

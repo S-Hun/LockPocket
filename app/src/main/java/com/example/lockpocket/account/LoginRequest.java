@@ -21,14 +21,13 @@ public class LoginRequest extends StringRequest {
 
     public LoginRequest(String userID, String userPassword, Response.Listener<String> listener, Context context) throws IOException {
         super(Method.POST,
-                "http://" + AppNetwork.getServerIp(context) + "/data.jsp", listener, new Response.ErrorListener() {
+                "http://" + AppNetwork.getServerIp(context) + "/sign.jsp", listener, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Toast.makeText(context, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
             }
         });
-        Log.d("Network: ", "http://" + AppNetwork.getServerIp(context) + "/data.jsp");
 
         map = new HashMap<>();
         map.put("userID", userID);

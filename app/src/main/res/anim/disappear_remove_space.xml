@@ -11,6 +11,6 @@
         android:pivotX="50%" android:pivotY="50%"
         android:duration="500"/>
     <translate
-        android:fromYDelta="-100%" android:toYDelta="0%"
+        android:fromYDelta="0%" android:toYDelta="100%"
         android:duration="500"/>
 </set>

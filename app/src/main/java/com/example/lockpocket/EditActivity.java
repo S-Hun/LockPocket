@@ -170,7 +170,7 @@ public class EditActivity extends AppCompatActivity {
                     break;
 
                 case DragEvent.ACTION_DROP:
-                    if(placedView.getTag(R.string.role) == "remove") {
+                    if(draggedView.getTag(R.string.role) == "placed_widget" && placedView.getTag(R.string.role) == "remove") {
                         draggedView.setVisibility(View.VISIBLE);
                         lockTableObject.removeWidget(draggedView.getId());
                         break;
@@ -301,6 +301,7 @@ public class EditActivity extends AppCompatActivity {
         }
         IV_remove.setTag(R.string.role, "remove");
         IV_remove.setOnDragListener(new MenuDragListener());
+        IV_remove.startAnimation(disappear_remove_anim);
     }
 
     public void MenuSetup() {

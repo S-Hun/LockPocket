@@ -5,14 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.preference.Preference;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,6 +20,7 @@ import android.widget.Toast;
 import com.example.lockpocket.fragment.AskFragment;
 import com.example.lockpocket.fragment.HelpFragment;
 import com.example.lockpocket.fragment.HomeFragment;
+import com.example.lockpocket.utils.Encryption;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         androidx.preference.PreferenceManager.setDefaultValues(this, R.xml.settings_template, false);
+        Log.d("Encryption test", Encryption.SHA1("1234"));
 
         context = this;
 

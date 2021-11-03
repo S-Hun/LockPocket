@@ -3,10 +3,10 @@
     <string name="nav_header_title">NICKNAME</string>
     <string name="nav_header_subtitle">EMAIL ADDRESS</string>
 
-    <string name="menu_ask">ASK</string>
-    <string name="menu_help">HELP</string>
-    <string name="menu_logout">LOGOUT</string>
-    <string name="menu_setting">SETTING</string>
+    <string name="menu_ask">문의하기</string>
+    <string name="menu_help">도움말</string>
+    <string name="menu_logout">로그아웃</string>
+    <string name="menu_setting">설정</string>
 
     <string name="pref_edit">편집</string>
     <string name="pref_edit_template">편집 양식</string>

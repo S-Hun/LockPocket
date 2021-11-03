@@ -18,7 +18,7 @@ public class RegisterRequest extends StringRequest{
 
     public RegisterRequest(String userID, String userPassword, String userName, Response.Listener<String> listener, Context context) throws IOException {
         super(Method.POST,
-                "http://" + AppNetwork.getServerIp(context) + "/data.jsp", listener, null);
+                "http://" + AppNetwork.getServerIp(context) + "/sign.jsp", listener, null);
 
         map = new HashMap<>();
         map.put("userID", userID);

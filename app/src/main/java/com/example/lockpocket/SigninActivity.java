@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.lockpocket.account.LoginRequest;
 import com.example.lockpocket.utils.AppNetwork;
+import com.example.lockpocket.utils.Encryption;
 import com.example.lockpocket.utils.PreferenceManager;
 
 import org.json.JSONException;
@@ -76,20 +77,20 @@ public class SigninActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("Response: ", response);
                         try {
+                            Log.d("Login Test", response);
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
                             //성공
                             if(success)
                             {
                                 String userID = jsonObject.getString("userID");
-                                String userPass = jsonObject.getString("userPassword");
                                 String userName = jsonObject.getString("userName");
+                                String ui = jsonObject.getString("ui");
+                                String background = jsonObject.getString("background");
                                 Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                                 PreferenceManager.setString(mContext, "Id", userID);
-                                PreferenceManager.setString(mContext, "Name", userPass);
                                 PreferenceManager.setString(mContext, "userName", userName);
-                                // LockScreen.getInstance().active(); -> 잠금화면 포함시에만 사용 가능
                                 startActivity(intent);
                                 finish();
                             }
@@ -107,7 +108,7 @@ public class SigninActivity extends AppCompatActivity {
 
                 try {
                     Log.d("INTERNET: ", "http://" + AppNetwork.getServerIp(getApplicationContext()) + "/data.jsp");
-                    LoginRequest loginRequest = new LoginRequest(userID, userPass, responseListener, getApplicationContext());
+                    LoginRequest loginRequest = new LoginRequest(userID, Encryption.SHA1(userPass), responseListener, getApplicationContext());
                     RequestQueue queue = Volley.newRequestQueue(SigninActivity.this);
                     queue.add(loginRequest);
                 } catch (IOException e) {
