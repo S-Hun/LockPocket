@@ -6,51 +6,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/btn_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintEnd_toStartOf="@+id/comTitle"
+            <RelativeLayout
+                android:id="@+id/header"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/button_back"
-                tools:ignore="MissingConstraints,VectorDrawableCompat" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="60dp">
 
-            <ImageView
-                android:id="@+id/comTitle"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="36dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/lockpocket_text" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/btn_back"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        app:srcCompat="@drawable/button_back" />
 
-            <ImageView
-                android:id="@+id/btn_heart"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="50dp"
-                app:layout_constraintStart_toEndOf="@+id/comTitle"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/button_heart"
-                tools:ignore="VectorDrawableCompat" />
+                    <ImageView
+                        android:id="@+id/title"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/lockpocket_text" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/btn_heart"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:srcCompat="@drawable/button_heart"
+                        android:layout_gravity="end"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginEnd="20dp"/>
+                </androidx.appcompat.widget.Toolbar>
+            </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="16dp"
             android:orientation="vertical">
 
             <ImageView
@@ -76,7 +76,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="30dp"
                 android:text="Id"
                 android:textSize="32sp" />
@@ -92,7 +92,7 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -101,15 +101,14 @@
 
             <Button
                 android:id="@+id/btn_download"
-                android:layout_width="300dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/sign_button_form"
                 android:text="download"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
 

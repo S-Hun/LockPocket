@@ -14,25 +14,24 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class testRequest extends StringRequest {
+public class DownloadRequest extends StringRequest {
 
     // final static private String URL;
     private Map<String, String> map;
 
-    public testRequest(String id, Response.Listener<String> listener, Context context) throws IOException {
+    public DownloadRequest(String id, Response.Listener<String> listener, Context context) throws IOException {
         super(Method.POST,
-                "http://192.168.0.12:8080/ex01.jsp", listener, new Response.ErrorListener() {
+                "http://172.30.2.65:8080/ex01.jsp", listener, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
                         Toast.makeText(context, volleyError.getMessage().toString(), Toast.LENGTH_LONG).show();
                     }
                 });
-        Log.d("Network: ", "http://192.168.0.12:8080/ex01.jsp");
 
         map = new HashMap<>();
         map.put("id", id);
-
+        map.put("accessType", "download");
     }
 
     @Override

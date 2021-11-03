@@ -27,7 +27,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LockPocket">
         <activity android:name=".SplashActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".SigninActivity"/>
         <activity android:name=".SignupActivity"
@@ -39,15 +42,9 @@
         <activity android:name=".ListTest">
 
         </activity>
-        <activity android:name=".dddddd">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".EditActivity"
             android:excludeFromRecents="true"/>
-        <activity android:name=".testActivity">
+        <activity android:name=".DownloadActivity">
 
         </activity>
         <activity android:name=".ButtonTest">
