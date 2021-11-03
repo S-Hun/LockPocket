@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private AskFragment askFragment;
     private HelpFragment helpFragment;
     private FragmentTransaction transaction;
-
     private DrawerLayout drawerLayout;
     private Context context;
     private Toolbar toolbar;

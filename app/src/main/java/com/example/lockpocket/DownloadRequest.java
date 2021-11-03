@@ -19,9 +19,9 @@ public class DownloadRequest extends StringRequest {
     // final static private String URL;
     private Map<String, String> map;
 
-    public DownloadRequest(String id, Response.Listener<String> listener, Context context) throws IOException {
+    public DownloadRequest(Response.Listener<String> listener, Context context) throws IOException {
         super(Method.POST,
-                "http://172.30.2.65:8080/ex01.jsp", listener, new Response.ErrorListener() {
+                "http://" + AppNetwork.getServerIp(context) + "/connect.jsp", listener, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
@@ -30,7 +30,6 @@ public class DownloadRequest extends StringRequest {
                 });
 
         map = new HashMap<>();
-        map.put("id", id);
         map.put("accessType", "download");
     }
 

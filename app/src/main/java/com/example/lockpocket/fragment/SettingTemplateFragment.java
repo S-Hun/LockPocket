@@ -44,6 +44,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class SettingTemplateFragment extends PreferenceFragmentCompat {
 
@@ -52,7 +54,6 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
     SwitchPreference lockToggle;
     ListPreference editTemplate;
     Preference backgroundGallery;
-    Context context;
     private final int RESULT_OK = -1;
     private final int PICK_IMAGE = 1111;
 
@@ -65,7 +66,7 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
         editTemplate = findPreference("key_edit_template");
         lockToggle = findPreference("key_lock_toggle");
         backgroundGallery = findPreference("key_background_get");
-        context = getContext();
+
         LockScreen.getInstance().init(getContext(),true);
 
         if (LockScreen.getInstance().isActive()) {
@@ -87,6 +88,11 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
         editUpload.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
+                String id = PreferenceManager.getString(getContext(), "Id");;
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                Date date = new Date();
+                String strDate = sdf.format(date);
+                String backPic = PreferenceManager.getString(getContext(), "edit_background");
                 String upload = PreferenceManager.getString(getContext(), "edit_lockscreen");
                 if(!upload.equals("")) {
                     // Network Work.
@@ -100,7 +106,6 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                                 if(success)
                                 {
                                 }
-                                //실패
                                 else
                                 {
                                     return;
@@ -114,8 +119,8 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                     // 서버로 볼리를 이용해서 요청한다.
                     UploadRequest uploadRequest = null;
                     try {
-                        uploadRequest = new UploadRequest(upload, upload, responseListener, context);
-                        RequestQueue queue = Volley.newRequestQueue(context);
+                        uploadRequest = new UploadRequest(id, strDate, upload, backPic, responseListener, getContext());
+                        RequestQueue queue = Volley.newRequestQueue(getContext());
                         queue.add(uploadRequest);
                     } catch (IOException e) {
                         e.printStackTrace();
