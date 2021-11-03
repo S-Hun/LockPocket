@@ -193,6 +193,12 @@ public class LockTable {
     public void stringToTable(String s, Size vs) { return; };
 
     public RelativeLayout getViewGroup(int type, Point vs) {
+        return getViewGroup(type, vs, 32);
+    }
+    public RelativeLayout getViewGroup(int type, Point vs, int pad) {
+        return getViewGroup(type, vs, 32, 12);
+    }
+    public RelativeLayout getViewGroup(int type, Point vs, int pad, int textSize) {
         RelativeLayout result;
         Log.d("IN LOCK", "getViewGroup");
         return null;

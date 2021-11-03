@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Size;
 import android.view.DragEvent;
@@ -21,10 +22,13 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckedTextView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.lockpocket.utils.BitmapConverter;
@@ -71,7 +75,7 @@ public class EditActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        // printViewHierarchy(navigationView, "");
+        printViewHierarchy(navigationView, "");
         ViewGroup navigationMenuView = (ViewGroup)navigationView.getChildAt(0);
         ViewGroup navigationMenuItemView;
 
@@ -93,6 +97,11 @@ public class EditActivity extends AppCompatActivity {
         for(int i=0; i<lockTableObject.tableWidget.length; i++) {
             navigationMenuItemView = (ViewGroup)navigationMenuView.getChildAt(i + 2);
             View v = navigationMenuItemView.getChildAt(0);
+            TextView tv = (TextView) navigationMenuItemView.getChildAt(0);
+            tv.setSingleLine();
+            tv.setMarqueeRepeatLimit(-1);
+            tv.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            tv.setSelected(true);
 
             v.setTag(R.string.role, "widget");
             v.setTag(R.string.role_describe, lockTableObject.tableWidget[i]);
@@ -279,19 +288,25 @@ public class EditActivity extends AppCompatActivity {
 
     public void MenuSetup() {
         Menu menu = navigationView.getMenu();
-        menu.add(Menu.NONE, Menu.NONE, Menu.NONE, "cancel");
-        menu.getItem(0).setIcon(R.drawable.decline);
+        menu.add(Menu.NONE, Menu.NONE, Menu.NONE, "닫기");
+        menu.getItem(0).setIcon(R.drawable.ic_close);
         for(int i=0; i<lockTableObject.tableWidget.length; i++) {
             menu.add(Menu.NONE, Menu.NONE, Menu.NONE, WidgetList.getName(lockTableObject.tableWidget[i]));
             menu.getItem(i+1).setIcon(WidgetList.getId(lockTableObject.tableWidget[i]).icon);
         }
 
-        navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        navigationView.post(new Runnable() {
             @Override
-            public void onGlobalLayout() {
+            public void run() {
                 onPrepareOptionsMenu(menu);
             }
         });
+//        navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                onPrepareOptionsMenu(menu);
+//            }
+//        });
     }
 
     public void WidgetSetup() {

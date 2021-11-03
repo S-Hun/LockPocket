@@ -8,4 +8,25 @@
         <item name="android:windowLightStatusBar">@color/black</item>
         <item name="android:windowLightNavigationBar">@color/black</item>
     </style>
+
+    <style name="NavigationDrawerStyle">
+        <!-- text size in menu-->
+        <item name="android:textSize">20sp</item>
+
+        <!-- item size in menu-->
+        <item name="android:listPreferredItemHeightSmall">32dp</item>
+        <item name="listPreferredItemHeightSmall">32dp</item>
+
+        <!-- item padding left in menu-->
+        <item name="android:listPreferredItemPaddingLeft">1dp</item>
+        <item name="listPreferredItemPaddingLeft">1dp</item>
+
+        <!-- item padding right in menu-->
+        <item name="android:listPreferredItemPaddingRight">1dp</item>
+        <item name="listPreferredItemPaddingRight">1dp</item>
+
+        <item name="android:ellipsize">marquee</item>
+        <item name="singleLine">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+    </style>
 </resources>

@@ -84,16 +84,23 @@ public class TableFloater {
                 int y = Integer.parseInt(info[2]);
                 int w = WidgetList.getId(type).w;
                 int h = WidgetList.getId(type).h;
-                int randNum = (int) (Math.random() * colorSet.length);
-                int color = colorRandomized(colorSet[randNum]);
+//                int randNum = (int) (Math.random() * colorSet.length);
+//                int color = colorRandomized(colorSet[randNum]);
+                LockTable pattern = new GridLock46(context, base);
 
                 int vw = size.x / 4;
                 int vh = (int) (size.y * (1/8.0));
-                View v = new View(context);
+//                View v = new View(context);
+//                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(vw * w, vh * h);
+//                params.setMargins(vw * x, vh * y, 0, 0);
+//                v.setLayoutParams(params);
+//                v.setBackgroundColor(color);
+//                table.addView(v);
+
+                ViewGroup v = pattern.getViewGroup(type, new Point(x, y), 16, 5);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(vw * w, vh * h);
                 params.setMargins(vw * x, vh * y, 0, 0);
                 v.setLayoutParams(params);
-                v.setBackgroundColor(color);
                 table.addView(v);
             }
         }

@@ -144,45 +144,44 @@ public class GridLock46 extends LockTable {
     }
 
     @Override
-    public RelativeLayout getViewGroup(int type, Point vs) {
+    public RelativeLayout getViewGroup(int type, Point vs, int pad, int textSize) {
         RelativeLayout result = new RelativeLayout(context);
-        int vpad = 0;
         if(type == 7) {
-            vpad = 32;
             result.setBackgroundResource(R.drawable.bg_widget);
             Drawable background = result.getBackground().mutate();
             setColor(background, "#33CC33");
             ImageView v1 = new ImageView(context);
             v1.setImageResource(R.drawable.ic_call);
-            v1.setPadding(vpad, vpad, vpad, vpad);
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(512, 512);
+            v1.setPadding(pad, pad, pad, pad);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             params.alignWithParent = true;
             v1.setLayoutParams(params);
             result.addView(v1);
         } else if(type == 5) {
-            vpad = 32;
             result.setBackgroundResource(R.drawable.bg_widget);
             Drawable background = result.getBackground().mutate();
             setColor(background, "#000000", 0x33);
             TextView v1 = new TextView(context);
             v1.setId(View.generateViewId());
             v1.setText("알림");
+            v1.setTextSize(textSize);
             v1.setTextColor(Color.parseColor("#ffffff"));
             v1.setTypeface(null, Typeface.BOLD);
-            v1.setPadding(vpad, vpad, 0, vpad / 2); // ltrb
+            v1.setPadding(pad, pad, 0, pad / 2); // ltrb
             View v2 = new View(context);
             v2.setId(View.generateViewId());
             v2.setBackgroundColor(Color.parseColor("#ffffff"));
             RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 3);
             params2.addRule(RelativeLayout.BELOW, v1.getId());
-            v2.setPadding(vpad, 0, vpad, vpad / 2); // ltrb
+            v2.setPadding(pad, 0, pad, pad / 2); // ltrb
             v2.setLayoutParams(params2);
             TextView v3 = new TextView(context);
             v3.setText("LockPocket 잠금화면이 실행중입니다.");
+            v3.setTextSize(textSize);
             v3.setTextColor(Color.parseColor("#ffffff"));
             RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             params3.addRule(RelativeLayout.BELOW, v2.getId());
-            v3.setPadding(vpad, 0, 0, vpad / 2); // ltrb
+            v3.setPadding(pad, 0, 0, pad / 2); // ltrb
             v3.setLayoutParams(params3);
             result.addView(v1);
             result.addView(v2);
@@ -190,7 +189,7 @@ public class GridLock46 extends LockTable {
         }
         int w = WidgetList.getId(type).w;
         int h = WidgetList.getId(type).h;
-        ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(w * vs.x - vpad, h * vs.y - vpad);
+        ViewGroup.MarginLayoutParams marginParams = new ViewGroup.MarginLayoutParams(w * vs.x - pad, h * vs.y - pad);
         result.setLayoutParams(marginParams);
         return result;
     }
