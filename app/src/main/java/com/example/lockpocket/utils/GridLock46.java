@@ -12,9 +12,11 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.util.Log;
 import android.util.Size;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,7 +35,7 @@ public class GridLock46 extends LockTable {
             state.add(0);
         widgets = new LinkedList<>();
         tableWidget = new int[]{
-                5, 7, 8, 1, 2, 4
+                5, 7, 8, 1, 2, 4, 6
         };
     }
 
@@ -187,6 +189,33 @@ public class GridLock46 extends LockTable {
             result.addView(v1);
             result.addView(v2);
             result.addView(v3);
+        } else if(type == 6) {
+            TextView v1 = new TextView(context);
+            v1.setId(View.generateViewId());
+            v1.setPadding(pad * 3, 0, 0, 0);
+            v1.setText("23");
+            v1.setTypeface(null, Typeface.BOLD);
+            v1.setTextColor(Color.parseColor("#ffffff"));
+            v1.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+            RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, vs.y - 36);
+            v1.setLayoutParams(params1);
+
+            TextView v2 = new TextView(context);
+            v2.setPadding(0, 0, pad * 3, 0);
+            v2.setGravity(Gravity.END);
+            v2.setText("59");
+            v2.setTypeface(null, Typeface.BOLD);
+            v2.setTextColor(Color.parseColor("#ffffff"));
+            v2.setAutoSizeTextTypeWithDefaults(TextView.AUTO_SIZE_TEXT_TYPE_UNIFORM);
+            RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, vs.y - 18);
+            params2.addRule(RelativeLayout.BELOW, v1.getId());
+            params2.addRule(RelativeLayout.ALIGN_PARENT_END);
+            v2.setLayoutParams(params2);
+            result.addView(v1);
+            result.addView(v2);
+
+            pad = 0;
+            vs.y += vs.y / 4;
         }
         int w = WidgetList.getId(type).w;
         int h = WidgetList.getId(type).h;

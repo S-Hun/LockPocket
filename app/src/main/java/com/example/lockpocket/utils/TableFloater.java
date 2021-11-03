@@ -75,6 +75,7 @@ public class TableFloater {
             table.setLayoutParams(tableParam);
             base.addView(table, 0);
 
+            LockTable pattern = new GridLock46(context, base);
             for(int i=1; i < list.length; i++){
                 String li = list[i];
                 if(li.equals("")) break;
@@ -86,10 +87,9 @@ public class TableFloater {
                 int h = WidgetList.getId(type).h;
 //                int randNum = (int) (Math.random() * colorSet.length);
 //                int color = colorRandomized(colorSet[randNum]);
-                LockTable pattern = new GridLock46(context, base);
 
                 int vw = size.x / 4;
-                int vh = (int) (size.y * (1/8.0));
+                int vh = (int) (size.y * (1/7.0));
 //                View v = new View(context);
 //                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(vw * w, vh * h);
 //                params.setMargins(vw * x, vh * y, 0, 0);
