@@ -1,12 +1,18 @@
 package com.example.lockpocket;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -17,9 +23,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.example.lockpocket.utils.BitmapConverter;
+import com.example.lockpocket.utils.PreferenceManager;
+import com.example.lockpocket.utils.TableFloater;
 import com.lakue.pagingbutton.LakuePagingButton;
 import com.lakue.pagingbutton.OnPageSelectListener;
+import com.example.lockpocket.utils.TableFloater;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +45,18 @@ public class CommunityActivity extends AppCompatActivity {
 
     private GridView gridView;                      // GridView 뷰
     private boolean lastItemVisibleFlag = false;    // 리스트 스크롤이 마지막 셀(맨 바닥)로 이동했는지 체크할 변수
-    private List<String> list;                      // String 데이터를 담고있는 리스트
+    private List<String> bg;
+    private List<String> id;
+    private List<String> date;
+    private List<String> ui;
     private ListViewAdapter adapter;                // 리스트뷰의 아답터
     private int page = 0;                           // 페이징변수. 초기 값은 0 이다.
     private final int OFFSET = 10;                  // 한 페이지마다 로드할 데이터 갯수.
     private boolean mLockListView = false;          // 데이터 불러올때 중복안되게 하기위한 변수
     LakuePagingButton lpb_buttonlist;
-    int pages = 1;
     int max_page = 30;
+    String arr[];
+    Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,14 +74,11 @@ public class CommunityActivity extends AppCompatActivity {
                 ConstraintLayout.LayoutParams control = (ConstraintLayout.LayoutParams) gridview.getLayoutParams();
 
 
-                int width = footer.getWidth();
+
                 int height = footer.getHeight();
 
                 gridview.setPadding(0, 0, 0, height * 2);
-                // gridview.setLayoutParams(control);
-                
 
-//리스너 제거를 위한 메소드
 
                 removeOnGlobalLayoutListener(footer.getViewTreeObserver(), mGlobalLayoutListener);
 
@@ -72,6 +90,7 @@ public class CommunityActivity extends AppCompatActivity {
         ViewGroup templateButton = findViewById(R.id.template_btn);
         ViewGroup communityButton = findViewById(R.id.community_btn);
 
+        getReponse();
         ViewGroup.OnClickListener onClickListener = new ViewGroup.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,12 +111,14 @@ public class CommunityActivity extends AppCompatActivity {
         templateButton.setOnClickListener(onClickListener);
         communityButton.setOnClickListener(onClickListener);
         gridView = (GridView) findViewById(R.id.listview);
-        list = new ArrayList<String>();
-        adapter = new ListViewAdapter(this, list);
+        ui = new ArrayList<String>();
+        date = new ArrayList<String>();
+        id = new ArrayList<String>();
+        bg = new ArrayList<String>();
+        adapter = new ListViewAdapter(this, ui, date, id, bg);
         gridView.setAdapter(adapter);
 
         lpb_buttonlist = findViewById(R.id.lpb_buttonlist);
-
         lpb_buttonlist.setPageItemCount(5);
         lpb_buttonlist.addBottomPageButton(max_page,1);
 
@@ -106,23 +127,21 @@ public class CommunityActivity extends AppCompatActivity {
             @Override
             public void onPageBefore(int now_page) {
                 lpb_buttonlist.addBottomPageButton(max_page,now_page);
-                getItem(now_page);
             }
 
             @Override
             public void onPageCenter(int now_page) {
-                getItem(now_page);
                 //  lpb_buttonlist.addBottomPageButton(max_page,page);
+                getItem(now_page);
             }
 
             //NextButton Click
             @Override
             public void onPageNext(int now_page) {
                 lpb_buttonlist.addBottomPageButton(max_page,now_page);
-                getItem(now_page);
             }
         });
-        getItem(0);
+        getItem(1);
     }
 
     public void HomeButton(){
@@ -155,20 +174,55 @@ public class CommunityActivity extends AppCompatActivity {
             observer.removeOnGlobalLayoutListener(listener);
         }
     }
-    private void getItem(int page_num){
 
-        // 리스트에 다음 데이터를 입력할 동안에 이 메소드가 또 호출되지 않도록 mLockListView 를 true로 설정한다.
-        mLockListView = true;
 
-        // 다음 20개의 데이터를 불러와서 리스트에 저장한다.
-        list.clear();
-        for(int i = 0; i < 10; i++){
-            String label = "Label " + ((page_num * OFFSET) + i);
-            list.add(label);
-        }
-        adapter.notifyDataSetChanged();
-        mLockListView = false;
-        gridView.setSelection(0);
+    private void getItem(int now_num){
+        int offset = 10;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mLockListView = true;
+                bg.clear();
+                ui.clear();
+                id.clear();
+                date.clear();
+                for(int i=4+(now_num-1) * 40; i<4+now_num * 40; i++)
+                {
+
+                    if(arr.length <= i )
+                        break;
+                    if(i % 4 == 0)
+                        id.add(arr[i]);
+                    else if(i % 4 == 1)
+                        date.add(arr[i]);
+                    else if(i % 4 == 2)
+                        ui.add(arr[i]);
+                    else {
+                        bg.add(arr[i]);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                mLockListView = false;
+                gridView.setSelection(0);
+            }
+        }, 1000);
     }
+    private void getReponse(){
 
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                arr = response.split(",");
+            }
+        };
+
+        try {
+            DownloadRequest downloadRequest = new DownloadRequest(responseListener, getApplicationContext());
+            RequestQueue queue = Volley.newRequestQueue(CommunityActivity.this);
+            queue.add(downloadRequest);
+        } catch (IOException e) {
+            Log.d("textQue: ", e.getMessage());
+        }
+
+    }
 }

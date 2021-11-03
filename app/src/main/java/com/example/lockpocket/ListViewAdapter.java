@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -95,8 +96,9 @@ public class ListViewAdapter extends BaseAdapter {
         public ViewGroup pre;
     }
     public void previewCommunity(String lock){
-        int width = 120;
-        int height = 240;
+        DisplayMetrics metrics = mcontext.getResources().getDisplayMetrics();
+        int width = metrics.widthPixels / 3;
+        int height = metrics.heightPixels / 3;
         TableFloater tf = new TableFloater(mcontext, lock);
         ViewGroup vg = tf.template(new Point(width, height));
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
