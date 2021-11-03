@@ -30,7 +30,7 @@ public class CommunityActivity extends AppCompatActivity {
     private List<String> list;                      // String 데이터를 담고있는 리스트
     private ListViewAdapter adapter;                // 리스트뷰의 아답터
     private int page = 0;                           // 페이징변수. 초기 값은 0 이다.
-    private final int OFFSET = 20;                  // 한 페이지마다 로드할 데이터 갯수.
+    private final int OFFSET = 10;                  // 한 페이지마다 로드할 데이터 갯수.
     private boolean mLockListView = false;          // 데이터 불러올때 중복안되게 하기위한 변수
     LakuePagingButton lpb_buttonlist;
     int pages = 1;
@@ -107,13 +107,11 @@ public class CommunityActivity extends AppCompatActivity {
             @Override
             public void onPageBefore(int now_page) {
                 lpb_buttonlist.addBottomPageButton(max_page,now_page);
-                Toast.makeText(CommunityActivity.this, ""+now_page, Toast.LENGTH_SHORT).show();
                 getItem(now_page);
             }
 
             @Override
             public void onPageCenter(int now_page) {
-                Toast.makeText(CommunityActivity.this, ""+now_page, Toast.LENGTH_SHORT).show();
                 getItem(now_page);
                 //  lpb_buttonlist.addBottomPageButton(max_page,page);
             }
@@ -121,7 +119,6 @@ public class CommunityActivity extends AppCompatActivity {
             //NextButton Click
             @Override
             public void onPageNext(int now_page) {
-                Toast.makeText(CommunityActivity.this, ""+now_page, Toast.LENGTH_SHORT).show();
                 lpb_buttonlist.addBottomPageButton(max_page,now_page);
                 getItem(now_page);
             }
@@ -166,7 +163,7 @@ public class CommunityActivity extends AppCompatActivity {
 
         // 다음 20개의 데이터를 불러와서 리스트에 저장한다.
         list.clear();
-        for(int i = 0; i < 20; i++){
+        for(int i = 0; i < 10; i++){
             String label = "Label " + ((page_num * OFFSET) + i);
             list.add(label);
         }

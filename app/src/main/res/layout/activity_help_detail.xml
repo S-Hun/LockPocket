@@ -7,13 +7,22 @@
 
 
     <FrameLayout
+
         android:id="@+id/help_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="화면을 터치하세요."
+            android:textSize="24sp"
+            android:textColor="#FFFF00"
+            android:layout_gravity="center_horizontal|bottom"
+            android:textStyle="bold"
+            />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

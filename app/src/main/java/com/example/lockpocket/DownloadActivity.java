@@ -1,33 +1,26 @@
 package com.example.lockpocket;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.lockpocket.account.LoginRequest;
-import com.example.lockpocket.utils.AppNetwork;
-import com.example.lockpocket.utils.PreferenceManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class testActivity extends AppCompatActivity {
+public class DownloadActivity extends AppCompatActivity {
     private Context mContext;
     EditText et_email;
     EditText et_pass;
@@ -73,8 +66,8 @@ public class testActivity extends AppCompatActivity {
 
                 try {
                     Log.d("INTERNET: ", "http://192.168.0.12:8080/ex01.jsp");
-                    testRequest testrequest = new testRequest("1", responseListener, getApplicationContext());
-                    RequestQueue queue = Volley.newRequestQueue(testActivity.this);
+                    DownloadRequest testrequest = new DownloadRequest("1", responseListener, getApplicationContext());
+                    RequestQueue queue = Volley.newRequestQueue(DownloadActivity.this);
                     queue.add(testrequest);
 
                 } catch (IOException e) {

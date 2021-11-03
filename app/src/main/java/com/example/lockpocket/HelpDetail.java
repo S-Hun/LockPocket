@@ -3,21 +3,20 @@ package com.example.lockpocket;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.lockpocket.fragment.HelpDetailFragment;
-
 public class HelpDetail extends AppCompatActivity {
     int[] arr = new int[10];
+    int pos = 0;
     private FragmentManager fragmentManager;
     private Context context;
     private FragmentTransaction transaction;
-    private HelpDetailFragment helpDetailFragment;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class HelpDetail extends AppCompatActivity {
         }
         else if(helpNum == 3)
         {
-            arr[0] = R.drawable.help_comu;
+            arr[0] = R.drawable.help_upload;
         }
         else if(helpNum == 4)
         {
@@ -50,15 +49,20 @@ public class HelpDetail extends AppCompatActivity {
         }
         else if(helpNum == 5)
         {
-            arr[0] = R.drawable.help_main;
+            arr[0] = R.drawable.help_myprofile;
         }
-        Bundle bundle = new Bundle();
-        bundle.putIntArray("pictureID", arr);
-        helpDetailFragment = new HelpDetailFragment();
-        helpDetailFragment.setArguments(bundle);
-        fragmentManager = getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.help_frame, helpDetailFragment).commitAllowingStateLoss();
+        FrameLayout layout = findViewById(R.id.help_frame);
+        layout.setBackgroundResource(arr[pos]);
+        layout.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          pos += 1;
+                                          if(arr[pos] == 0) finish();
+                                          else {
+                                              layout.setBackgroundResource(arr[pos]);
+                                          }
+                                      }
+                                  });
 
     }
 }

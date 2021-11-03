@@ -24,15 +24,25 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.example.lockpocket.EditActivity;
 import com.example.lockpocket.R;
+import com.example.lockpocket.SigninActivity;
+import com.example.lockpocket.SignupActivity;
 import com.example.lockpocket.TemplateActivity;
+import com.example.lockpocket.UploadRequest;
+import com.example.lockpocket.account.RegisterRequest;
 import com.example.lockpocket.utils.BitmapConverter;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 public class SettingTemplateFragment extends PreferenceFragmentCompat {
@@ -42,7 +52,7 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
     SwitchPreference lockToggle;
     ListPreference editTemplate;
     Preference backgroundGallery;
-
+    Context context;
     private final int RESULT_OK = -1;
     private final int PICK_IMAGE = 1111;
 
@@ -55,7 +65,7 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
         editTemplate = findPreference("key_edit_template");
         lockToggle = findPreference("key_lock_toggle");
         backgroundGallery = findPreference("key_background_get");
-
+        context = getContext();
         LockScreen.getInstance().init(getContext(),true);
 
         if (LockScreen.getInstance().isActive()) {
@@ -80,6 +90,39 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                 String upload = PreferenceManager.getString(getContext(), "edit_lockscreen");
                 if(!upload.equals("")) {
                     // Network Work.
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                boolean success = jsonObject.getBoolean("success");
+                                //성공
+                                if(success)
+                                {
+                                    Log.d("213", "success");
+                                }
+                                //실패
+                                else
+                                {
+                                    Log.d("213", "fail");
+                                    return;
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    };
+                    // 서버로 볼리를 이용해서 요청한다.
+                    UploadRequest uploadRequest = null;
+                    try {
+                        uploadRequest = new UploadRequest(upload, upload, responseListener, context);
+                        RequestQueue queue = Volley.newRequestQueue(context);
+                        queue.add(uploadRequest);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
                 return true;
             }
