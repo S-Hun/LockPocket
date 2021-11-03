@@ -53,13 +53,14 @@ public class GridLock46 extends LockTable {
     }
 
     @Override
-    public void setUpPosition(Point p, Size s, int value) {
+    public void setUpPosition(Point p, Size s, int id) {
         // disable rule here.
+        widgets.get(searchWidgetIndexWithId(id)).setPoint(p);
         for(int i=p.y; i<p.y+s.getHeight(); i++)
         {
             for(int j=p.x; j<p.x+s.getWidth(); j++)
             {
-                state.set(i*4+j, value);
+                state.set(i*4+j, id);
             }
         }
     }
@@ -90,8 +91,8 @@ public class GridLock46 extends LockTable {
                 .build();
         widget.getView().setOnLongClickListener(new WidgetLongClickListener());
 
-        setUpPosition(new Point(x, y), new Size(w,h), widget.getId());
         widgets.add(widget);
+        setUpPosition(new Point(x, y), new Size(w,h), widget.getId());
         int count = layout.getChildCount();
         layout.addView(widget.getView(), count);
         Log.d(TAG, "INSERT VIEW : [x]" + Integer.toString(x) + " [y]" + Integer.toString(y) + " [type]" + Integer.toString(type));

@@ -7,110 +7,66 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Size;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.lockpocket.lockmethod.UnlockBar;
+import com.example.lockpocket.utils.BitmapConverter;
+import com.example.lockpocket.utils.GridLock46;
+import com.example.lockpocket.utils.LockTable;
+import com.example.lockpocket.utils.PreferenceManager;
+import com.example.lockpocket.utils.TableFloater;
+
+import java.util.Date;
 
 public class LockScreenActivity extends AppCompatActivity {
     private static View[] pos;
     private SharedPreferences pref;
     private SharedPreferences.Editor editor;
-    RelativeLayout layout;
+    LinearLayout layout;
+    ImageView IV_background;
     String UI;
+
+    LockTable lockTableObject;
+    ViewGroup lockTableLayout;
 
     private int currentApiVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_lockscreen);
-        UnlockBar unlock = (UnlockBar)findViewById(R.id.unlock);
-        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        editor = pref.edit();
+        ScreenSetup();
+
         layout = findViewById(R.id.activity_lockscreen);
+        UnlockBar unlock = (UnlockBar)findViewById(R.id.unlock);
+        UI = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
 
-        /*
-        currentApiVersion = android.os.Build.VERSION.SDK_INT;
-
-        final int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN
-                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-
-        final int new_flags = Window.FEATURE_ACTION_BAR_OVERLAY;
-        final int inset_flags = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE;
-        // This work only for android 4.4+
-        if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
-        {
-
-            getWindow().getDecorView().setSystemUiVisibility(flags);
-            getWindow().getInsetsController().setSystemBarsBehavior(inset_flags);
-            // Code below is to handle presses of Volume up or Volume down.
-            // Without this, after pressing volume buttons, the navigation bar will
-            // show up and won't hide
-            final View decorView = getWindow().getDecorView();
-            decorView
-                    .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-                    {
-
-                        @Override
-                        public void onSystemUiVisibilityChange(int visibility)
-                        {
-                            if((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0)
-                            {
-                                decorView.setSystemUiVisibility(flags);
-                            }
-                        }
-                    });
-        }
-
-        */
-
-        pos = new View[]{
-                findViewById(R.id.pos1),
-                findViewById(R.id.pos2),
-                findViewById(R.id.pos3),
-                findViewById(R.id.pos4),
-                findViewById(R.id.pos5),
-                findViewById(R.id.pos6),
-                findViewById(R.id.pos7),
-                findViewById(R.id.pos8),
-                findViewById(R.id.pos9),
-                findViewById(R.id.pos10),
-                findViewById(R.id.pos11),
-                findViewById(R.id.pos12)
-        };
-
-        UI = pref.getString("UI", "ZZZZZZZZZZZZ");
-        if(UI.length() < 12) UI = "ZZZZZZZZZZZZ";
-
-        for(int i=0; i<UI.length(); i++){
-            if(UI.charAt(i)=='A') pos[i].setBackgroundColor(getResources().getColor(R.color.black));
-            else if(UI.charAt(i)=='B') pos[i].setBackgroundColor(getResources().getColor(R.color.black));
-            else if(UI.charAt(i)=='C') pos[i].setBackgroundColor(getResources().getColor(R.color.black));
-            else {
-                pos[i].setBackgroundColor(getResources().getColor(R.color.white));
-            }
-        }
+        CreateScreen();
 
         // Attach listener
         unlock.setOnUnlockListenerRight(new UnlockBar.OnUnlockListener() {
             @Override
             public void onUnlock()
             {
-                Toast.makeText(LockScreenActivity.this, "Right Action", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -120,37 +76,9 @@ public class LockScreenActivity extends AppCompatActivity {
             @Override
             public void onUnlock()
             {
-                Toast.makeText(LockScreenActivity.this, "Left Action", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
-
-
-    }
-
-    @Override
-    public void onAttachedToWindow() {
-
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|
-                WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD|
-//                WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|
-                WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-        super.onAttachedToWindow();
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        ((LockApplication) getApplication()).lockScreenShow = true;
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        ((LockApplication) getApplication()).lockScreenShow = false;
     }
 
     @Override
@@ -158,8 +86,48 @@ public class LockScreenActivity extends AppCompatActivity {
         // super.onBackPressed();
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return false;
+    void CreateScreen() {
+        RelativeLayout vg = new RelativeLayout(getApplicationContext());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+        params.weight = 6;
+        params.setMargins(0, 100, 10, 0);
+        vg.setLayoutParams(params);
+        layout.addView(vg, 0);
+        lockTableLayout = vg;
+
+        String backgroundBitmapString = PreferenceManager.getString(getApplicationContext(), "edit_background");
+        if(!backgroundBitmapString.equals("")) {
+            Bitmap bitmap = BitmapConverter.StringToBitmap(backgroundBitmapString);
+            layout.setBackground(new BitmapDrawable(getResources(), bitmap));
+        }
+        lockTableLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                lockTableSetup();
+            }
+        });
+    }
+
+    void lockTableSetup() {
+        String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
+        String[] li = template.split("/");
+        if(!template.equals("")) {
+            int height = lockTableLayout.getHeight();
+            if(li[0].equals("grid46")){
+                lockTableObject = new GridLock46(getApplicationContext(), lockTableLayout);
+                Point p = new Point(height/6, height/6);
+                lockTableObject.stringToTable(template, new Size(p.x, p.y));
+            }
+        }
+    }
+
+    void ScreenSetup() {
+        this.getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 }
