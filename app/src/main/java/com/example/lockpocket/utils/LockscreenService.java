@@ -19,6 +19,7 @@ import com.example.lockpocket.LockApplication;
 import com.example.lockpocket.LockScreenActivity;
 import com.example.lockpocket.MainActivity;
 import com.example.lockpocket.R;
+import com.example.lockpocket.SplashActivity;
 
 
 public class LockscreenService extends Service {
@@ -40,7 +41,7 @@ public class LockscreenService extends Service {
         }
     };
 
-    private void stateRecever(boolean isStartRecever) {
+    private void stateReceiver(boolean isStartRecever) {
         if (isStartRecever) {
             IntentFilter filter = new IntentFilter();
             filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -63,9 +64,9 @@ public class LockscreenService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mServiceStartId = startId;
-        stateRecever(true);
-        Intent bundleIntet = intent;
-        if (null != bundleIntet) {
+        stateReceiver(true);
+        Intent bundleIntent = intent;
+        if (null != bundleIntent) {
            // startLockscreenActivity();
             Log.d(TAG, TAG + " onStartCommand intent  existed");
         } else {
@@ -81,7 +82,7 @@ public class LockscreenService extends Service {
 
     @Override
     public void onDestroy() {
-        stateRecever(false);
+        stateReceiver(false);
         mNM.cancel(((LockApplication) getApplication()).notificationId);
     }
 
@@ -98,10 +99,10 @@ public class LockscreenService extends Service {
     private void showNotification() {
         CharSequence text = "Running";
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
+                new Intent(this, SplashActivity.class), 0);
 
         Notification notification = new Notification.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.ic_lockpocket)
                 .setTicker(text)
                 .setWhen(System.currentTimeMillis())
                 .setContentTitle(getText(R.string.app_name))

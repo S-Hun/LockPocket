@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,23 +39,25 @@ import com.example.lockpocket.utils.TableFloater;
 import java.util.Date;
 
 public class LockScreenActivity extends AppCompatActivity {
-    private static View[] pos;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
     LinearLayout layout;
-    ImageView IV_background;
     String UI;
 
     LockTable lockTableObject;
     ViewGroup lockTableLayout;
 
-    private int currentApiVersion;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lockscreen);
-        ScreenSetup();
+        // ScreenSetup();
+        this.getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
 
         layout = findViewById(R.id.activity_lockscreen);
         UnlockBar unlock = (UnlockBar)findViewById(R.id.unlock);
@@ -121,13 +124,12 @@ public class LockScreenActivity extends AppCompatActivity {
         }
     }
 
-    void ScreenSetup() {
-        this.getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    @Override
+    public void onAttachedToWindow() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|
+                WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD|
+                WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|
+                WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+        super.onAttachedToWindow();
     }
 }

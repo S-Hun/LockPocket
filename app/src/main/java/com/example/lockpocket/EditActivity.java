@@ -196,7 +196,6 @@ public class EditActivity extends AppCompatActivity {
                             draggedView.setVisibility(View.VISIBLE);
                         }
                     } else {
-                        Log.d("Sys: ", "이동 불가능한 위치");
                         if(draggedView.getTag(R.string.role) == "widget") {
                             Toast.makeText(getApplicationContext(), "배치 불가능한 위치입니다", Toast.LENGTH_SHORT).show();
                         } else if (draggedView.getTag(R.string.role) == "placed_widget") {
@@ -288,7 +287,6 @@ public class EditActivity extends AppCompatActivity {
         }
         String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
         if(!template.equals("")) {
-            Log.d("Loaded template", template);
             ViewGroup v1 = (ViewGroup) lockTableLayout.getChildAt(0);
             View v2 = v1.getChildAt(0);
             v2.post(new Runnable() {

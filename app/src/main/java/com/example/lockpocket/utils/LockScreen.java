@@ -1,16 +1,10 @@
 package com.example.lockpocket.utils;
 
 import android.app.ActivityManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Handler;
 import android.provider.Settings;
-
-import androidx.annotation.Nullable;
-
-import java.util.List;
 
 /*
  * Created by andika on 2/19/17.
@@ -42,7 +36,7 @@ public class LockScreen {
     }
 
     // 접근성 설정을 여는 함수, ()한 경우에 호출
-    private void showSettingAccesability(){
+    private void showSettingAccessibility(){
         if(!isMyServiceRunning(LockWindowAccessibilityService.class)) {
             Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
             context.startActivity(intent);
@@ -51,7 +45,7 @@ public class LockScreen {
 
     public void active(){
         if(disableHomeButton){
-            showSettingAccesability();
+            showSettingAccessibility();
         }
         if(context!=null) {
             context.startService(new Intent(context, LockscreenService.class));

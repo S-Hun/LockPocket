@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -67,13 +68,11 @@ public class CommunityActivity extends AppCompatActivity {
 
         };
         footer.getViewTreeObserver().addOnGlobalLayoutListener(mGlobalLayoutListener);
-        ImageButton homeButton = (ImageButton) findViewById(R.id.home_btn);
-        ImageButton templateButton = (ImageButton) findViewById(R.id.template_btn);
-        ImageButton communityButton = (ImageButton) findViewById(R.id.community_btn);
+        ViewGroup homeButton = findViewById(R.id.home_btn);
+        ViewGroup templateButton = findViewById(R.id.template_btn);
+        ViewGroup communityButton = findViewById(R.id.community_btn);
 
-
-
-        ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
+        ViewGroup.OnClickListener onClickListener = new ViewGroup.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {

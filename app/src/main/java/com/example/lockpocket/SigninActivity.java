@@ -91,6 +91,8 @@ public class SigninActivity extends AppCompatActivity {
                                 Intent intent = new Intent(SigninActivity.this, MainActivity.class);
                                 PreferenceManager.setString(mContext, "Id", userID);
                                 PreferenceManager.setString(mContext, "userName", userName);
+                                PreferenceManager.setString(mContext, "edit_lockscreen", ui);
+                                PreferenceManager.setString(mContext, "edit_background", background);
                                 startActivity(intent);
                                 finish();
                             }

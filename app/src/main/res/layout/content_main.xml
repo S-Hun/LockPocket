@@ -58,33 +58,68 @@
         android:paddingTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/white">
-
-        <ImageButton
+        <LinearLayout
             android:id="@+id/home_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="@id/template_btn"
-            android:layout_marginRight="90dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_home"/>
+            android:layout_marginEnd="100dp"
+            android:layout_width="52dp"
+            android:layout_height="68dp"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/bg_home"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="홈화면"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
 
-        <ImageButton
+        <LinearLayout
             android:id="@+id/template_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_edit"/>
+            android:layout_width="52dp"
+            android:layout_height="68dp"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/bg_edit"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="편집"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
 
-        <ImageButton
+        <LinearLayout
             android:id="@+id/community_btn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/template_btn"
-            android:layout_marginLeft="90dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_share"/>
+            android:layout_marginStart="100dp"
+            android:layout_width="52dp"
+            android:layout_height="68dp"
+            android:orientation="vertical">
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/bg_share"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="커뮤니티"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

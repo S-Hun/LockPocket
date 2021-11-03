@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +14,29 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.example.lockpocket.account.LoginRequest;
+import com.example.lockpocket.account.LogoutRequest;
 import com.example.lockpocket.fragment.AskFragment;
 import com.example.lockpocket.fragment.HelpFragment;
 import com.example.lockpocket.fragment.HomeFragment;
+import com.example.lockpocket.utils.AppNetwork;
 import com.example.lockpocket.utils.Encryption;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
 import com.google.android.material.navigation.NavigationView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         androidx.preference.PreferenceManager.setDefaultValues(this, R.xml.settings_template, false);
-        Log.d("Encryption test", Encryption.SHA1("1234"));
+
 
         context = this;
 
@@ -88,6 +101,27 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(id == R.id.nav_logout){
                     Toast.makeText(context, "로그아웃하였습니다.", Toast.LENGTH_SHORT).show();
+
+                    String userID = PreferenceManager.getString(getApplicationContext(), "Id");
+                    String ui = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
+                    String bg = PreferenceManager.getString(getApplicationContext(), "edit_background");
+                    Log.i("GetID", userID);
+                    Log.i("GetBG", bg);
+                    Log.i("GetLS", ui);
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Log.i("LogoutReq", response);
+                        }
+                    };
+                    try {
+                        LogoutRequest logoutRequest = new LogoutRequest(userID, ui, bg, responseListener, getApplicationContext());
+                        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                        queue.add(logoutRequest);
+                    } catch (IOException e) {
+                        Log.d("LogoutReq: ", e.getMessage());
+                    }
+
                     PreferenceManager.clear(getApplicationContext());
                     Intent ToLogin = new Intent(getApplicationContext(), SigninActivity.class);
                     ToLogin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -107,10 +141,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton homeButton = (ImageButton) findViewById(R.id.home_btn);
-        ImageButton templateButton = (ImageButton) findViewById(R.id.template_btn);
-        ImageButton communityButton = (ImageButton) findViewById(R.id.community_btn);
-        ImageButton.OnClickListener onClickListener = new ImageButton.OnClickListener() {
+        ViewGroup homeButton = findViewById(R.id.home_btn);
+        ViewGroup templateButton = findViewById(R.id.template_btn);
+        ViewGroup communityButton = findViewById(R.id.community_btn);
+        ViewGroup.OnClickListener onClickListener = new ViewGroup.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
