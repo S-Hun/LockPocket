@@ -2,12 +2,22 @@ package com.example.lockpocket;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.lockpocket.utils.BitmapConverter;
+import com.example.lockpocket.utils.PreferenceManager;
+import com.example.lockpocket.utils.TableFloater;
 
 import java.util.List;
 
@@ -17,17 +27,23 @@ import java.util.List;
 public class ListViewAdapter extends BaseAdapter {
     private LayoutInflater inflate;
     private ViewHolder viewHolder;
-    private List<String> list;
-    private Context mcontext;
-
-    public ListViewAdapter(Context context, List<String> list){
+    private List<String> ui;
+    private List<String> date;
+    private List<String> id;
+    private List<String> bg;
+    Context mcontext;
+    public ListViewAdapter(Context context, List<String> ui, List<String> date, List<String> id, List<String> bg){
         // MainActivity 에서 데이터 리스트를 넘겨 받는다.
-        this.list = list;
+        this.ui = ui;
+        this.date = date;
+        this.id = id;
+        this.bg = bg;
         this.inflate = LayoutInflater.from(context);
+        mcontext = context;
     }
     @Override
     public int getCount() {
-        return list.size();
+        return ui.size();
     }
 
     @Override
@@ -45,8 +61,9 @@ public class ListViewAdapter extends BaseAdapter {
         if(convertView == null){
             convertView = inflate.inflate(R.layout.row_listview,null);
             viewHolder = new ViewHolder();
-            viewHolder.label = (TextView) convertView.findViewById(R.id.label);
-            viewHolder.creator = (TextView) convertView.findViewById(R.id.creator);
+            viewHolder.id = (TextView) convertView.findViewById(R.id.who_id);
+            viewHolder.date = (TextView) convertView.findViewById(R.id.date);
+            viewHolder.pre = (FrameLayout) convertView.findViewById(R.id.view_image);
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
@@ -62,16 +79,34 @@ public class ListViewAdapter extends BaseAdapter {
 
             }
         });
-
+        Log.d("ids", "va" + viewHolder.id.getText());
+        Log.d("dates", "va" + viewHolder.date.getText());
         // 각 셀에 넘겨받은 텍스트 데이터를 넣는다.
-        viewHolder.label.setText( list.get(position) );
-        viewHolder.creator.setText(list.get(position));
+        viewHolder.id.setText( id.get(position) );
+        viewHolder.date.setText(date.get(position));
+        String lock = ui.get(position);
+        previewCommunity(lock);
         return convertView;
     }
 
     class ViewHolder{
-        public TextView label;
-        public TextView creator;
-        public ImageView imageview;
+        public TextView id;
+        public TextView date;
+        public ViewGroup pre;
+    }
+    public void previewCommunity(String lock){
+        int width = 120;
+        int height = 240;
+        TableFloater tf = new TableFloater(mcontext, lock);
+        ViewGroup vg = tf.template(new Point(width, height));
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
+        params.setMarginStart((int) (width / 3.5));
+        vg.setLayoutParams(params);
+        String backgroundBitmap = PreferenceManager.getString(mcontext, "edit_background");
+        if(!backgroundBitmap.equals("")) {
+            Bitmap bitmap = BitmapConverter.StringToBitmap(backgroundBitmap);
+            vg.setBackground(new BitmapDrawable(mcontext.getResources(), bitmap));
+        }
+        viewHolder.pre.addView(vg);
     }
 }

@@ -33,9 +33,6 @@
         <activity android:name=".TemplateActivity"/>
         <activity android:name=".CommunityActivity"/>
         <activity android:name=".HelpDetail"></activity>
-        <activity android:name=".ListTest">
-
-        </activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,9 +41,7 @@
         </activity>
         <activity android:name=".EditActivity"
             android:excludeFromRecents="true"/>
-        <activity android:name=".testActivity">
 
-        </activity>
         <activity android:name=".ButtonTest">
 
         </activity>
