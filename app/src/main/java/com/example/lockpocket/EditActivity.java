@@ -19,6 +19,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -52,6 +54,9 @@ public class EditActivity extends AppCompatActivity {
     ViewGroup lockTableLayout;
     LockTable lockTableObject;
     ImageView IV_background;
+    ImageView IV_remove;
+    Animation appear_remove_anim;
+    Animation disappear_remove_anim;
     ArrayList<ViewGroup> widgetFrame;
 
     @Override
@@ -64,6 +69,9 @@ public class EditActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_main);
         mainLayout = findViewById(R.id.main);
+        IV_remove = findViewById(R.id.remove_place);
+        appear_remove_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.appear_remove_space);
+        disappear_remove_anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.disappear_remove_space);
         LockTableSetup();
 
         navigationView = findViewById(R.id.nav_view);
@@ -147,11 +155,9 @@ public class EditActivity extends AppCompatActivity {
         @Override
         public boolean onDrag(View placedView, DragEvent event) {
             View draggedView = (View) event.getLocalState();
-            int place_num = (int) placedView.getTag(R.string.role_describe);
-            int type = (int) draggedView.getTag(R.string.role_describe);
-            int id = draggedView.getId();
             switch(event.getAction()){
                 case DragEvent.ACTION_DRAG_STARTED:
+                    IV_remove.startAnimation(appear_remove_anim);
                     Log.d("DragClickListener", "ACTION_DRAG_STARTED");
                     break;
 
@@ -164,6 +170,14 @@ public class EditActivity extends AppCompatActivity {
                     break;
 
                 case DragEvent.ACTION_DROP:
+                    if(placedView.getTag(R.string.role) == "remove") {
+                        draggedView.setVisibility(View.VISIBLE);
+                        lockTableObject.removeWidget(draggedView.getId());
+                        break;
+                    }
+                    int place_num = (int) placedView.getTag(R.string.role_describe);
+                    int type = (int) draggedView.getTag(R.string.role_describe);
+                    int id = draggedView.getId();
                     if(lockTableObject.checkPosition(new Point(place_num%4, place_num/4), new Size(WidgetList.getId(type).w, WidgetList.getId(type).h), id)) { // Move placed widget // original : placedView.getTag(R.string.role) == "place"
                         if(draggedView.getTag(R.string.role) == "widget") {
                             int W = placedView.getWidth();
@@ -198,6 +212,7 @@ public class EditActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "화면을 벗어났습니다", Toast.LENGTH_SHORT).show();
                         draggedView.setVisibility(View.VISIBLE);
                     }
+                    IV_remove.startAnimation(disappear_remove_anim);
                     Log.d("DragClickListener", "ACTION_DRAG_ENDED");
 
                 default:
@@ -284,6 +299,8 @@ public class EditActivity extends AppCompatActivity {
                 }
             });
         }
+        IV_remove.setTag(R.string.role, "remove");
+        IV_remove.setOnDragListener(new MenuDragListener());
     }
 
     public void MenuSetup() {
@@ -301,12 +318,6 @@ public class EditActivity extends AppCompatActivity {
                 onPrepareOptionsMenu(menu);
             }
         });
-//        navigationView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                onPrepareOptionsMenu(menu);
-//            }
-//        });
     }
 
     public void WidgetSetup() {

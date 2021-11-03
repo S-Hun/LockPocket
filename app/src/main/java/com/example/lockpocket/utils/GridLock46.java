@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.lockpocket.EditActivity;
 import com.example.lockpocket.R;
 
 import java.util.Iterator;
@@ -32,7 +33,7 @@ public class GridLock46 extends LockTable {
             state.add(0);
         widgets = new LinkedList<>();
         tableWidget = new int[]{
-                5, 7
+                5, 7, 8, 1, 2, 4
         };
     }
 
@@ -101,8 +102,7 @@ public class GridLock46 extends LockTable {
         // id from param of view.getId()
         int idx = searchWidgetIndexWithId(id);
         widgets.remove(idx);
-        int count = layout.getChildCount();
-        layout.removeViewAt(count + idx);
+        layout.removeView(layout.findViewById(id));
 
         clearPosition(id, 0);
 
@@ -146,12 +146,12 @@ public class GridLock46 extends LockTable {
     @Override
     public RelativeLayout getViewGroup(int type, Point vs, int pad, int textSize) {
         RelativeLayout result = new RelativeLayout(context);
-        if(type == 7) {
+        if(type == 7 || type == 8 || type == 1 || type == 2 || type == 4) {
             result.setBackgroundResource(R.drawable.bg_widget);
             Drawable background = result.getBackground().mutate();
-            setColor(background, "#33CC33");
+            setColor(background, WidgetList.getId(type).color);
             ImageView v1 = new ImageView(context);
-            v1.setImageResource(R.drawable.ic_call);
+            v1.setImageResource(WidgetList.getId(type).icon);
             v1.setPadding(pad, pad, pad, pad);
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             params.alignWithParent = true;
@@ -204,6 +204,8 @@ public class GridLock46 extends LockTable {
             ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
             CustomDragShadowBuilder shadowBuilder = new CustomDragShadowBuilder(v);
 
+
+
             v.startDrag(data,
                     shadowBuilder,
                     v,
@@ -218,22 +220,23 @@ public class GridLock46 extends LockTable {
     void setColor(Drawable background, String color) {
         setColor(background, color, 0xff);
     }
-
-    void setColor(Drawable background, String color, int alpha) {
+    void setColor(Drawable background, String color, int alpha) { setColor(background, Color.parseColor(color), alpha); }
+    void setColor(Drawable background, int color) { setColor(background, color, 0xff); }
+    void setColor(Drawable background, int color, int alpha) {
         if (background instanceof ShapeDrawable) {
             // cast to 'ShapeDrawable'
             ShapeDrawable shapeDrawable = (ShapeDrawable) background;
-            shapeDrawable.getPaint().setColor(Color.parseColor(color));
+            shapeDrawable.getPaint().setColor(color);
             shapeDrawable.getPaint().setAlpha(alpha);
         } else if (background instanceof GradientDrawable) {
             // cast to 'GradientDrawable'
             GradientDrawable gradientDrawable = (GradientDrawable) background;
-            gradientDrawable.setColor(Color.parseColor(color));
+            gradientDrawable.setColor(color);
             gradientDrawable.setAlpha(alpha);
         } else if (background instanceof ColorDrawable) {
             // alpha value may need to be set again after this call
             ColorDrawable colorDrawable = (ColorDrawable) background;
-            colorDrawable.setColor(Color.parseColor(color));
+            colorDrawable.setColor(color);
             colorDrawable.setAlpha(alpha);
         }
     }

@@ -1,11 +1,14 @@
 package com.example.lockpocket.utils;
 
+import android.graphics.Color;
+
 import com.example.lockpocket.R;
 
 public class WidgetList {
     public static class Type {
-        final public int w, h, attr, icon;
-        Type(int _w, int _h, int _attr, int _icon) { w = _w; h = _h; attr = _attr; icon = _icon; }
+        final public int w, h, attr, icon, color;
+        Type(int _w, int _h, int _attr, int _icon, int _color) { w = _w; h = _h; attr = _attr; icon = _icon; color = _color; }
+        Type(int _w, int _h, int _attr, int _icon, String _color) { w = _w; h = _h; attr = _attr; icon = _icon; color = Color.parseColor(_color); }
     }
     // TYPE MAX 127
     public static final byte WG_WIFI = 1;
@@ -17,14 +20,14 @@ public class WidgetList {
     public static final byte WG_CALL = 7;
     public static final byte WG_CAMERA = 8;
 
-    public static final Type WIFI = new Type(1, 1, 0, R.drawable.ic_wifi);
-    public static final Type DATA = new Type(1, 1, 0, R.drawable.ic_sync_alt);
-    public static final Type PLANE = new Type(1, 1, 0, R.drawable.ic_flight);
-    public static final Type FLASH = new Type(1, 1, 0, R.drawable.ic_flashlight);
-    public static final Type NOTIFICATION = new Type(4, 2, 0, R.drawable.ic_notifications);
-    public static final Type CLOCK = new Type(2, 2, 0, R.drawable.ic_watch);
-    public static final Type CALL = new Type(1, 1, 0, R.drawable.ic_call);
-    public static final Type CAMERA = new Type(1, 1, 0, R.drawable.ic_photo_camera);
+    public static final Type WIFI = new Type(1, 1, 0, R.drawable.ic_wifi, "#3A7CA5");
+    public static final Type DATA = new Type(1, 1, 0, R.drawable.ic_sync_alt, "#C6AC8F");
+    public static final Type PLANE = new Type(1, 1, 0, R.drawable.ic_flight, "#3F84E5");
+    public static final Type FLASH = new Type(1, 1, 0, R.drawable.ic_flashlight, "#0F1A20");
+    public static final Type NOTIFICATION = new Type(4, 2, 0, R.drawable.ic_notifications, "#00000000");
+    public static final Type CLOCK = new Type(2, 2, 0, R.drawable.ic_watch, "#00000000");
+    public static final Type CALL = new Type(1, 1, 0, R.drawable.ic_call, "#33CC33");
+    public static final Type CAMERA = new Type(1, 1, 0, R.drawable.ic_photo_camera, "#F42C04");
 
     public static String getName(int type){
         if(type == 1) return "[1X1]WIFI";
@@ -47,6 +50,6 @@ public class WidgetList {
         else if(type == 6) return CLOCK;
         else if(type == 7) return CALL;
         else if(type == 8) return CAMERA;
-        else return new Type(0, 0, 0, R.drawable.ic_launcher_foreground);
+        else return new Type(0, 0, 0, R.drawable.ic_launcher_foreground, "#00000000");
     }
 }
