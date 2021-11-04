@@ -1,5 +1,6 @@
 package com.example.lockpocket;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -12,6 +13,8 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.util.Size;
 import android.view.Gravity;
@@ -27,6 +30,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lockpocket.lockmethod.UnlockBar;
@@ -36,6 +40,7 @@ import com.example.lockpocket.utils.LockTable;
 import com.example.lockpocket.utils.PreferenceManager;
 import com.example.lockpocket.utils.TableFloater;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class LockScreenActivity extends AppCompatActivity {
@@ -44,7 +49,7 @@ public class LockScreenActivity extends AppCompatActivity {
 
     LockTable lockTableObject;
     ViewGroup lockTableLayout;
-
+    ProgressHandler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,10 +114,11 @@ public class LockScreenActivity extends AppCompatActivity {
                 lockTableSetup();
             }
         });
+
     }
 
     void lockTableSetup() {
-        String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
+        String template = PreferenceManager.getString(getApplicationContext(), "edit_leockscren");
         String[] li = template.split("/");
         if(!template.equals("")) {
             int height = lockTableLayout.getHeight();
@@ -120,13 +126,63 @@ public class LockScreenActivity extends AppCompatActivity {
                 lockTableObject = new GridLock46(getApplicationContext(), lockTableLayout);
                 Point p = new Point(height/6, height/6);
                 lockTableObject.stringToTable(template, new Size(p.x, p.y));
-                lockTableObject.disableListener();
-                printViewHierarchy(lockTableLayout, "");
             }
         }
-//        for(int i=0; i<lockTableLayout. )
+        Clockget();
     }
 
+    TextView tv1 = null;
+    TextView tv2 = null;
+    String Hour;
+    String Min;
+    public void Clockget(){
+        SimpleDateFormat hour = new SimpleDateFormat("HH");
+        SimpleDateFormat min = new SimpleDateFormat("mm");
+        Log.d("hour", "a" + hour);
+        Log.d("hour", "a" + min);
+        for(int i=0; i<lockTableLayout.getChildCount(); i++)
+        {
+            if(lockTableLayout.getChildAt(i).getTag().equals("click"))
+            {
+                ViewGroup vg = (ViewGroup)lockTableLayout.getChildAt(i);
+                tv1 = (TextView) vg.getChildAt(0);
+                tv1 = (TextView) vg.getChildAt(1);
+
+            }
+        }
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true) {
+                    try {
+                        Hour = hour.format(new Date(System.currentTimeMillis()));
+                        Min = min.format(new Date(System.currentTimeMillis()));
+                        Log.d("ss", Min);
+                        Message message = handler.obtainMessage();
+                        handler.sendMessage(message);
+                        Log.d("hour", Hour);
+                        Log.d("min", Min);
+
+                        Thread.sleep(60000);
+                    } catch (InterruptedException ex) {
+
+                    }
+                }
+            }
+        });
+        thread.start();
+    }
+    class ProgressHandler extends Handler {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+
+            tv1.setText(Hour);
+            tv2.setText(Min);
+            Log.d("hour", "a" + tv1);
+            Log.d("hour", "a" + tv2);
+        }
+    }
     @Override
     public void onAttachedToWindow() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|
@@ -134,19 +190,5 @@ public class LockScreenActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         super.onAttachedToWindow();
-    }
-
-
-
-    public static void printViewHierarchy(ViewGroup vg, String prefix) {
-        for (int i = 0; i < vg.getChildCount(); i++) {
-            View v = vg.getChildAt(i);
-            String desc = prefix + " | " + "[" + i + "/" + (vg.getChildCount()-1) + "] "+ v.getClass().getSimpleName() + " " + v.getId() + " " + v.getTag();
-            Log.v("x", desc);
-
-            if (v instanceof ViewGroup) {
-                printViewHierarchy((ViewGroup)v, desc);
-            }
-        }
     }
 }
