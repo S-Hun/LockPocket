@@ -31,6 +31,8 @@ import com.example.lockpocket.utils.AppNetwork;
 import com.example.lockpocket.utils.Encryption;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
+import com.example.lockpocket.widgets.CustomNotificationListener;
+import com.example.lockpocket.widgets.NotificationService;
 import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONException;
@@ -38,7 +40,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CustomNotificationListener {
 
     private FragmentManager fragmentManager;
     private HomeFragment homeFragment;
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentTransaction transaction;
     private DrawerLayout drawerLayout;
     private Context context;
-    private Toolbar toolbar;
 
     private View drawerButton;
 
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         androidx.preference.PreferenceManager.setDefaultValues(this, R.xml.settings_template, false);
+        new NotificationService().setListener(this);
 
         context = this;
 
@@ -179,4 +181,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void setValue(String packageName) {
+        // nothing to do.
+    }
 }
