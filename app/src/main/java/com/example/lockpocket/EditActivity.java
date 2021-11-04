@@ -170,7 +170,8 @@ public class EditActivity extends AppCompatActivity {
                     break;
 
                 case DragEvent.ACTION_DROP:
-                    if(draggedView.getTag(R.string.role) == "placed_widget" && placedView.getTag(R.string.role) == "remove") {
+                    if(draggedView.getTag(R.string.role) == "widget" && placedView.getTag(R.string.role) == "remove") break;
+                    else if(draggedView.getTag(R.string.role) == "placed_widget" && placedView.getTag(R.string.role) == "remove") {
                         draggedView.setVisibility(View.VISIBLE);
                         lockTableObject.removeWidget(draggedView.getId());
                         break;

@@ -191,6 +191,7 @@ public class LockTable {
     public String tableToString() { return ""; }
     public View stringToWidget(String s) { return null; }
     public void stringToTable(String s, Size vs) { return; };
+    public void disableListener() { for(Widget w : widgets) w.getView().setOnLongClickListener(null); }
 
     public RelativeLayout getViewGroup(int type, Point vs) {
         return getViewGroup(type, vs, 32);

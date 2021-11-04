@@ -82,18 +82,23 @@ public class TemplateActivity extends AppCompatActivity {
 
     void placePreview() {
         ViewGroup preview = findViewById(R.id.preview);
-        int width = (int) (getWindowManager().getDefaultDisplay().getWidth() * (1.0/4));
-        int height = (int) (getWindowManager().getDefaultDisplay().getHeight() * (1.0/4.0));
-        TableFloater tf = new TableFloater(getApplicationContext(), template);
-        ViewGroup vg = tf.template(new Point(width, height), 24);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
-        params.gravity = Gravity.CENTER;
-        vg.setLayoutParams(params);
-        String backgroundBitmapString = PreferenceManager.getString(getApplicationContext(), "edit_background");
-        if(!backgroundBitmapString.equals("")) {
-            Bitmap bitmap = BitmapConverter.StringToBitmap(backgroundBitmapString);
-            vg.setBackground(new BitmapDrawable(getResources(), bitmap));
-        }
-        preview.addView(vg);
+        preview.post(new Runnable() {
+            @Override
+            public void run() {
+                int width = (int) (preview.getHeight() * (1.8/3));
+                int height = preview.getHeight();
+                TableFloater tf = new TableFloater(getApplicationContext(), template);
+                ViewGroup vg = tf.template(new Point(width, height), 24);
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
+                params.gravity = Gravity.CENTER;
+                vg.setLayoutParams(params);
+                String backgroundBitmapString = PreferenceManager.getString(getApplicationContext(), "edit_background");
+                if(!backgroundBitmapString.equals("")) {
+                    Bitmap bitmap = BitmapConverter.StringToBitmap(backgroundBitmapString);
+                    vg.setBackground(new BitmapDrawable(getResources(), bitmap));
+                }
+                preview.addView(vg);
+            }
+        });
     }
 }

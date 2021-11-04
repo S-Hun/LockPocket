@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -96,13 +97,11 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     public void previewCommunity(String lock, String background){
-        DisplayMetrics metrics = mcontext.getResources().getDisplayMetrics();
-        int width = metrics.widthPixels / 3;
-        int height = metrics.heightPixels / 3;
+        int height = mcontext.getDisplay().getHeight()/3;
+        int width = (int) (height * (2.0/3));
         TableFloater tf = new TableFloater(mcontext, lock);
         ViewGroup vg = tf.template(new Point(width, height));
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
-        params.setMarginStart((int) (width / 3.5));
         vg.setLayoutParams(params);
         String backgroundBitmap = background;
         if(!backgroundBitmap.equals("")) {

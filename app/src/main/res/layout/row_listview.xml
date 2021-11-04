@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical" android:layout_width="190dp"
+    android:layout_height="300dp">
 
     <!--GridView의 각 셀에 데이터가 들어갈 텍스트 라벨-->
-    <LinearLayout
-        android:layout_width="190dp"
-        android:layout_height="300dp"
-        android:orientation="vertical"
+    <FrameLayout
+        android:id="@+id/view_image"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_gravity="center_horizontal">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/who_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        >
-        <FrameLayout
-            android:id="@+id/view_image"
-            android:layout_width="wrap_content"
-            android:layout_height="240dp">
-
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/who_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#ffffff"
-            android:layout_marginTop="2dp"
-            android:text="test"
-            android:textColor="#000000"
-            android:textSize="20dp" />
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#ffffff"
-            android:layout_marginTop="2dp"
-            android:text="Who"
-            android:textColor="#000000"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-
-
+        android:background="#ffffff"
+        android:layout_marginTop="2dp"
+        android:text="test"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#ffffff"
+        android:layout_marginTop="2dp"
+        android:text="Who"
+        android:textColor="#000000"
+        android:textSize="20dp" />
 
 </LinearLayout>

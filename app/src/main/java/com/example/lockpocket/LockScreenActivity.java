@@ -112,7 +112,7 @@ public class LockScreenActivity extends AppCompatActivity {
     }
 
     void lockTableSetup() {
-        String template = PreferenceManager.getString(getApplicationContext(), "edit_leockscren");
+        String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
         String[] li = template.split("/");
         if(!template.equals("")) {
             int height = lockTableLayout.getHeight();
@@ -120,8 +120,11 @@ public class LockScreenActivity extends AppCompatActivity {
                 lockTableObject = new GridLock46(getApplicationContext(), lockTableLayout);
                 Point p = new Point(height/6, height/6);
                 lockTableObject.stringToTable(template, new Size(p.x, p.y));
+                lockTableObject.disableListener();
+                printViewHierarchy(lockTableLayout, "");
             }
         }
+//        for(int i=0; i<lockTableLayout. )
     }
 
     @Override
@@ -131,5 +134,19 @@ public class LockScreenActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         super.onAttachedToWindow();
+    }
+
+
+
+    public static void printViewHierarchy(ViewGroup vg, String prefix) {
+        for (int i = 0; i < vg.getChildCount(); i++) {
+            View v = vg.getChildAt(i);
+            String desc = prefix + " | " + "[" + i + "/" + (vg.getChildCount()-1) + "] "+ v.getClass().getSimpleName() + " " + v.getId() + " " + v.getTag();
+            Log.v("x", desc);
+
+            if (v instanceof ViewGroup) {
+                printViewHierarchy((ViewGroup)v, desc);
+            }
+        }
     }
 }

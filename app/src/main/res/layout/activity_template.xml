@@ -38,28 +38,33 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <FrameLayout
-        android:id="@+id/preview"
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/header"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toBottomOf="@id/header">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            app:layout_constraintTop_toBottomOf="@id/header">
+            <View
+                android:background="@drawable/bg_shadow_top"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_gravity="center_horizontal|bottom"/>
+        </FrameLayout>
 
-    <View
-        app:layout_constraintBottom_toTopOf="@id/template_setting"
-        android:background="@drawable/bg_shadow_top"
-        android:layout_width="match_parent"
-        android:layout_height="6dp"/>
-
-    <fragment
-        android:id="@+id/template_setting"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:name="com.example.lockpocket.fragment.SettingTemplateFragment"
-        app:layout_constraintTop_toBottomOf="@id/preview"
-        app:layout_constraintBottom_toTopOf="@id/footer"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"/>
+        <fragment
+            android:id="@+id/template_setting"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:name="com.example.lockpocket.fragment.SettingTemplateFragment"
+            android:layout_marginBottom="200dp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/footer"
