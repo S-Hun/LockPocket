@@ -4,12 +4,14 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
     android:id="@+id/fragment_home">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>

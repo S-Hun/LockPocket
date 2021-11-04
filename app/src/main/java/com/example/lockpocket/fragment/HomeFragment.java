@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
 
         ArrayList<DataPage> list = new ArrayList<>();
         list.add(new DataPage(R.drawable.test_bg3,""));
-        list.add(new DataPage(R.drawable.test_image2, ""));
 
         viewPager2.setAdapter(new ViewPagerAdapter(list));
 
