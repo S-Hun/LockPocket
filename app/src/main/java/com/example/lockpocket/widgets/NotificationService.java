@@ -28,7 +28,9 @@ public class NotificationService extends NotificationListenerService {
         String text = sbn.getNotification().extras.getString("android.text");
         String package_name = sbn.getPackageName();
 
-        customNotificationListener.setValue("Post: " + title + "\n" + text);
+        if(!title.equals("null") && !text.equals("null")) {
+            customNotificationListener.setValue(sbn.getPackageName() + " |" + title + ": " + text);
+        }
     }
 
     @Override
@@ -41,7 +43,7 @@ public class NotificationService extends NotificationListenerService {
         String text = sbn.getNotification().extras.getString("android.text");
         String package_name = sbn.getPackageName();
 
-        customNotificationListener.setValue("Post: " + title + "\n" + text);
+        // customNotificationListener.setValue("Post: " + title + "\n" + text);
     }
 
     public void setListener(CustomNotificationListener customNotificationListener) {

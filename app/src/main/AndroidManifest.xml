@@ -54,7 +54,15 @@
         <activity android:name=".CommunityDetail"/>
         <service android:name="com.example.lockpocket.utils.LockscreenService" >
         </service>
-
+        <service
+            android:name = ".widgets.NotificationService"
+            android:label = "@string/app_name"
+            android:permission = "android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            <intent-filter>
+                <action
+                    android:name = "android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
         <service
             android:name="com.example.lockpocket.utils.LockWindowAccessibilityService"
             android:label="@string/app_name"

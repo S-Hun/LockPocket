@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         androidx.preference.PreferenceManager.setDefaultValues(this, R.xml.settings_template, false);
 
-
         context = this;
 
         fragmentManager = getSupportFragmentManager();
@@ -96,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.task_frame, helpFragment).commitAllowingStateLoss();
                 }
                 else if(id == R.id.nav_setting){
-                    Toast.makeText(context, title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "잠금화면에서 알림을 받을 수 있도록 알림 가져오기 설정을 허용해주세요", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS" ) ; // NEED PERMISSION
+                    startActivity(intent) ;
                 }
                 else if(id == R.id.nav_logout){
                     Toast.makeText(context, "로그아웃하였습니다.", Toast.LENGTH_SHORT).show();

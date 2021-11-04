@@ -39,17 +39,18 @@ import com.example.lockpocket.utils.GridLock46;
 import com.example.lockpocket.utils.LockTable;
 import com.example.lockpocket.utils.PreferenceManager;
 import com.example.lockpocket.utils.TableFloater;
+import com.example.lockpocket.widgets.CustomNotificationListener;
+import com.example.lockpocket.widgets.NotificationService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LockScreenActivity extends AppCompatActivity {
+public class LockScreenActivity extends AppCompatActivity implements CustomNotificationListener {
     LinearLayout layout;
     String UI;
 
     LockTable lockTableObject;
     ViewGroup lockTableLayout;
-    ProgressHandler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +119,7 @@ public class LockScreenActivity extends AppCompatActivity {
     }
 
     void lockTableSetup() {
-        String template = PreferenceManager.getString(getApplicationContext(), "edit_leockscren");
+        String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
         String[] li = template.split("/");
         if(!template.equals("")) {
             int height = lockTableLayout.getHeight();
@@ -126,11 +127,33 @@ public class LockScreenActivity extends AppCompatActivity {
                 lockTableObject = new GridLock46(getApplicationContext(), lockTableLayout);
                 Point p = new Point(height/6, height/6);
                 lockTableObject.stringToTable(template, new Size(p.x, p.y));
+                lockTableObject.disableListener();
             }
         }
+        printViewHierarchy(lockTableLayout, "");
+        NotificationGet();
         Clockget();
     }
 
+    TextView tv = null;
+    public void NotificationGet() {
+        for(int i=0; i<lockTableLayout.getChildCount(); i++)
+        {
+            if(lockTableLayout.getChildAt(i).getTag().equals("notification"))
+            {
+                ViewGroup vg = (ViewGroup)lockTableLayout.getChildAt(i);
+                tv = (TextView) vg.getChildAt(2);
+            }
+        }
+        new NotificationService().setListener(this);
+    }
+
+    @Override
+    public void setValue(String packageName) {
+        tv.append("\n"+packageName);
+    }
+
+    ProgressHandler handler;
     TextView tv1 = null;
     TextView tv2 = null;
     String Hour;
@@ -138,18 +161,19 @@ public class LockScreenActivity extends AppCompatActivity {
     public void Clockget(){
         SimpleDateFormat hour = new SimpleDateFormat("HH");
         SimpleDateFormat min = new SimpleDateFormat("mm");
+        handler = new ProgressHandler();
         Log.d("hour", "a" + hour);
         Log.d("hour", "a" + min);
         for(int i=0; i<lockTableLayout.getChildCount(); i++)
         {
-            if(lockTableLayout.getChildAt(i).getTag().equals("click"))
+            if(lockTableLayout.getChildAt(i).getTag().equals("clock"))
             {
                 ViewGroup vg = (ViewGroup)lockTableLayout.getChildAt(i);
                 tv1 = (TextView) vg.getChildAt(0);
-                tv1 = (TextView) vg.getChildAt(1);
-
+                tv2 = (TextView) vg.getChildAt(1);
             }
         }
+        if(tv1 == null) return;
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -190,5 +214,17 @@ public class LockScreenActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|
                 WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         super.onAttachedToWindow();
+    }
+
+    public static void printViewHierarchy(ViewGroup vg, String prefix) {
+        for (int i = 0; i < vg.getChildCount(); i++) {
+            View v = vg.getChildAt(i);
+            String desc = prefix + " | " + "[" + i + "/" + (vg.getChildCount()-1) + "] "+ v.getClass().getSimpleName() + " " + v.getId() + " " + v.getTag();
+            Log.v("x", desc);
+
+            if (v instanceof ViewGroup) {
+                printViewHierarchy((ViewGroup)v, desc);
+            }
+        }
     }
 }
