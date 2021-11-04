@@ -68,7 +68,6 @@ public class ListViewAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)convertView.getTag();
-
         }
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,10 +81,8 @@ public class ListViewAdapter extends BaseAdapter {
                 v.getContext().startActivity(intent);
             }
         });
-        Log.d("ids", "va" + viewHolder.id.getText());
-        Log.d("dates", "va" + viewHolder.date.getText());
-        // 각 셀에 넘겨받은 텍스트 데이터를 넣는다.
-        viewHolder.id.setText( id.get(position) );
+
+        viewHolder.id.setText(id.get(position).split("@")[0]);
         viewHolder.date.setText(date.get(position));
         String lock = ui.get(position);
         previewCommunity(lock, bg.get(position));
@@ -97,6 +94,7 @@ public class ListViewAdapter extends BaseAdapter {
         public TextView date;
         public ViewGroup pre;
     }
+
     public void previewCommunity(String lock, String background){
         DisplayMetrics metrics = mcontext.getResources().getDisplayMetrics();
         int width = metrics.widthPixels / 3;

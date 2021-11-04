@@ -92,6 +92,7 @@ public class GridLock46 extends LockTable {
                 .setViewSize(vs)
                 .build();
         widget.getView().setOnLongClickListener(new WidgetLongClickListener());
+        widget.getView().setTag(WidgetList.getTag(type));
 
         widgets.add(widget);
         setUpPosition(new Point(x, y), new Size(w,h), widget.getId());

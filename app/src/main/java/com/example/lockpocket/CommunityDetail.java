@@ -1,5 +1,6 @@
 package com.example.lockpocket;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lockpocket.utils.BitmapConverter;
@@ -51,7 +51,8 @@ public class CommunityDetail extends AppCompatActivity {
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new AlertDialog.Builder(getApplicationContext()).setMessage("원래 잠금화면 설정을 지우고 덮어씁니다.")
+                AlertDialog.Builder builder = new AlertDialog.Builder(CommunityDetail.this);
+                builder.setMessage("설정을 바꾸면 편집한 화면이 초기화됩니다.")
                         .setTitle("주의")
                         .setPositiveButton("계속", new DialogInterface.OnClickListener() {
                             @Override
@@ -65,7 +66,9 @@ public class CommunityDetail extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 // nothing to do
                             }
-                        }).show();
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 

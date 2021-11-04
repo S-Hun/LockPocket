@@ -83,7 +83,7 @@ public class EditActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        printViewHierarchy(navigationView, "");
+        // printViewHierarchy(navigationView, "");
         ViewGroup navigationMenuView = (ViewGroup)navigationView.getChildAt(0);
         ViewGroup navigationMenuItemView;
 
@@ -113,7 +113,7 @@ public class EditActivity extends AppCompatActivity {
 
             v.setTag(R.string.role, "widget");
             v.setTag(R.string.role_describe, lockTableObject.tableWidget[i]);
-            v.setTag(WidgetList.getName(lockTableObject.tableWidget[i]));
+            v.setTag(WidgetList.getTag(lockTableObject.tableWidget[i]));
             v.setOnLongClickListener(new MenuLongClickListener());
             v.setOnDragListener(new MenuDragListener());
         }
@@ -339,7 +339,7 @@ public class EditActivity extends AppCompatActivity {
     public static void printViewHierarchy(ViewGroup vg, String prefix) {
         for (int i = 0; i < vg.getChildCount(); i++) {
             View v = vg.getChildAt(i);
-            String desc = prefix + " | " + "[" + i + "/" + (vg.getChildCount()-1) + "] "+ v.getClass().getSimpleName() + " " + v.getId();
+            String desc = prefix + " | " + "[" + i + "/" + (vg.getChildCount()-1) + "] "+ v.getClass().getSimpleName() + " " + v.getId() + " " + v.getTag();
             Log.v("x", desc);
 
             if (v instanceof ViewGroup) {

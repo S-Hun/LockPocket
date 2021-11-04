@@ -92,7 +92,7 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                 Date date = new Date();
                 String strDate = sdf.format(date);
-                String backPic = PreferenceManager.getString(getContext(), "edit_background");
+                String backPic = PreferenceManager.getString(getContext(), "edit_bg_upload");
                 String upload = PreferenceManager.getString(getContext(), "edit_lockscreen");
                 if(!upload.equals("")) {
                     // Network Work.
@@ -197,18 +197,18 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 String imageUriPath = BitmapConverter.BitmapToString(selectedImage);
                 PreferenceManager.setString(getContext(), "edit_background", imageUriPath);
-                Log.i("BACKGROUND", imageUriPath);
+                PreferenceManager.setString(getContext(), "edit_bg_upload", BitmapConverter.BitmapToString(BitmapConverter.Scaled(selectedImage, 32.0)));
                 Toast.makeText(getContext(), "배경화면을 성공적으로 설정했습니다", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), TemplateActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "문제 발생", Toast.LENGTH_LONG).show();
             }
 
         } else {
-            Toast.makeText(getContext(), "You haven't picked Image",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "이미지를 불러오지 않았습니다",Toast.LENGTH_LONG).show();
         }
     }
 }

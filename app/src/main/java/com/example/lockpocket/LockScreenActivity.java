@@ -112,7 +112,7 @@ public class LockScreenActivity extends AppCompatActivity {
     }
 
     void lockTableSetup() {
-        String template = PreferenceManager.getString(getApplicationContext(), "edit_lockscreen");
+        String template = PreferenceManager.getString(getApplicationContext(), "edit_leockscren");
         String[] li = template.split("/");
         if(!template.equals("")) {
             int height = lockTableLayout.getHeight();

@@ -41,6 +41,18 @@ public class WidgetList {
         else return "";
     }
 
+    public static String getTag(int type){
+        if(type == 1) return "wifi";
+        else if(type == 2) return "data";
+        else if(type == 3) return "flight";
+        else if(type == 4) return "flashlight";
+        else if(type == 5) return "notification";
+        else if(type == 6) return "clock";
+        else if(type == 7) return "call";
+        else if(type == 8) return "camera";
+        else return "";
+    }
+
     public static Type getId(int type){
         if(type == 1) return WIFI;
         else if(type == 2) return DATA;
