@@ -85,7 +85,7 @@ public class TemplateActivity extends AppCompatActivity {
         int width = (int) (getWindowManager().getDefaultDisplay().getWidth() * (1.0/4));
         int height = (int) (getWindowManager().getDefaultDisplay().getHeight() * (1.0/4.0));
         TableFloater tf = new TableFloater(getApplicationContext(), template);
-        ViewGroup vg = tf.template(new Point(width, height));
+        ViewGroup vg = tf.template(new Point(width, height), 24);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
         params.gravity = Gravity.CENTER;
         vg.setLayoutParams(params);
@@ -95,11 +95,5 @@ public class TemplateActivity extends AppCompatActivity {
             vg.setBackground(new BitmapDrawable(getResources(), bitmap));
         }
         preview.addView(vg);
-    }
-
-    public void IntentPreventer(Intent intent){
-        intent.setAction(Intent.ACTION_MAIN);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addCategory(Intent.CATEGORY_LAUNCHER);
     }
 }

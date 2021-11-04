@@ -75,9 +75,11 @@ public class ListViewAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), CommunityDetail.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("id", id.get(position));
+                intent.putExtra("date", date.get(position));
+                intent.putExtra("ui", ui.get(position));
+                intent.putExtra("bg", bg.get(position));
                 v.getContext().startActivity(intent);
-
-
             }
         });
         Log.d("ids", "va" + viewHolder.id.getText());
@@ -86,7 +88,7 @@ public class ListViewAdapter extends BaseAdapter {
         viewHolder.id.setText( id.get(position) );
         viewHolder.date.setText(date.get(position));
         String lock = ui.get(position);
-        previewCommunity(lock);
+        previewCommunity(lock, bg.get(position));
         return convertView;
     }
 
@@ -95,7 +97,7 @@ public class ListViewAdapter extends BaseAdapter {
         public TextView date;
         public ViewGroup pre;
     }
-    public void previewCommunity(String lock){
+    public void previewCommunity(String lock, String background){
         DisplayMetrics metrics = mcontext.getResources().getDisplayMetrics();
         int width = metrics.widthPixels / 3;
         int height = metrics.heightPixels / 3;
@@ -104,7 +106,7 @@ public class ListViewAdapter extends BaseAdapter {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(width, height);
         params.setMarginStart((int) (width / 3.5));
         vg.setLayoutParams(params);
-        String backgroundBitmap = PreferenceManager.getString(mcontext, "edit_background");
+        String backgroundBitmap = background;
         if(!backgroundBitmap.equals("")) {
             Bitmap bitmap = BitmapConverter.StringToBitmap(backgroundBitmap);
             vg.setBackground(new BitmapDrawable(mcontext.getResources(), bitmap));

@@ -197,6 +197,7 @@ public class SettingTemplateFragment extends PreferenceFragmentCompat {
                 final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 String imageUriPath = BitmapConverter.BitmapToString(selectedImage);
                 PreferenceManager.setString(getContext(), "edit_background", imageUriPath);
+                Log.i("BACKGROUND", imageUriPath);
                 Toast.makeText(getContext(), "배경화면을 성공적으로 설정했습니다", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), TemplateActivity.class);
                 startActivity(intent);

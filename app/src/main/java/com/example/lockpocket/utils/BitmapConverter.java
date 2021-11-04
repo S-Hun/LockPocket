@@ -21,10 +21,16 @@ public class BitmapConverter {
         }
     }
 
+    public static Bitmap Scaled(Bitmap bitmap) {
+        int nh = (int) (bitmap.getHeight() * (32.0 / bitmap.getWidth()));
+        return Bitmap.createScaledBitmap(bitmap, 32, nh, true);
+    }
+
     /*
      * Bitmap을 String형으로 변환
      * */
-    public static String BitmapToString(Bitmap bitmap) {
+    public static String BitmapToString(Bitmap inBitmap) {
+        Bitmap bitmap = Scaled(inBitmap);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 1, baos);
         byte[] bytes = baos.toByteArray();

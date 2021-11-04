@@ -16,39 +16,21 @@ import com.example.lockpocket.R;
 import java.util.ArrayList;
 
 public class TableFloater {
-    private String[] colorSet;
     private Context context;
     private String data;
-    private ArrayList<LockTable.Widget> widgets;
 
     public TableFloater(Context context, String data) {
         this.context = context;
         this.data = data; // widgetView/type:x:y:attr/0:0:0:0/0:0:0:0/0:0:0:0
-        colorSet = new String[] {
-          "49416D", "A882DD", "E08D79", "E0EFDE", "B3F2DD", "FBBA72",
-                "ADA0A6", "7D938A", "391463", "2D936C", "5FAD41"
-        };
     }
 
-    /*
-    (base)
-    ------
-
-    table
-
-    ------
-    lock
-    ------
-
-    (grid46 table)
-    --------
-    v
-        v
-    --------
-    ...
-
-     */
     public ViewGroup template(Point size) {
+        return template(size, 16);
+    }
+    public ViewGroup template(Point size, int pad) {
+        return template(size, pad, 5);
+    }
+    public ViewGroup template(Point size, int pad, int textSize) {
         String[] list = data.split("/");
         LinearLayout base = new LinearLayout(context);
         base.setOrientation(LinearLayout.VERTICAL);
@@ -85,19 +67,11 @@ public class TableFloater {
                 int y = Integer.parseInt(info[2]);
                 int w = WidgetList.getId(type).w;
                 int h = WidgetList.getId(type).h;
-//                int randNum = (int) (Math.random() * colorSet.length);
-//                int color = colorRandomized(colorSet[randNum]);
 
                 int vw = size.x / 4;
                 int vh = (int) (size.y * (1/7.0));
-//                View v = new View(context);
-//                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(vw * w, vh * h);
-//                params.setMargins(vw * x, vh * y, 0, 0);
-//                v.setLayoutParams(params);
-//                v.setBackgroundColor(color);
-//                table.addView(v);
 
-                ViewGroup v = pattern.getViewGroup(type, new Point(x, y), 16, 5);
+                ViewGroup v = pattern.getViewGroup(type, new Point(x, y), pad, textSize);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(vw * w, vh * h);
                 params.setMargins(vw * x, vh * y, 0, 0);
                 v.setLayoutParams(params);
@@ -105,17 +79,5 @@ public class TableFloater {
             }
         }
         return base;
-    }
-
-    private int colorRandomized(String src) {
-        int value = Integer.parseInt(src, 16);
-        double rand = Math.random() + 0.5;
-        int R = (int) ((value & 0xff0000) * rand);
-        if(R > 0xff0000) R = 0xff0000;
-        int G = (int) ((value & 0x00ff00) * rand);
-        if(G > 0x00ff00) G = 0x00ff00;
-        int B = (int) ((value & 0x0000ff) * rand);
-        if(B > 0x0000ff) B = 0x0000ff;
-        return 0xff000000 + R + G + B;
     }
 }

@@ -53,11 +53,10 @@
             android:layout_marginLeft="0dp"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/view"
+            <FrameLayout
+                android:id="@+id/ui_view"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                app:srcCompat="@drawable/test_image1" />
+                android:layout_height="wrap_content"/>
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -73,16 +72,7 @@
                 android:stepSize="1" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="30dp"
-                android:text="Id"
-                android:textSize="32sp" />
-
-            <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -91,7 +81,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/date"
                 android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
