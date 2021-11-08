@@ -1,12 +1,10 @@
 package com.example.lockpocket;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,32 +13,23 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.lockpocket.account.LoginRequest;
-import com.example.lockpocket.account.LogoutRequest;
+import com.example.lockpocket.request.LogoutRequest;
 import com.example.lockpocket.fragment.AskFragment;
 import com.example.lockpocket.fragment.HelpFragment;
 import com.example.lockpocket.fragment.HomeFragment;
-import com.example.lockpocket.utils.AppNetwork;
-import com.example.lockpocket.utils.Encryption;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
-import com.example.lockpocket.widgets.CustomNotificationListener;
-import com.example.lockpocket.widgets.NotificationService;
 import com.google.android.material.navigation.NavigationView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements CustomNotificationListener {
+public class MainActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager;
     private HomeFragment homeFragment;
@@ -57,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements CustomNotificatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         androidx.preference.PreferenceManager.setDefaultValues(this, R.xml.settings_template, false);
-        new NotificationService().setListener(this);
 
         context = this;
 
@@ -179,10 +167,5 @@ public class MainActivity extends AppCompatActivity implements CustomNotificatio
     public void CommunityButton(){
         Intent intent = new Intent(getApplicationContext(), CommunityActivity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void setValue(String packageName) {
-        // nothing to do.
     }
 }

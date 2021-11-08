@@ -9,13 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.lockpocket.account.RegisterRequest;
+import com.example.lockpocket.request.RegisterRequest;
 import com.example.lockpocket.utils.Encryption;
 
 import org.json.JSONException;

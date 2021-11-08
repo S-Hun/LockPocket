@@ -1,4 +1,4 @@
-package com.example.lockpocket;
+package com.example.lockpocket.fragment;
 
 import android.content.Context;
 

@@ -1,5 +1,6 @@
 package com.example.lockpocket;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lockpocket.utils.PreferenceManager;
+import com.example.lockpocket.widgets.NotificationDB;
 
 public class SplashActivity extends AppCompatActivity {
     private Context mContext;

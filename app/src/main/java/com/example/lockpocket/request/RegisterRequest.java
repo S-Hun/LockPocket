@@ -1,4 +1,4 @@
-package com.example.lockpocket.account;
+package com.example.lockpocket.request;
 
 import android.content.Context;
 
@@ -8,7 +8,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.lockpocket.utils.AppNetwork;
 
 import java.io.IOException;
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 

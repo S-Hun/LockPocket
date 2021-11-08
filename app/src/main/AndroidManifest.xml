@@ -15,7 +15,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"/>
 
     <application
         android:name=".LockApplication"
@@ -41,10 +40,6 @@
         </activity>
         <activity android:name=".EditActivity"
             android:excludeFromRecents="true"/>
-
-        <activity android:name=".ButtonTest">
-
-        </activity>
         <activity
             android:name=".LockScreenActivity"
             android:showOnLockScreen="true"

@@ -1,4 +1,4 @@
-package com.example.lockpocket;
+package com.example.lockpocket.paging;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lockpocket.CommunityDetail;
+import com.example.lockpocket.R;
 import com.example.lockpocket.utils.BitmapConverter;
 import com.example.lockpocket.utils.PreferenceManager;
 import com.example.lockpocket.utils.TableFloater;

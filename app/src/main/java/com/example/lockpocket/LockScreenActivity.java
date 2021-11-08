@@ -162,8 +162,6 @@ public class LockScreenActivity extends AppCompatActivity implements CustomNotif
         SimpleDateFormat hour = new SimpleDateFormat("HH");
         SimpleDateFormat min = new SimpleDateFormat("mm");
         handler = new ProgressHandler();
-        Log.d("hour", "a" + hour);
-        Log.d("hour", "a" + min);
         for(int i=0; i<lockTableLayout.getChildCount(); i++)
         {
             if(lockTableLayout.getChildAt(i).getTag().equals("clock"))
@@ -182,11 +180,8 @@ public class LockScreenActivity extends AppCompatActivity implements CustomNotif
                     try {
                         Hour = hour.format(new Date(System.currentTimeMillis()));
                         Min = min.format(new Date(System.currentTimeMillis()));
-                        Log.d("ss", Min);
                         Message message = handler.obtainMessage();
                         handler.sendMessage(message);
-                        Log.d("hour", Hour);
-                        Log.d("min", Min);
 
                         Thread.sleep(60000);
                     } catch (InterruptedException ex) {
@@ -203,8 +198,6 @@ public class LockScreenActivity extends AppCompatActivity implements CustomNotif
 
             tv1.setText(Hour);
             tv2.setText(Min);
-            Log.d("hour", "a" + tv1);
-            Log.d("hour", "a" + tv2);
         }
     }
     @Override

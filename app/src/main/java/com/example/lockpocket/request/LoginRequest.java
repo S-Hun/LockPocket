@@ -1,6 +1,5 @@
-package com.example.lockpocket.account;
+package com.example.lockpocket.request;
 
-import android.util.Log;
 import android.widget.Toast;
 import android.content.Context;
 

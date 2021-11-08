@@ -2,9 +2,6 @@ package com.example.lockpocket;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,12 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
 import android.widget.GridView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,15 +19,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.lockpocket.utils.BitmapConverter;
-import com.example.lockpocket.utils.PreferenceManager;
-import com.example.lockpocket.utils.TableFloater;
+import com.example.lockpocket.fragment.DownloadRequest;
+import com.example.lockpocket.paging.ListViewAdapter;
 import com.lakue.pagingbutton.LakuePagingButton;
 import com.lakue.pagingbutton.OnPageSelectListener;
-import com.example.lockpocket.utils.TableFloater;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;

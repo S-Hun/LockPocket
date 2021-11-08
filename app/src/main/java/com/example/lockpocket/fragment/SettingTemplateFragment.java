@@ -1,24 +1,14 @@
 package com.example.lockpocket.fragment;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Display;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -29,16 +19,11 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.lockpocket.EditActivity;
 import com.example.lockpocket.R;
-import com.example.lockpocket.SigninActivity;
-import com.example.lockpocket.SignupActivity;
 import com.example.lockpocket.TemplateActivity;
-import com.example.lockpocket.UploadRequest;
-import com.example.lockpocket.account.RegisterRequest;
 import com.example.lockpocket.utils.BitmapConverter;
 import com.example.lockpocket.utils.LockScreen;
 import com.example.lockpocket.utils.PreferenceManager;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
