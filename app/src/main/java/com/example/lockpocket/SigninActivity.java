@@ -64,6 +64,16 @@ public class SigninActivity extends AppCompatActivity {
                 String userID = et_email.getText().toString();
                 String userPass = et_pass.getText().toString();
 
+                if(userID.isEmpty()) {
+                    Toast.makeText(getApplicationContext(),
+                            "이메일 항목을 입력하세요", Toast.LENGTH_SHORT).show();
+                    return;
+                } if(userPass.isEmpty()) {
+                    Toast.makeText(getApplicationContext(),
+                            "비밀번호 항목을 입력하세요", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Check if email id is valid or not
                 if (!isEmailValid(userID)){
                     Toast.makeText(getApplicationContext(),

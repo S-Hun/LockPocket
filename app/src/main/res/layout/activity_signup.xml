@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:textSize="12sp"
-            android:text="EMAIL"
+            android:text="이메일"
             android:layout_gravity="center_vertical"/>
 
         <View
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@drawable/sign_input_form"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="6dp"
         android:layout_marginHorizontal="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="30dp"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:textSize="12sp"
-            android:text="NICK"
+            android:text="별명"
             android:layout_gravity="center_vertical" />
 
         <View
@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@drawable/sign_input_form"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="6dp"
         android:layout_marginHorizontal="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="30dp"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:textSize="12sp"
-            android:text="PASSWD"
+            android:text="비밀번호"
             android:layout_gravity="center_vertical" />
 
         <View
@@ -150,37 +150,81 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@drawable/sign_input_form"
+        android:layout_marginTop="6dp"
+        android:layout_marginHorizontal="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="30dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:textSize="12sp"
+            android:text="비밀번호 확인"
+            android:layout_gravity="center_vertical" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="18sp"
+            android:background="#6200EE"
+            android:layout_gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/password_check"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"
+                android:hint="password check"
+                android:textSize="12sp"
+                android:inputType="textPassword"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal">
 
         <Button
             android:id="@+id/signup_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:paddingHorizontal="32dp"
-            android:paddingVertical="18dp"
-            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="9dp"
             android:textColor="@color/white"
             android:background="@drawable/sign_button_form"
-            android:text="CREATE"
+            android:text="계정 생성"
             android:onClick="CreateAccount"/>
 
         <Button
             android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:paddingHorizontal="32dp"
-            android:paddingVertical="18dp"
-            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="9dp"
             android:textColor="@color/white"
             android:background="@drawable/sign_button_form"
-            android:text="SIGN IN"
+            android:text="돌아가기"
             android:onClick="BackToSignIn"/>
 
 

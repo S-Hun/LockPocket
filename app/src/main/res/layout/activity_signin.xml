@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:textSize="12sp"
-            android:text="EMAIL"
+            android:text="이메일"
             android:layout_gravity="center_vertical"/>
 
         <View
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@drawable/sign_input_form"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="6dp"
         android:layout_marginHorizontal="20dp"
         android:paddingLeft="20dp"
         android:paddingRight="30dp"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
             android:textSize="12sp"
-            android:text="PASSWORD"
+            android:text="비밀번호"
             android:layout_gravity="center_vertical"/>
 
         <View
@@ -113,34 +113,32 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal">
 
         <Button
             android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:paddingHorizontal="32dp"
-            android:paddingVertical="18dp"
-            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="9dp"
             android:textColor="@color/white"
             android:background="@drawable/sign_button_form"
-            android:text="LOGIN"/>
+            android:text="로그인"/>
 
         <Button
             android:id="@+id/signin_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
             android:minWidth="0dp"
             android:paddingHorizontal="32dp"
-            android:paddingVertical="18dp"
-            android:layout_marginHorizontal="20dp"
+            android:paddingVertical="9dp"
             android:textColor="@color/white"
             android:background="@drawable/sign_button_form"
-            android:text="SIGN UP"
+            android:text="계정 생성"
             android:onClick="ChangeToSignUp"/>
 
     </LinearLayout>
