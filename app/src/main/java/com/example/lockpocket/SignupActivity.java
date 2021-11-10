@@ -41,7 +41,6 @@ public class SignupActivity extends AppCompatActivity {
         et_name = findViewById(R.id.nickname);
         et_passCheck = findViewById(R.id.password_check);
         View password_toggle = findViewById(R.id.password_toggle);
-        Log.d("Encryption test", Encryption.SHA1("1234"));
         password_toggle.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

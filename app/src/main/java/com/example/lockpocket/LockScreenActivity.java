@@ -7,10 +7,12 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -133,6 +135,23 @@ public class LockScreenActivity extends AppCompatActivity implements CustomNotif
         printViewHierarchy(lockTableLayout, "");
         NotificationGet();
         Clockget();
+    }
+
+    public void Call() {
+        for(int i=0; i<lockTableLayout.getChildCount(); i++)
+        {
+            if(lockTableLayout.getChildAt(i).getTag().equals("call"))
+            {
+                ViewGroup vg = (ViewGroup)lockTableLayout.getChildAt(i);
+                vg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent call = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:119"));
+                        startActivity(call);
+                    }
+                });
+            }
+        }
     }
 
     TextView tv = null;
